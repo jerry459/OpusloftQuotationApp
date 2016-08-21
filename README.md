@@ -1,2 +1,0 @@
-# OpusloftQuotationApp
-OpusloftQuotationApp
