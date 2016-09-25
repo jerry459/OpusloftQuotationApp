@@ -83,7 +83,7 @@ angular
 
       var user = $rootScope.user;
 
-      if (user.accessToken == undefined || user.accessToken == "") {
+      if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
         $state.go("login");
       }
     }
