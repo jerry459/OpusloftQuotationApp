@@ -1,0 +1,23 @@
+<ion-content class="has-footer">
+	<div class="list">
+		<div class="item">{{barcode}}</div>
+		<div class="item">{{format}}</div>
+		<br />
+		<div class="item">{{result}}</div>
+	</div>
+</ion-content>
+<!-- ion-footer-bar align-title="center" class="bar-stable">
+	<label class="item item-input">
+		<i class="icon ion-search placeholder-icon"></i>
+		<input type="text" placeholder="請輸入商品代碼">
+	</label>
+	<i class="icon ion-qr-scanner placeholder-icon" style="font-size: xx-large;" ng-click="scanBarcode()"></i>
+</ion-footer-bar -->
+
+<div class="bar bar-footer item-input-inset bar-stable">
+	<label class="item-input-wrapper" style="background-color: #ffffff;">
+		<i class="icon ion-android-search placeholder-icon"></i>
+		<input type="search" placeholder="請輸入商品代碼">
+	</label>
+	<i class="icon ion-qr-scanner placeholder-icon" style="font-size: xx-large;" ng-click="scanBarcode()"></i>
+</div>

@@ -15,6 +15,7 @@ angular.module('starter')
       user.userName = localStorage.getItem("userName");
       user.accessToken = localStorage.getItem("accessToken");
       user.userStatus = localStorage.getItem("userStatus");
+      user.storeName = localStorage.getItem("storeName");
 
       $rootScope.user = user;
 
@@ -33,12 +34,14 @@ angular.module('starter')
         user.userName = res.userName;
         user.accessToken = res.accessToken;
         user.userStatus = res.status;
+        user.storeName = res.storeName;
 
         if (user.userStatus) {
           localStorage.setItem("loginId", user.loginId);
           localStorage.setItem("userName", user.userName);
           localStorage.setItem("accessToken", user.accessToken);
           localStorage.setItem("userStatus", user.userStatus);
+          localStorage.setItem("storeName", user.storeName);
 
           $state.go("home");
         } else {
@@ -86,37 +89,43 @@ angular.module('starter')
   var ctrl = $scope;
 
   ctrl.init = function() {
+    $scope.queryCode = '';
     $rootScope.checkAuthState();
   }
 
-
   ctrl.scanBarcode = function() {
     $cordovaBarcodeScanner.scan().then(function(result) {
-      $scope.barcode = result.text;
-      $scope.format = result.format;
+      $scope.queryCode = result.text;
+      $scope.barcodeFormat = result.format;
 
-      if (result.text) {
-        $http
-          .get("http://tw.yahoo.com", {
-            params: {
-              "key1": "value1",
-              "key2": "value2"
-            }
-          })
-          .success(function(data) {
-            $scope.result = data.result;
-          })
-          .error(function(data) {
-            alert("ERROR");
-          });
+      if ( $scope.queryCode != undefined && $scope.queryCode != "" ) {
+        ctrl.queryGoods($scope.queryCode);
       }
     }, function(error) {
       console.warn("An error happened -> " + error);
     });
   };
 
+  ctrl.queryGoods = function(itemId) {
+    GoodsService.getGoods(itemId).then(function(res) {
+      $log.debug("GoodsCtrl.queryGoods", "error", res);
+      debugger;
+
+      //
+
+    }, function(err) {
+      $log.debug("GoodsCtrl.queryGoods", "error", err);
+      debugger;
+
+    }).catch(function(ex) {
+      $log.debug("GoodsCtrl.queryGoods", "exception", ex);
+      debugger;
+
+    });
+  };
+
   ctrl.init();
-  
+
   $log.info("GoodsCtrl", "-- end --");
 })
 

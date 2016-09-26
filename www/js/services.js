@@ -78,6 +78,7 @@ angular.module('starter.services', [])
     localStorage.removeItem("userName");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userStatus");
+    localStorage.removeItem("storeName");
 
     $log.info("UsersService.logout", "-- end --");
   }
