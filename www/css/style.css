@@ -1,8 +1,267 @@
 /* Empty. Add your own CSS if you like */
-/* body {
-background-image: url(../img/bg_img-1.jpg);
-} */
+@charset "utf-8";
+body {
+	background-color: #B6AB9E;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+@charset "utf-8";
+#page_web01 {
+	height: 1280px;
+	width: 800px;
+	margin-left: 0px;
+ 	margin-top: 0px;
+	background-image: url(../images/bg_img-1.jpg);
+}
+#page_web_bott01 {
+	width: 400px;
+	height: 180px;
+	float: left;
+}
+#page_web_bott02 {
+	width: 400px;
+	height: 180px;
+	margin-left: 400px;
+}
 
-.logincss {
-background-image: url(../img/bg_img-1.jpg);
+#page_web02 {
+	height: 1100px;
+	width: 800px;
+
+}
+#page_web03 {
+	height: 180px;
+	width: 800px;
+
+}
+#login_01 {
+	text-align: center;
+	padding-top: 230px;
+}
+#login_02 {
+	text-align: center;
+}
+
+
+
+#login_04 {
+	margin-top: 230px;
+}
+#page02_01 {
+	text-align: center;
+	padding-top: 250px;
+}
+#page02_02 {
+	text-align: center;
+	padding-top: 50px;
+}
+#page02_03 {
+	text-align: center;
+	padding-top: 30px;
+}
+#page02_04 {
+	text-align: center;
+	padding-top: 30px;
+}
+
+.login_text01 {
+	font-size: 45px;
+	color: #666;
+	font-family: "微軟正黑體";
+	padding-left: 10px;
+	line-height: 45px;
+	padding-top: 17px;
+}
+.text_02 {
+	font-size: 22px;
+	color: #703C1F;
+	font-family: "微軟正黑體";
+	font-weight: normal;
+	padding-top: 8px;
+}
+.text_03 {
+	font-size: 41px;
+	color: #9A4D3D;
+	font-family: "微軟正黑體";
+	text-shadow: 1px 1px 3px #666;
+}
+
+#round_01 {
+	width: 80%;
+	border-radius: 5px;
+	height: 60px;
+	background-color: #FFF;
+	opacity: .7;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+#round_02 {
+	width: 65%;
+	border-radius: 5px;
+	height: 60px;
+	background-color: #FFF;
+	opacity: .8;
+	margin-left: 20px;
+}
+.text_04 {
+	font-size: 65px;
+	color: #999;
+	font-family: "微軟正黑體";
+}
+.text_05 {
+	font-size: 23px;
+	color: #666;
+	font-family: "微軟正黑體";
+	text-align: left;
+	padding-left: 20px;
+	padding-top: 15px;
+}
+#page03_02 {
+	padding-top: 10px;
+	padding-left: 80px;
+	height: 60px;
+}
+#page03_03 {
+	height: 35px;
+	margin-top: 35px;
+}
+
+#page03_04 {
+	padding-left: 80px;
+	height: 35px;
+}
+#page03_05 {
+	padding-top: 10px;
+	padding-left: 90px;
+	height: 800px;
+}
+#page03_06 {
+	padding-top: 10px;
+	padding-left: 60px;
+	height: 80px;
+}
+#list_list_01 {
+	width: 530px;
+	float: left;
+	height: 35px;
+}
+#list_list_02 {
+	width: 100px;
+	margin-left: 533px;
+	height: 35px;
+}
+.but_001 {
+	font-size: 20px;
+	width: 80px;
+	height: 60px;
+	font-family: "微軟正黑體";
+	color: #930;
+	border-radius: 6px;
+	background-color: #ECE4DF;
+	border: 1px solid #E4D7E9;
+	box-shadow: 1px 1px 3px 1px #666;
+	background-image: url(../images/serch-1.png);
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.but_002 {
+	font-size: 20px;
+	width: 80px;
+	height: 60px;
+	font-family: "微軟正黑體";
+	color: #930;
+	border-radius: 6px;
+	background-color: #ECE4DF;
+	border: 1px solid #E4D7E9;
+	box-shadow: 1px 1px 3px 1px #666;
+	margin-left: 10px;
+	margin-top: 10px;
+	background-image: url(../images/serch-2.png);
+}
+.but_003 {
+	height: 180px;
+	width: 400px;
+	background-image: url(../images/but_001.jpg);
+	border: 0;
+}
+.but_004 {
+	height: 180px;
+	width: 400px;
+	background-image: url(../images/but_002.jpg);
+	border: 0;
+}
+
+.input_text01 {
+	appearance: normal;
+	border: solid 1px #ccc;
+	border-radius: 4px;
+	box-shadow: inset 1px 1px 1px #666;
+	box-sizing: border-box;
+	font-size: 24px;
+	color: #999;
+	font-family: "微軟正黑體";
+	padding-top: 10px;
+	padding-left: 10px;
+	width: 480px;
+	padding-bottom: 5px;
+	vertical-align: bottom;
+}
+.input_text02 {
+	appearance: normal;
+	border: 1px solid #999;
+	border-radius: 5px;
+	box-shadow: inset 1px 1px 1px #666;
+	box-sizing: border-box;
+	font-size: 36px;
+	color: #CCC;
+	font-family: "微軟正黑體";
+	padding-top: 15px;
+	padding-left: 20px;
+	width: 80%;
+	padding-bottom: 10px;
+	margin-top: 15px;
+}
+#form1 {
+	margin-top: -20px;
+	vertical-align: top;
+
+}
+
+.text_list_01 {
+	font-family: "微軟正黑體";
+	font-size: 23px;
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;
+	border-bottom-color: #8B8B8B;
+}
+.text_list_02 {
+	font-family: "微軟正黑體";
+	font-size: 21px;
+	font-weight: bold;
+	color: #876B4E;
+	line-height: 50px;
+}
+.text_list_03 {
+	font-family: "微軟正黑體";
+	font-size: 20px;
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;
+	border-bottom-color: #8B8B8B;
+	color: #815A41;
+}
+.line9 {
+  border: 0;
+  border-top: 2px dotted #8A705E;
+  text-align: center;
+}
+
+.line9:after {
+  background: #d4d2cb;
+  content: '庫存狀況';
+  display: inline-block;
+  padding: 0 0.5em;
+  position: relative;
+  top: -0.7em;
 }

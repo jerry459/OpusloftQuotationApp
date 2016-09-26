@@ -1,15 +1,18 @@
-﻿<ion-content class="logincss">
-	<div class="list">
-	  <label class="item item-input">
-	    <span class="input-label">帳　號</span>
-	    <input type="text" ng-model="loginData.account" style="opacity:0.4;filter:alpha(opacity=40);">
-	  </label>
-	  <label class="item item-input">
-	    <span class="input-label">密　碼</span>
-	    <input type="password" ng-model="loginData.pwd">
-	  </label>
-		<button
-			class="button button-block button-large icon-left ion-android-list button-positive"
-			ng-click="login(loginData);">登 入 系 統</button>
-	</div>
+<ion-content>
+  <div id="page_web01">
+    <div id="login_01"><img src="images/sys_login-1.png" width="385" height="160" /></div>
+    <div id="login_02">
+      <div align="center">
+        <input type="text" class="input_text02" placeholder="帳號" size="50" ng-model="loginData.account" />
+      </div>
+      <div align="center">
+        <input type="password" class="input_text02" placeholder="密碼" size="50" ng-model="loginData.pwd" />
+      </div>
+    </div>
+    <div id="login_04">
+      <div align="center">
+        <img src="images/but_login-1.png" width="677" height="168" ng-click="login(loginData);" />
+      </div>
+    </div>
+  </div>
 </ion-content>
