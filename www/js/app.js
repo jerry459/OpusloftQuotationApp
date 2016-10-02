@@ -53,7 +53,7 @@ angular
       });
   })
 
-.run(function($ionicPlatform, $http) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -68,24 +68,23 @@ angular
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
-
-    var accessToken = 'YmVlcDpib29w';
-    $http.defaults.headers.common.Authorization = accessToken;
   });
 })
 
-.run(function($rootScope, $state, $location) {
+.run(function($rootScope, $state, $location, $http, UsersService) {
   console.info("CheckAuthState", "-- start --");
-  debugger;
 
   $rootScope.checkAuthState = function() {
     if ($state.$current.name != "login") {
 
+      UsersService.getUserFromLocalStorage();
       var user = $rootScope.user;
 
       if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
         $state.go("login");
       }
+
+      $http.defaults.headers.common.Authorization = user.accessToken;
     }
   }
 

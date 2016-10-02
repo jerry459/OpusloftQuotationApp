@@ -25,7 +25,7 @@ angular.module('starter.services', [])
       debugger
 
       var d = $q.defer();
-      var api = serviceBaseUrl + "/" + itemId + ".json";
+      var api = serviceBaseUrl + "/find/" + itemId;
       $http.get(api).success(function(data) {
         d.resolve(data);
       }).error(function(err) {
@@ -70,7 +70,7 @@ angular.module('starter.services', [])
     $log.info("UsersService.login", "-- end --");
   }
 
-  self.logout = function(loginData) {
+  self.logout = function() {
     $log.info("UsersService.logout", "-- start --");
 
     $rootScope.user = {};
@@ -81,6 +81,33 @@ angular.module('starter.services', [])
     localStorage.removeItem("storeName");
 
     $log.info("UsersService.logout", "-- end --");
+  }
+
+  self.save2LocalStorage = function(user) {
+    $log.info("UsersService.save2LocalStorage", "-- start --");
+
+    localStorage.setItem("loginId", user.loginId);
+    localStorage.setItem("userName", user.userName);
+    localStorage.setItem("accessToken", user.accessToken);
+    localStorage.setItem("userStatus", user.userStatus);
+    localStorage.setItem("storeName", user.storeName);
+    $rootScope.user = user;
+
+    $log.info("UsersService.save2LocalStorage", "-- end --");
+  }
+
+  self.getUserFromLocalStorage = function() {
+    $log.info("UsersService.getUserFromLocalStorage", "-- start --");
+
+    var user = {};
+    user.loginId = localStorage.getItem("loginId");
+    user.userName = localStorage.getItem("userName");
+    user.accessToken = localStorage.getItem("accessToken");
+    user.userStatus = localStorage.getItem("userStatus");
+    user.storeName = localStorage.getItem("storeName");
+    $rootScope.user = user;
+
+    $log.info("UsersService.getUserFromLocalStorage", "-- end --");
   }
 
   return self;

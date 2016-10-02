@@ -1,7 +1,6 @@
 angular.module('starter')
   .controller('LoginCtrl', function($rootScope, $scope, $log, $q, $http, $state, UsersService) {
     $log.info("LoginCtrl", "-- start --");
-    debugger;
 
     var ctrl = $scope;
     var loginData = {};
@@ -11,13 +10,8 @@ angular.module('starter')
       loginData.account = "";
       loginData.pwd = "";
 
-      user.loginId = localStorage.getItem("loginId");
-      user.userName = localStorage.getItem("userName");
-      user.accessToken = localStorage.getItem("accessToken");
-      user.userStatus = localStorage.getItem("userStatus");
-      user.storeName = localStorage.getItem("storeName");
-
-      $rootScope.user = user;
+      UsersService.getUserFromLocalStorage();
+      user = $rootScope.user;
 
       // 暫時停用這個判斷是
       if (user.accessToken != undefined && user.accessToken != "" && false) {
@@ -28,8 +22,6 @@ angular.module('starter')
     ctrl.login = function(loginData) {
 
       UsersService.login(loginData).then(function(res) {
-        debugger;
-
         user.loginId = res.loginId;
         user.userName = res.userName;
         user.accessToken = res.accessToken;
@@ -37,11 +29,7 @@ angular.module('starter')
         user.storeName = res.storeName;
 
         if (user.userStatus) {
-          localStorage.setItem("loginId", user.loginId);
-          localStorage.setItem("userName", user.userName);
-          localStorage.setItem("accessToken", user.accessToken);
-          localStorage.setItem("userStatus", user.userStatus);
-          localStorage.setItem("storeName", user.storeName);
+          UsersService.save2LocalStorage(user);
 
           $state.go("home");
         } else {
@@ -69,7 +57,6 @@ angular.module('starter')
 
 .controller('HomeCtrl', function($rootScope, $scope, $log, $q, $http) {
   $log.info("HomeCtrl", "-- start --");
-  debugger;
 
   var ctrl = $scope;
 
@@ -84,7 +71,6 @@ angular.module('starter')
 
 .controller('GoodsCtrl', function($rootScope, $scope, $log, $q, $http, $cordovaBarcodeScanner, GoodsService) {
   $log.info("GoodsCtrl", "-- start --");
-  debugger;
 
   var ctrl = $scope;
 
@@ -98,7 +84,7 @@ angular.module('starter')
       $scope.queryCode = result.text;
       $scope.barcodeFormat = result.format;
 
-      if ( $scope.queryCode != undefined && $scope.queryCode != "" ) {
+      if ($scope.queryCode != undefined && $scope.queryCode != "") {
         ctrl.queryGoods($scope.queryCode);
       }
     }, function(error) {
@@ -108,7 +94,7 @@ angular.module('starter')
 
   ctrl.queryGoods = function(itemId) {
     GoodsService.getGoods(itemId).then(function(res) {
-      $log.debug("GoodsCtrl.queryGoods", "error", res);
+      $log.debug("GoodsCtrl.queryGoods", "success", res);
       debugger;
 
       //
