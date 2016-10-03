@@ -13,4 +13,3 @@ angular.module('starter')
 
     $log.info("CustomerCtrl", "-- end --");
   })
-  

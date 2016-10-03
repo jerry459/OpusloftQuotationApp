@@ -87,13 +87,19 @@ angular
       var user = $rootScope.user;
 
       if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
-        delete $http.defaults.headers.common['Token'];
-        delete $http.defaults.headers.post['Token'];
-        delete $http.defaults.headers.get['Token'];
+        if ($http.defaults.headers.common)
+          delete $http.defaults.headers.common['Token'];
+
+        if ($http.defaults.headers.post)
+          delete $http.defaults.headers.post['Token'];
+
+        if ($http.defaults.headers.get)
+          delete $http.defaults.headers.get['Token'];
 
         $state.go("login");
       } else {
         //$http.defaults.headers.common.Authorization = user.accessToken;
+        /*
         $http.defaults.headers.common = {
           'Token': user.accessToken
         };
@@ -103,6 +109,7 @@ angular
         $http.defaults.headers.get = {
           'Token': user.accessToken
         };
+        */
       }
     } else {
       if ($http.defaults.headers.common)

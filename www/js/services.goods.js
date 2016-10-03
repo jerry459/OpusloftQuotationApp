@@ -24,12 +24,25 @@ angular.module('services.goods', [])
       $log.info("GoodsService.getGoods", "-- start [ ", itemId, " ]");
       debugger
 
-      var itemPart = "";
-      if (AppConfig.DEBUG_MODE) itemPart = "/" + itemId + ".json";
+      var itemPart = "/" + itemId;
+      var httpMethod = "POST";
+      if (AppConfig.DEBUG_MODE) {
+        itemPart += ".json";
+        httpMethod = "GET";
+      }
 
       var d = $q.defer();
       var api = serviceBaseUrl + "/find" + itemPart;
-      $http.get(api).success(function(data) {
+
+      var config = {
+        'method': httpMethod,
+        'url': api,
+        'data': {
+          'Token': $rootScope.user.accessToken
+        }
+      }
+
+      $http(config).success(function(data) {
         if (data.returnCode > -1) {
           d.resolve(data.returnData);
         } else {

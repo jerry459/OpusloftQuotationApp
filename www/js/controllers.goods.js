@@ -4,6 +4,7 @@ angular.module('starter')
 
     var ctrl = $scope;
     var params = $state.params;
+    var goods = {};
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
@@ -36,11 +37,17 @@ angular.module('starter')
     };
 
     ctrl.queryGoods = function(itemId) {
+      ctrl.goods = {};
+
       GoodsService.getGoods(itemId).then(function(res) {
         $log.debug("GoodsCtrl.queryGoods", "success", res);
         debugger;
 
-        //
+        ctrl.goods.total = res.total;
+        ctrl.goods.stockNo = res.stockNo;
+        ctrl.goods.stockName = res.stockName;
+        ctrl.goods.price = res.price;
+        ctrl.goods.warehouseList = res.warehouseList;
 
       }, function(err) {
         $log.debug("GoodsCtrl.queryGoods", "error", err);

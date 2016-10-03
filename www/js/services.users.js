@@ -14,16 +14,22 @@ angular.module('services.users', [])
       var auth = "Basic " + Base64.encode(account + ":" + pwd);
 
       var itemPart = "";
-      if (AppConfig.DEBUG_MODE) itemPart = "/" + account + ".json";
+      var httpMethod = "POST";
+      if (AppConfig.DEBUG_MODE) {
+        itemPart = "/" + account + ".json";
+        httpMethod = "GET";
+      }
       var api = serviceBaseUrl + "/login/find" + itemPart;
 
       var config = {
-        headers: {
+        'method': httpMethod,
+        'url': api,
+        'data': {
           'Authorization': auth
         }
-      };
+      }
 
-      $http.get(api, config).success(function(data) {
+      $http(config).success(function(data) {
         if (data.returnCode > -1) {
           d.resolve(data.returnData);
         } else {
