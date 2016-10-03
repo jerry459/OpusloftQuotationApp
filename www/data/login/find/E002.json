@@ -1,0 +1,12 @@
+{
+  "returnCode": "0",
+  "returnData": {
+    "emUserid": "E002",
+    "emName": "王素燕",
+    "token": "+k07ulENnUc8skklS97Mx16jzJEFp56J41654",
+    "emDpno": "A",
+    "emDpname": "復興店"
+  },
+  "returnDesc": "登入成功!!!",
+  "status": "success"
+}

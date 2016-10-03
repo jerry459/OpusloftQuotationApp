@@ -10,11 +10,13 @@ angular.module('starter')
       loginData.account = "";
       loginData.pwd = "";
 
-      UsersService.getUserFromLocalStorage();
-      user = $rootScope.user;
+      $rootScope.checkAuthState();
+      //UsersService.getUserFromLocalStorage();
+      UsersService.clearLocalStorage();
+      user = {}; //$rootScope.user;
 
       // 暫時停用這個判斷是
-      if (user.accessToken != undefined && user.accessToken != "" && false) {
+      if (user != undefined && user.accessToken != undefined && user.accessToken != "") {
         $state.go("home");
       } else {}
     }
@@ -22,11 +24,13 @@ angular.module('starter')
     ctrl.login = function(loginData) {
 
       UsersService.login(loginData).then(function(res) {
-        user.loginId = res.loginId;
-        user.userName = res.userName;
-        user.accessToken = res.accessToken;
-        user.userStatus = res.status;
-        user.storeName = res.storeName;
+
+        user.loginId = res.emUserid; //res.loginId;
+        user.userName = res.emName; //res.userName;
+        user.accessToken = res.token; //res.accessToken;
+        user.userStatus = res.emUserid ? 1 : 0; //res.status;
+        user.storeNo = res.emDpno;
+        user.storeName = res.emDpname; //res.storeName;
 
         if (user.userStatus) {
           UsersService.save2LocalStorage(user);
@@ -36,7 +40,7 @@ angular.module('starter')
           loginData.account = "";
           loginData.pwd = "";
           user = {};
-          UsersService.logout();
+          UsersService.clearLocalStorage();
         }
 
       }, function(err) {
@@ -69,14 +73,17 @@ angular.module('starter')
   $log.info("HomeCtrl", "-- end --");
 })
 
-.controller('GoodsCtrl', function($rootScope, $scope, $log, $q, $http, $cordovaBarcodeScanner, GoodsService) {
+.controller('GoodsCtrl', function($rootScope, $scope, $state, $stateParams, $log, $q, $http, $cordovaBarcodeScanner, GoodsService) {
   $log.info("GoodsCtrl", "-- start --");
 
   var ctrl = $scope;
+  var params = $state.params;
 
   ctrl.init = function() {
-    $scope.queryCode = '';
     $rootScope.checkAuthState();
+    $scope.queryCode = '';
+
+    if (params.itemId) ctrl.queryGoods(params.itemId);
   }
 
   ctrl.scanBarcode = function() {
@@ -85,11 +92,21 @@ angular.module('starter')
       $scope.barcodeFormat = result.format;
 
       if ($scope.queryCode != undefined && $scope.queryCode != "") {
-        ctrl.queryGoods($scope.queryCode);
+        ctrl.clickQuery($scope.queryCode);
       }
     }, function(error) {
       console.warn("An error happened -> " + error);
     });
+  };
+
+  ctrl.clickQuery = function(itemId) {
+    if (itemId) {
+      $state.go('goods.query', {
+        'itemId': itemId
+      }, {
+        reload: false
+      });
+    }
   };
 
   ctrl.queryGoods = function(itemId) {
@@ -145,12 +162,28 @@ angular.module('starter')
   $log.info("CustomerCtrl", "-- start --");
   debugger;
 
+  var ctrl = $scope;
+
+  ctrl.init = function() {
+    $rootScope.checkAuthState();
+  }
+
+  ctrl.init();
+
   $log.info("CustomerCtrl", "-- end --");
 })
 
 .controller('QuotationCtrl', function($rootScope, $scope, $log, $q, $http) {
   $log.info("QuotationCtrl", "-- start --");
   debugger;
+
+  var ctrl = $scope;
+
+  ctrl.init = function() {
+    $rootScope.checkAuthState();
+  }
+
+  ctrl.init();
 
   $log.info("QuotationCtrl", "-- end --");
 })

@@ -4,9 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular
-  .module('starter', ['ionic', 'ngCordova', 'starter.services'])
-  .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  .module('starter', ['ionic', 'ngCordova', 'services.goods', 'services.users'])
+  .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
+    $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -31,6 +32,11 @@ angular
         url: '/goods',
         parent: 'base',
         templateUrl: 'templates/goods.html',
+        controller: 'GoodsCtrl'
+      })
+      .state('goods.query', {
+        url: '/:itemId',
+        templateUrl: 'templates/goods.item.html',
         controller: 'GoodsCtrl'
       })
       .state('barcode', {
@@ -81,10 +87,32 @@ angular
       var user = $rootScope.user;
 
       if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
-        $state.go("login");
-      }
+        delete $http.defaults.headers.common['Token'];
+        delete $http.defaults.headers.post['Token'];
+        delete $http.defaults.headers.get['Token'];
 
-      $http.defaults.headers.common.Authorization = user.accessToken;
+        $state.go("login");
+      } else {
+        //$http.defaults.headers.common.Authorization = user.accessToken;
+        $http.defaults.headers.common = {
+          'Token': user.accessToken
+        };
+        $http.defaults.headers.post = {
+          'Token': user.accessToken
+        };
+        $http.defaults.headers.get = {
+          'Token': user.accessToken
+        };
+      }
+    } else {
+      if ($http.defaults.headers.common)
+        delete $http.defaults.headers.common['Token'];
+
+      if ($http.defaults.headers.post)
+        delete $http.defaults.headers.post['Token'];
+
+      if ($http.defaults.headers.get)
+        delete $http.defaults.headers.get['Token'];
     }
   }
 

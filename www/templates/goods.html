@@ -1,5 +1,5 @@
-<ion-content>
-	<div id="page_web01">
+<ion-content scroll="false">
+	<div id="page_web01" ui-view>
 		<div id="page02_01">
 			<div id="round_01">
 				<p class="text_03">商品查詢</p>
@@ -10,9 +10,10 @@
 
 		</div>
 		<div id="page03_06">
-				<input name="input_01" type="text" class="input_text01" id="input_01" placeholder="請輸入商品條碼" size="50" ng-model="queryCode" />
-				<input name="but_01" type="button" class="but_001" ng-click="queryGoods(queryCode);" />
-				<input name="but_01" type="button" class="but_002" ng-click="scanBarcode();" />
+			<label for="input_01"></label>
+			<input name="input_01" type="text" class="input_text01" id="input_01" placeholder="請輸入商品條碼" size="50" ng-model="queryCode" />
+			<input name="but_01" type="button" class="but_001" id="but_01" ng-click="clickQuery(queryCode);" />
+			<input name="but_01" type="button" class="but_002" id="but_02" ng-click="scanBarcode();" />
 		</div>
 	</div>
 </ion-content>
