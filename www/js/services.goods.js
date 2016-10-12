@@ -22,7 +22,6 @@ angular.module('services.goods', [])
 
     self.getGoods = function(itemId) {
       $log.info("GoodsService.getGoods", "-- start [ ", itemId, " ]");
-      debugger
 
       var itemPart = "/" + itemId;
       var httpMethod = "POST";
@@ -49,6 +48,7 @@ angular.module('services.goods', [])
           d.reject(data);
         }
       }).error(function(err) {
+        err = { 'errOrg': err, 'returnDesc': '查無商品 !!' };
         d.reject(err);
       });
       return d.promise;

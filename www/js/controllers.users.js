@@ -1,14 +1,18 @@
 angular.module('starter')
-  .controller('LoginCtrl', function($rootScope, $scope, $log, $q, $http, $state, UsersService) {
-    $log.info("LoginCtrl", "-- start --");
+  .controller('UsersCtrl', function($rootScope, $scope, $state, $log, $q, $http, $state, UsersService) {
+    $log.info("UsersCtrl", "-- start --");
 
+    $scope.loginData = {};
     var ctrl = $scope;
-    var loginData = {};
     var user = {};
+    var params = $state.params;
 
     ctrl.init = function() {
-      loginData.account = "";
-      loginData.pwd = "";
+      if (params != undefined && params.obj != undefined) {
+        $scope.loginData = params.obj;
+      } else {
+        $scope.loginData.account = $scope.loginData.pwd = "";
+      }
 
       $rootScope.checkAuthState();
       //UsersService.getUserFromLocalStorage();
@@ -37,18 +41,50 @@ angular.module('starter')
 
           $state.go("home");
         } else {
-          loginData.account = "";
-          loginData.pwd = "";
+          $scope.loginData.account = "";
+          $scope.loginData.pwd = "";
           user = {};
           UsersService.clearLocalStorage();
         }
 
       }, function(err) {
-        $log.debug("LoginCtrl.login", "error", err);
+        $log.debug("UsersCtrl.login", "error", err);
+        debugger;
+
+        if (err.returnCode == 1) {
+          alert(err.returnDesc);
+          $scope.loginData = {};
+          $scope.loginData.account = err.returnData.emUserid;
+          $scope.loginData.token = err.returnData.token;
+          $state.go('user.updatePwd', {
+            'obj': $scope.loginData
+          }, {
+            reload: false
+          });
+        } else {
+
+        }
+
+      }).catch(function(ex) {
+        $log.debug("UsersCtrl.login", "exception", ex);
+        debugger;
+
+      });
+    }
+
+    ctrl.updatePwd = function(loginData) {
+
+      UsersService.updatePwd(loginData).then(function(res) {
+
+        alert(res.returnDesc + "\n請重新登入!!");
+        $state.go("user.login");
+
+      }, function(err) {
+        $log.debug("UsersCtrl.login", "error", err);
         debugger;
 
       }).catch(function(ex) {
-        $log.debug("LoginCtrl.login", "exception", ex);
+        $log.debug("UsersCtrl.login", "exception", ex);
         debugger;
 
       });
@@ -56,6 +92,5 @@ angular.module('starter')
 
     ctrl.init();
 
-    $log.info("LoginCtrl", "-- end --");
+    $log.info("UsersCtrl", "-- end --");
   })
-  

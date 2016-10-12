@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular
-  .module('starter', ['ionic', 'ngCordova', 'services.goods', 'services.users'])
+  .module('starter', ['ionic', 'ngCordova', 'ngDialog', 'ui.bootstrap', 'services.goods', 'services.users', 'services.quotations'])
   .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -16,11 +16,26 @@ angular
         url: '',
         templateUrl: 'templates/_base.html'
       })
-      .state('login', {
-        url: '/login',
+      .state('user', {
+        url: '/user',
         parent: 'base',
-        templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'templates/user.html'
+      })
+      .state('user.login', {
+        url: '/login',
+        templateUrl: 'templates/user.login.html',
+        controller: 'UsersCtrl',
+        params: {
+          obj: null
+        }
+      })
+      .state('user.updatePwd', {
+        url: '/updatePwd',
+        templateUrl: 'templates/user.updatePwd.html',
+        controller: 'UsersCtrl',
+        params: {
+          obj: null
+        }
       })
       .state('home', {
         url: '/home',
@@ -49,13 +64,23 @@ angular
         url: '/customer',
         parent: 'base',
         templateUrl: 'templates/customer.html',
-        controller: 'CustomerCtrl'
+        controller: 'CustomerCtrl',
+        params: {
+          obj: null
+        }
       })
       .state('quotation', {
         url: '/quotation',
         parent: 'base',
-        templateUrl: 'templates/quotation.html',
-        controller: 'QuotationCtrl'
+        templateUrl: 'templates/quotation.html'
+      })
+      .state('quotation.new', {
+        url: '/new',
+        templateUrl: 'templates/quotation.new.html',
+        controller: 'QuotationCtrl',
+        params: {
+          obj: null
+        }
       });
   })
 
@@ -81,7 +106,7 @@ angular
   console.info("CheckAuthState", "-- start --");
 
   $rootScope.checkAuthState = function() {
-    if ($state.$current.name != "login") {
+    if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {
 
       UsersService.getUserFromLocalStorage();
       var user = $rootScope.user;
@@ -96,7 +121,7 @@ angular
         if ($http.defaults.headers.get)
           delete $http.defaults.headers.get['Token'];
 
-        $state.go("login");
+        $state.go("user.login");
       } else {
         //$http.defaults.headers.common.Authorization = user.accessToken;
         /*

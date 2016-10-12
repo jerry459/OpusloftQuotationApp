@@ -1,49 +1,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-	<title>純真年代報價系統</title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="lib/ionic-filter-bar/dist/ionic.filter.bar.min.css" rel="stylesheet">
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>純真年代報價系統</title>
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="lib/ionic-filter-bar/dist/ionic.filter.bar.min.css" rel="stylesheet">
+  <link href="lib/ng-dialog/css/ngDialog.min.css" rel="stylesheet">
+  <link href="lib/ng-dialog/css/ngDialog-theme-default.min.css" rel="stylesheet">
+  <link href="lib/ng-dialog/css/ngDialog-theme-plain.min.css" rel="stylesheet">
+  <link href="lib/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
-    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
-    <script src="cordova.js"></script>
-    <script src="lib/ionic-filter-bar/dist/ionic.filter.bar.min.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+  <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+  <script src="cordova.js"></script>
+  <script src="lib/ionic-filter-bar/dist/ionic.filter.bar.min.js"></script>
+  <script src="lib/ng-dialog/js/ngDialog.min.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/config.js?ts=2016092702"></script>
-    <script src="js/tools.js?ts=2016092702"></script>
-    <script src="js/app.js?ts=2016092702"></script>
-    <script src="js/services.users.js?ts=2016092702"></script>
-    <script src="js/services.goods.js?ts=2016092702"></script>
-    <script src="js/controllers.users.js?ts=2016092702"></script>
-    <script src="js/controllers.home.js?ts=2016092702"></script>
-    <script src="js/controllers.goods.js?ts=2016092702"></script>
-    <script src="js/controllers.customers.js?ts=2016092702"></script>
-    <script src="js/controllers.quotations.js?ts=2016092702"></script>
-  </head>
-  <body ng-app="starter">
+  <!-- your app's js -->
+  <script src="js/config.js?ts=2016100401"></script>
+  <script src="js/tools.js?ts=2016100401"></script>
+  <script src="js/app.js?ts=2016100401"></script>
+  <script src="js/services.users.js?ts=2016100401"></script>
+  <script src="js/services.goods.js?ts=2016100401"></script>
+  <script src="js/services.quotations.js?ts=2016100401"></script>
+  <script src="js/controllers.users.js?ts=2016100401"></script>
+  <script src="js/controllers.home.js?ts=2016100401"></script>
+  <script src="js/controllers.goods.js?ts=2016100401"></script>
+  <script src="js/controllers.customers.js?ts=2016100401"></script>
+  <script src="js/controllers.quotations.js?ts=2016100401"></script>
+</head>
 
-    <ion-pane>
-		<!-- ion-header-bar align-title="center" class="bar-stable">
+<body ng-app="starter">
+  <ion-pane>
+    <!-- ion-header-bar align-title="center" class="bar-stable">
 			<h1 class="title">純真年代報價系統</h1>
 		</ion-header-bar -->
-		<ion-content has-header="false" padding="false" scroll="false">
-			<div ui-view></div>
-		</ion-content>
-    </ion-pane>
+    <ion-content has-header="false" padding="false" scroll="false">
+      <div ui-view></div>
+    </ion-content>
+  </ion-pane>
+  <script type="text/ng-template" id="sysDialog.html">
+    <ion-content has-header="true" padding="true" scroll="false">
+      <ion-header-bar align-title="center" class="bar-stable">
+        <h1>Template heading</h1>
+      </ion-header-bar>
+      <p>Content goes here</p>
+      <ion-footer-bar align-title="center" class="bar-stable">
+        <h1>Template footer</h1>
+      </ion-footer-bar>
+    </ion-content>
+  </script>
+</body>
 
-  </body>
 </html>

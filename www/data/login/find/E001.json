@@ -1,0 +1,12 @@
+{
+  "returnCode": "1",
+  "returnData": {
+    "emUserid": "E001",
+    "emName": "胡ＯＯ",
+    "token": "+k07ulENnUc8skklS97Mx16jzJEFp56J41654",
+    "emDpno": "A",
+    "emDpname": "復興店"
+  },
+  "returnDesc": "需要更新密碼!!!",
+  "status": "success"
+}

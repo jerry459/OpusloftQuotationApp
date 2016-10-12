@@ -1,5 +1,5 @@
 angular.module('starter')
-  .controller('GoodsCtrl', function($rootScope, $scope, $state, $stateParams, $log, $q, $http, $cordovaBarcodeScanner, GoodsService) {
+  .controller('GoodsCtrl', function($rootScope, $scope, $state, $log, $q, $http, $cordovaBarcodeScanner, ngDialog, GoodsService) {
     $log.info("GoodsCtrl", "-- start --");
 
     var ctrl = $scope;
@@ -41,7 +41,6 @@ angular.module('starter')
 
       GoodsService.getGoods(itemId).then(function(res) {
         $log.debug("GoodsCtrl.queryGoods", "success", res);
-        debugger;
 
         ctrl.goods.total = res.total;
         ctrl.goods.stockNo = res.stockNo;
@@ -51,12 +50,19 @@ angular.module('starter')
 
       }, function(err) {
         $log.debug("GoodsCtrl.queryGoods", "error", err);
-        debugger;
 
+        //ngDialog.open({ template: 'sysDialog.html' });
+        alert(err.returnDesc);
+        $state.go('goods', {}, {
+          reload: false
+        });
       }).catch(function(ex) {
         $log.debug("GoodsCtrl.queryGoods", "exception", ex);
-        debugger;
 
+        alert('發生異常!!');
+        $state.go('goods', {}, {
+          reload: false
+        });
       });
     };
 

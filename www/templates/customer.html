@@ -1,3 +1,51 @@
 <ion-content>
-	客 戶 資 訊
+	<div ui-view>
+		<div>客戶資訊</div>
+		<div>
+			<div align="center">
+				<input type="hidden" class="input_text02" placeholder="客戶代碼" size="50" ng-model="customerData.customerUnino" />
+				<input type="text" class="input_text02" placeholder="客戶編號" size="50" ng-model="customerData.customerNo" />
+			</div>
+			<div align="center">
+				<input type="text" class="input_text02" placeholder="名稱" size="50" ng-model="customerData.customerName" />
+			</div>
+			<div align="center">
+				<input type="text" class="input_text02" placeholder="聯絡人" size="50" ng-model="customerData.xxx1" />
+			</div>
+			<div align="center">
+				<input type="text" class="input_text02" placeholder="電話" size="50" ng-model="customerData.customerTel" />
+			</div>
+			<div align="center">
+				<input type="text" class="input_text02" placeholder="傳真" size="50" ng-model="customerData.customerFax" />
+			</div>
+			<div align="center">
+				<input type="text" class="input_text02" placeholder="電子郵件" size="50" ng-model="customerData.customerEmail" />
+			</div>
+			<div align="center">
+				<label for="addr1">地址: </label>
+				<input type="text" placeholder="郵遞區號" size="6" ng-model="customerData.addrZip" readonly="true" />
+				<select name="addr1" ng-model="customerData.addr1">
+				      <option value="">台北市</option>
+				      <option value="">新北市</option>
+				    </select>
+				<select name="addr2" ng-model="customerData.addr2">
+				      <option value="">汐止區</option>
+				      <option value="">中和區</option>
+				    </select><br>
+
+				<input type="text" class="input_text02" placeholder="縣市" size="50" ng-model="customerData.addr1" />
+				<input type="text" class="input_text02" placeholder="鄉鎮區" size="50" ng-model="customerData.addr2" />
+				<input type="text" class="input_text02" placeholder="地址" size="50" ng-model="customerData.addr3" />
+			</div>
+			<div align="center">
+				<input type="text" class="input_text02" placeholder="折扣 ( ex : 0.95 )" size="50" ng-model="customerData.customerPayrate" />
+			</div>
+		</div>
+		<div id="login_04">
+			<div align="center">
+				<button ng-click="addCustomer(customerData);">新增</button>
+				<button ng-click=" queryCustomer(customerData);">查詢</button>
+			</div>
+		</div>
+	</div>
 </ion-content>
