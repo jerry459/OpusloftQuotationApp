@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular
-  .module('starter', ['ionic', 'ngCordova', 'ngDialog', 'ui.bootstrap', 'services.goods', 'services.users', 'services.quotations'])
+  .module('starter', ['ionic', 'ngCordova', 'ngDialog', 'ui.bootstrap', 'services.goods', 'services.users', 'services.quotations', 'services.customers', 'services.address'])
   .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -64,6 +64,22 @@ angular
         url: '/customer',
         parent: 'base',
         templateUrl: 'templates/customer.html',
+        controller: 'CustomerCtrl',
+        params: {
+          obj: null
+        }
+      })
+      .state('customer.search', {
+        url: '/search',
+        templateUrl: 'templates/customer.search.html',
+        controller: 'CustomerCtrl',
+        params: {
+          obj: null
+        }
+      })
+      .state('customer.quotation', {
+        url: '/quotation',
+        templateUrl: 'templates/customer.quotation.html',
         controller: 'CustomerCtrl',
         params: {
           obj: null

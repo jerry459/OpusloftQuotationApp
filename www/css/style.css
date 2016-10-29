@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 @charset "utf-8";
 body {
   background-color: #B6AB9E;
@@ -13,6 +14,14 @@ body {
   margin-left: 0px;
   margin-top: 0px;
   background-image: url(../images/bg_img-1.jpg);
+}
+
+#page_web01_02 {
+  height: 1280px;
+  width: 800px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url(../images/bg_img-2.jpg);
 }
 
 #page_web_bott01 {
@@ -60,8 +69,12 @@ body {
   text-align: center;
 }
 
+#login_03 {
+  /* height: 750px; */
+}
+
 #login_04 {
-  margin-top: 230px;
+  margin-top: 30px;
 }
 
 #page02_01 {
@@ -113,7 +126,7 @@ body {
   border-radius: 5px;
   height: 60px;
   background-color: #FFF;
-  opacity: .7;
+  opacity: .8;
   margin-right: auto;
   margin-left: auto;
 }
@@ -125,6 +138,56 @@ body {
   background-color: #FFF;
   opacity: .8;
   margin-left: 20px;
+}
+
+#round_03 {
+  width: 80%;
+  border-radius: 9px;
+  height: 40px;
+  background-color: #DED6CB;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 30px;
+  font-family: "微軟正黑體";
+  color: #98414E;
+  padding-left: 20px;
+  border: 1px solid #C9BDB6;
+  line-height: 25px;
+  padding-top: 5px;
+  padding-right: 10px;
+  margin-top: 15px;
+}
+
+#round_04 {
+  width: 60%;
+  border-radius: 9px;
+  background-color: #EBDAAB;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 42px;
+  font-family: "微軟正黑體";
+  color: #7C4841;
+  padding-left: 20px;
+  border: 1px solid #C9BDB6;
+  line-height: 25px;
+  padding-top: 5px;
+  padding-right: 10px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+#list_round_03 {
+  width: 80%;
+  border-radius: 9px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 17px;
+  font-family: "微軟正黑體";
+  color: #666666;
+  padding-left: 20px;
+  line-height: 30px;
+  padding-top: 5px;
+  padding-right: 10px;
 }
 
 .text_04 {
@@ -295,6 +358,71 @@ body {
   margin-top: 15px;
 }
 
+.input_text03 {
+  appearance: normal;
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #666;
+  box-sizing: border-box;
+  font-size: 25px;
+  font-family: "微軟正黑體";
+  padding-left: 10px;
+  width: 300px;
+}
+
+.input_text04 {
+  appearance: normal;
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #666;
+  box-sizing: border-box;
+  font-size: 21px;
+  font-family: "微軟正黑體";
+  width: 150px;
+  margin-left: 5px;
+  color: #000;
+}
+
+.input_text05 {
+  appearance: normal;
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #666;
+  box-sizing: border-box;
+  font-size: 21px;
+  font-family: "微軟正黑體";
+  width: 315px;
+  color: #000;
+}
+
+.input_text06 {
+  appearance: normal;
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #666;
+  box-sizing: border-box;
+  font-size: 21px;
+  font-family: "微軟正黑體";
+  padding-left: 10px;
+  margin-top: 5px;
+  width: 300px;
+  margin-left: 200px;
+  color: #000;
+}
+
+.input_text02_1 {
+  width: 28%;
+}
+
+.lab_text02 {
+  width: 15%;
+  font-family: "微軟正黑體";
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+}
+
 #form1 {
   margin-top: -20px;
   vertical-align: top;
@@ -364,6 +492,18 @@ body {
   padding-left: 10px;
 }
 
+.text_list_07 {
+  font-size: 28px;
+  color: #98414E;
+  font-family: "微軟正黑體";
+  padding-left: 20px;
+}
+
+.text_list_08 {
+  font-size: 30px;
+  color: #98414E;
+}
+
 .line9 {
   border: 0;
   border-top: 2px dotted #8A705E;
@@ -423,4 +563,27 @@ body {
   font-family: "微軟正黑體";
   font-size: 15px;
   color: #000;
+}
+
+.text_06 {
+  font-size: 25px;
+  color: #D3456C;
+  font-family: "微軟正黑體";
+}
+
+.text_07 {
+  font-size: 20px;
+  color: #7C4841;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: #666;
+  line-height: 15px;
+}
+
+.add_02 {
+  height: 110px;
+  width: 110px;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
 }

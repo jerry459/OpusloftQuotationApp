@@ -4,26 +4,10 @@ angular.module('services.goods', [])
     var self = this;
     var serviceBaseUrl = AppConfig.API_URL + "/stock";
 
-    self.getGoodsList = function() {
-      $log.info("GoodsService.getGoodsList", "-- start --");
-      debugger
-
-      var d = $q.defer();
-      var api = serviceBaseUrl + "/allGoods.json";
-      $http.get(api).success(function(data) {
-        d.resolve(data);
-      }).error(function(err) {
-        d.reject(err);
-      });
-      return d.promise;
-
-      $log.info("GoodsService.getGoodsList", "-- end --");
-    }
-
     self.getGoods = function(itemId) {
       $log.info("GoodsService.getGoods", "-- start [ ", itemId, " ]");
 
-      var itemPart = "/" + itemId;
+      var itemPart = "/find/" + itemId;
       var httpMethod = "POST";
       if (AppConfig.DEBUG_MODE) {
         itemPart += ".json";
@@ -31,13 +15,14 @@ angular.module('services.goods', [])
       }
 
       var d = $q.defer();
-      var api = serviceBaseUrl + "/find" + itemPart;
+      var api = serviceBaseUrl + itemPart;
 
       var config = {
         'method': httpMethod,
         'url': api,
         'data': {
-          'Token': $rootScope.user.accessToken
+          'token': $rootScope.user.accessToken,
+          'inputData': {}
         }
       }
 
@@ -48,12 +33,15 @@ angular.module('services.goods', [])
           d.reject(data);
         }
       }).error(function(err) {
-        err = { 'errOrg': err, 'returnDesc': '查無商品 !!' };
+        err = {
+          'errOrg': err,
+          'returnDesc': '查無商品 !!'
+        };
         d.reject(err);
       });
-      return d.promise;
 
       $log.info("GoodsService.getGoods", "-- end --");
+      return d.promise;
     }
 
     self.delGoods = function(itemId) {

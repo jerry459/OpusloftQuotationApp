@@ -37,9 +37,9 @@ angular.module('services.users', [])
       }).error(function(err) {
         d.reject(err);
       });
-      return d.promise;
 
       $log.info("UsersService.login", "-- end --");
+      return d.promise;
     }
 
     self.updatePwd = function(loginData) {
@@ -81,9 +81,9 @@ angular.module('services.users', [])
       }).error(function(err) {
         d.reject(err);
       });
-      return d.promise;
 
       $log.info("UsersService.updatePwd", "-- end --");
+      return d.promise;
     }
 
     self.clearLocalStorage = function() {

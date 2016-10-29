@@ -1,18 +1,20 @@
 <ion-content scroll="false">
-  <div id="page_web01" ui-view>
-    <div id="login_01"><img src="images/sys_login-2.png" width="385" height="160" /></div>
-    <div id="login_02">
-      <div align="center">
-        <input type="text" class="input_text02" placeholder="帳號" size="50" ng-model="loginData.account" readonly="true" />
+  <ion-scroll direction="xy">
+    <div id="page_web01" ui-view>
+      <div id="login_01"><img src="images/sys_login-2.png" width="385" height="160" /></div>
+      <div id="login_02">
+        <div align="center">
+          <input type="text" class="input_text02" placeholder="帳號" size="50" ng-model="loginData.account" readonly="true" />
+        </div>
+        <div align="center">
+          <input type="password" class="input_text02" placeholder="密碼" size="50" ng-model="loginData.pwd" />
+        </div>
       </div>
-      <div align="center">
-        <input type="password" class="input_text02" placeholder="密碼" size="50" ng-model="loginData.pwd" />
+      <div id="login_04">
+        <div align="center">
+          <img src="images/but_login-1.png" width="677" height="168" ng-click="updatePwd(loginData);" />
+        </div>
       </div>
     </div>
-    <div id="login_04">
-      <div align="center">
-        <img src="images/but_login-1.png" width="677" height="168" ng-click="updatePwd(loginData);" />
-      </div>
-    </div>
-  </div>
+  </ion-scroll>
 </ion-content>

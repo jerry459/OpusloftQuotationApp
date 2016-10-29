@@ -1,0 +1,33 @@
+{
+    "returnCode": 0,
+    "returnData": [
+        {
+            "addr2": "",
+            "addr1": "11287台北市北投區文林北路178號",
+            "customerPayrate": "0.0",
+            "addrZip": "11287",
+            "customerEmail": "",
+            "addr3": "11287台北市北投區文林北路178號",
+            "customerUnino": "",
+            "customerTel": "(02)2823-6681/91",
+            "customerNo": "C2005",
+            "customerName": "久田汽車材料行",
+            "customerFax": "(02)2820-5757"
+        },
+        {
+            "addr2": "",
+            "addr1": "24752新北市蘆洲區仁愛街47號",
+            "customerPayrate": "0.0",
+            "addrZip": "24752",
+            "customerEmail": "",
+            "addr3": "24752新北市蘆洲區仁愛街47號",
+            "customerUnino": "",
+            "customerTel": "(02)8285-2595",
+            "customerNo": "C2007",
+            "customerName": "久互實業公司",
+            "customerFax": ""
+        }
+    ],
+    "returnDesc": "成功!!!",
+    "status": "success"
+}

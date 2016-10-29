@@ -1,38 +1,40 @@
 <ion-content scroll="false">
-	<div id="page_web01" ui-view>
-		<div id="page_web02">
-			<div id="page02_01">
-				<div id="round_01">
-					<p class="text_03">商品查詢</p>
+	<ion-scroll direction="xy">
+		<div id="page_web01" ui-view>
+			<div id="page_web02">
+				<div id="page02_01">
+					<div id="round_01">
+						<p class="text_03">商品查詢</p>
+					</div>
+				</div>
+				<div id="page03_02">
+					<div id="list_list_01">
+						<p class="text_list_01">{{goods.stockName}}</p>
+					</div>
+					<div id="list_list_02">
+						<p class="text_list_02">$ {{goods.price}}</p>
+					</div>
+				</div>
+				<div id="page03_03">
+					<hr width="98%" class="line9" />
+				</div>
+				<div id="page03_04" ng-repeat="item in goods.warehouseList">
+					<div id="list_list_01">
+						<p class="text_list_03">{{item.whNo}}</p>
+					</div>
+					<div id="list_list_02">
+						<p class="text_list_02">x {{item.num}}</p>
+					</div>
 				</div>
 			</div>
-			<div id="page03_02">
-				<div id="list_list_01">
-					<p class="text_list_01">{{goods.stockName}}</p>
+			<div id="page_web03">
+				<div id="page_web_bott01">
+					<input name="button" type="button" class="but_003" id="button" ui-sref="goods" />
 				</div>
-				<div id="list_list_02">
-					<p class="text_list_02">$ {{goods.price}}</p>
-				</div>
-			</div>
-			<div id="page03_03">
-				<hr width="98%" class="line9" />
-			</div>
-			<div id="page03_04" ng-repeat="item in goods.warehouseList">
-				<div id="list_list_01">
-					<p class="text_list_03">{{item.whNo}}</p>
-				</div>
-				<div id="list_list_02">
-					<p class="text_list_02">x {{item.num}}</p>
+				<div id="page_web_bott02">
+					<input name="button" type="button" class="but_004" id="button" ui-sref="quotation.new({ 'obj': goods })" />
 				</div>
 			</div>
 		</div>
-		<div id="page_web03">
-			<div id="page_web_bott01">
-				<input name="button" type="button" class="but_003" id="button" ui-sref="goods" />
-			</div>
-			<div id="page_web_bott02">
-				<input name="button" type="button" class="but_004" id="button" ui-sref="quotation.new({ 'obj': goods })" />
-			</div>
-		</div>
-	</div>
+	</ion-scroll>
 </ion-content>

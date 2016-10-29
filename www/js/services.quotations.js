@@ -7,7 +7,7 @@ angular.module('services.quotations', [])
     self.getQuotation = function(itemId) {
       $log.info("QuotationsService.getQuotation", "-- start [ ", itemId, " ]");
 
-      var itemPart = "/" + itemId;
+      var itemPart = "/find/" + itemId;
       var httpMethod = "POST";
       if (AppConfig.DEBUG_MODE) {
         itemPart += ".json";
@@ -15,13 +15,14 @@ angular.module('services.quotations', [])
       }
 
       var d = $q.defer();
-      var api = serviceBaseUrl + "/find" + itemPart;
+      var api = serviceBaseUrl + itemPart;
 
       var config = {
         'method': httpMethod,
         'url': api,
         'data': {
-          'Token': $rootScope.user.accessToken
+          'token': $rootScope.user.accessToken,
+          'inputData': {}
         }
       }
 
@@ -34,13 +35,13 @@ angular.module('services.quotations', [])
       }).error(function(err) {
         err = {
           'errOrg': err,
-          'returnDesc': '查無商品 !!'
+          'returnDesc': '查無報價單 !!'
         };
         d.reject(err);
       });
-      return d.promise;
 
       $log.info("QuotationsService.getQuotation", "-- end --");
+      return d.promise;
     }
 
     return self;

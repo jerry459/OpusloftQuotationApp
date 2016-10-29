@@ -1,0 +1,27 @@
+<ion-content scroll="false">
+	<ion-scroll direction="xy">
+		<div id="page_web01_02" ui-view>
+			<div id="login_01">
+				<p class="text_03">客戶資訊</p>
+			</div>
+			<p align="center" class="text_list_01">查詢結果</p>
+			<div ng-repeat="item in customers" ng-click="selCustomer(item);">
+				<div id="round_03">
+					<table width="100%" border="0">
+						<tr>
+							<td width="87%">{{item.customerName}}</td>
+							<td width="13%">
+								<div align="right"><img src="images/edit_2.png" width="33" height="30" /></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="list_round_03">
+					電話 : {{item.customerTel}}
+					<br /> 傳真 : {{item.customerFax}}
+					<br /> 地址 : {{item.addr3}}
+				</div>
+			</div>
+		</div>
+	</ion-scroll>
+</ion-content>

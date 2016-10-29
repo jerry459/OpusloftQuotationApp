@@ -1,0 +1,79 @@
+{
+    "returnCode": 0,
+    "returnData": [
+        {
+            "mailno": "100",
+            "addr2no": "001",
+            "addr2nm": "中正區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "103",
+            "addr2no": "002",
+            "addr2nm": "大同區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "104",
+            "addr2no": "003",
+            "addr2nm": "中山區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "105",
+            "addr2no": "004",
+            "addr2nm": "松山區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "106",
+            "addr2no": "005",
+            "addr2nm": "大安區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "108",
+            "addr2no": "006",
+            "addr2nm": "萬華區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "110",
+            "addr2no": "007",
+            "addr2nm": "信義區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "111",
+            "addr2no": "008",
+            "addr2nm": "士林區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "112",
+            "addr2no": "009",
+            "addr2nm": "北投區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "114",
+            "addr2no": "010",
+            "addr2nm": "內湖區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "115",
+            "addr2no": "011",
+            "addr2nm": "南港區",
+            "addr1no": "01"
+        },
+        {
+            "mailno": "116",
+            "addr2no": "012",
+            "addr2nm": "文山區",
+            "addr1no": "01"
+        }
+    ],
+    "returnDesc": "成功!!!",
+    "status": "success"
+}

@@ -1,0 +1,139 @@
+{
+    "returnCode": 0,
+    "returnData": [
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "01",
+            "addr1nm": "台北市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "02",
+            "addr1nm": "基隆市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "03",
+            "addr1nm": "新北市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "04",
+            "addr1nm": "連江縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "05",
+            "addr1nm": "宜蘭縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "06",
+            "addr1nm": "新竹市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "07",
+            "addr1nm": "新竹縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "08",
+            "addr1nm": "桃園縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "09",
+            "addr1nm": "苗栗縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "10",
+            "addr1nm": "台中市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "11",
+            "addr1nm": "彰化縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "12",
+            "addr1nm": "南投縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "13",
+            "addr1nm": "嘉義市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "14",
+            "addr1nm": "嘉義縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "15",
+            "addr1nm": "雲林縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "16",
+            "addr1nm": "台南市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "17",
+            "addr1nm": "高雄市"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "19",
+            "addr1nm": "澎湖縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "20",
+            "addr1nm": "金門縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "21",
+            "addr1nm": "屏東縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "22",
+            "addr1nm": "台東縣"
+        },
+        {
+            "addr1flag": "1",
+            "addr1class": "1",
+            "addr1no": "23",
+            "addr1nm": "花蓮縣"
+        }
+    ],
+    "returnDesc": "成功!!!",
+    "status": "success"
+}
