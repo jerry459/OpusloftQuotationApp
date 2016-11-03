@@ -75,9 +75,13 @@ body {
 }
 
 #login_03 {
-	height: 500px;
- 
+	height: 430px;
+  /* height: 750px; */
 }
+.pic_01 {
+
+}
+
 
 #login_04 {
 	margin-top: 110px;
@@ -121,10 +125,12 @@ body {
 }
 
 .text_03 {
-  font-size: 41px;
-  color: #9A4D3D;
-  font-family: "微軟正黑體";
-  text-shadow: 1px 1px 3px #666;
+	font-size: 41px;
+	color: #9A4D3D;
+	font-family: "微軟正黑體";
+	text-shadow: 1px 1px 3px #666;
+	line-height: 5px;
+	padding-left: 130px;
 }
 
 #round_01 {
@@ -503,10 +509,10 @@ body {
 }
 
 .text_list_07 {
-	font-size: 18px;
+	font-size: 20px;
 	color: #B0A09B;
-	
-	padding-left: 10px;
+	font-family: "微軟正黑體";
+	padding-left: 20px;
 	padding-top: 5px;
 }
 
@@ -609,4 +615,13 @@ body {
 border-color: transparent;
     background-color: #aaaaaa;
     color: #fff;
+}
+#title_01{
+	width: 480px;
+	float: left;
+}
+#title_02{
+	width: 80px;
+	margin-left: 500px;
+	margin-top: 5px;
 }
