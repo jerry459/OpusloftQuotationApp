@@ -316,8 +316,8 @@ body {
 	width: 200px;
 	border: 0;
 	background-color: #937051;
-	margin-left: 80px;
-	margin-top: 35px;
+	margin-left: 1px;
+	margin-top: 60px;
 	border-radius: 7px;
 	box-shadow: 1px 1px 4px 2px #666;
 	font-size: 26px;
@@ -331,7 +331,7 @@ body {
 	border: 0;
 	background-color: #937051;
 	margin-left: 20px;
-	margin-top: 35px;
+	margin-top: 60px;
 	border-radius: 7px;
 	box-shadow: 1px 1px 4px 2px #666;
 	font-size: 26px;
