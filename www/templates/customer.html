@@ -56,65 +56,34 @@
 			<div align="center" id="login_03">
 
 
-<div class="list list-inset">
-  <label class="item item-input">
-    <i class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="編號">
+<div class="list">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">客戶編號</span>
+    <input type="text" placeholder="John">
   </label>
-  <label class="item item-input">
-    <i class="icon ion-person placeholder-icon"></i>
-    <input type="text" placeholder="名稱">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">名　　稱</span>
+    <input type="text" placeholder="Suhr">
   </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">聯絡　人</span>
+    <input type="text" placeholder="john@suhr.com">
+  </label>
+  label class="item item-input item-stacked-label">
+    <span class="input-label">電　　話</span>
+    <input type="text" placeholder="john@suhr.com">
+  </label>
+  label class="item item-input item-stacked-label">
+    <span class="input-label">電　　話</span>
+    <input type="text" placeholder="john@suhr.com">
+  </label>
+  label class="item item-input item-stacked-label">
+    <span class="input-label">地　　址</span>
+    <input type="text" placeholder="john@suhr.com">
+  </label>
+  
 </div>
-
-				<table width="80%" border="0" cellpadding="15">
-					<tr>
-						<td width="29%" class="text_list_07">客戶編號：</td>
-						<td width="71%"><input type="hidden" class="input_text03" ng-model="customerData.customerUnino" />
-							<input name="input_01" type="text" class="input_text03" id="input_01" ng-model="customerData.customerNo" /></td>
-					</tr>
-					<tr>
-						<td class="text_list_07">名　　稱：</td>
-						<td><input name="input_" type="text" class="input_text03" id="input_" ng-model="customerData.customerName" /></td>
-					</tr>
-					<tr>
-						<td class="text_list_07">聯 絡　人：</td>
-						<td><input name="input_2" type="text" class="input_text03" id="input_2" ng-model="customerData.contactName" /></td>
-					</tr>
-					<tr>
-						<td class="text_list_07">電　　話：</td>
-						<td><input name="input_3" type="text" class="input_text03" id="input_3" ng-model="customerData.customerTel" /></td>
-					</tr>
-					<tr>
-						<td class="text_list_07">傳　　真：</td>
-						<td><input name="input_4" type="text" class="input_text03" id="input_4" /></td>
-					</tr>
-					<tr>
-						<td class="text_list_07">電子郵件：</td>
-						<td><input name="input_4" type="text" class="input_text03" id="input_4_" ng-model="customerData.customerEmail" /></td>
-					</tr>
-					<tr>
-						<td class="text_list_07">地　　址：</td>
-						<td>
-							<input name="input_4" type="text" class="input_text03" id="input_4" ng-model="customerData.addrZip" readonly="true" />
-							<select name="selAddr1" class="input_text04" id="adress_01" ng-model="addr1Selected" ng-options="item.addr1nm for item in addr1" ng-change="addr1Change(addr1Selected);">
-						</select>
-							<select name="selAddr2" class="input_text04" id="adress_" ng-model="addr2Selected" ng-options="item.addr2nm for item in addr2" ng-change="addr2Change(addr2Selected);">
-						</select>
-							<br />
-							<select name="selAddr3" class="input_text04" ng-model="addr3Selected" ng-options="item.addr3nm for item in addr3" ng-change="addr3Change(addr3Selected);">
-						</select>
-							<br />
-							<input type="text" class="input_text04" ng-model="customerData.addr" />
-						</td>
-					</tr>
-					<tr>
-						<td class="text_list_07">折　　扣：</td>
-						<td><input type="text" class="input_text04" placeholder="折扣 ( ex : 0.95 )" ng-model="customerData.customerPayrate" /></td>
-					</tr>
-				</table>
-
-				<p>&nbsp;</p>
+<p>&nbsp;</p>
 			</div>
 			<div id="login_04">
 
