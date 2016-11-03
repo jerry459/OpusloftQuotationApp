@@ -1,4 +1,4 @@
-<ion-content scroll="false">
+﻿<ion-content scroll="false">
 	<ion-scroll direction="xy">
 		<div id="page_web01" ui-view>
 			<div id="page02_01">
@@ -11,11 +11,23 @@
 
 			</div>
 			<div id="page03_06">
+
+<div class="list list-inset">
+  <label class="item item-input">
+    <input type="text" placeholder="First Name">
+    <button class="button button-large button-kiwi icon ion-search"> 搜尋</button>
+
+    <button class="button button-large button-kiwi icon ion-qr-scanner"> 掃瞄</button>
+  </label>
+</div>
 				<label for="input_01"></label>
 				<input name="input_01" type="text" class="input_text01" id="input_01" placeholder="請輸入商品條碼" size="50" ng-model="queryCode" />
 				<input name="but_01" type="button" class="but_001" id="but_01" ng-click="clickQuery(queryCode);" />
 				<input name="but_01" type="button" class="but_002" id="but_02" ng-click="scanBarcode();" />
 			</div>
+
+
+
 		</div>
 	</ion-scroll>
 </ion-content>
