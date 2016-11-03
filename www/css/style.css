@@ -159,7 +159,7 @@ body {
   background-color: #DED6CB;
   margin-right: auto;
   margin-left: auto;
-  font-size: 30px;
+  font-size: 28px;
   font-family: "微軟正黑體";
   color: #98414E;
   padding-left: 20px;
@@ -168,6 +168,7 @@ body {
   padding-top: 5px;
   padding-right: 10px;
   margin-top: 15px;
+  padding-bottom: 5px;
 }
 
 #round_04 {
