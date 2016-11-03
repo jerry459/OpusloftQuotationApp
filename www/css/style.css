@@ -59,7 +59,10 @@ body {
 	height: 735px;
 	width: 604px;
 }
-
+#list_01 {
+	text-align: left;
+	width: 480px;
+}
 #login_01 {
 	text-align: center;
 	padding-top: 200px;
