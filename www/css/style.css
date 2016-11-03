@@ -132,6 +132,14 @@ body {
 	line-height: 60px;
 	padding-left: 130px;
 }
+.text_03_01 {
+	font-size: 41px;
+	color: #9A4D3D;
+	font-family: "微軟正黑體";
+	text-shadow: 1px 1px 3px #666;
+	line-height: 60px;
+}
+
 
 #round_01 {
 	width: 87%;
@@ -207,6 +215,7 @@ body {
 	font-size: 50px;
 	color: #999;
 	font-family: "微軟正黑體";
+	padding-top: 50px;
 }
 
 .text_05 {
@@ -238,7 +247,7 @@ body {
 #page03_05 {
 	padding-top: 10px;
 	padding-left: 90px;
-	height: 550px;
+	height: 570px;
 }
 
 #page03_06 {
@@ -613,9 +622,10 @@ body {
 }
 
 .button.button-kiwi {    
-border-color: transparent;
-    background-color: #aaaaaa;
-    color: #fff;
+	border-color: transparent;
+	background-color: #CABDB9;
+	color: #fff;
+	margin-right: 10px;
 }
 #title_01{
 	width: 480px;
