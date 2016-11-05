@@ -121,6 +121,11 @@ angular
 .run(function($rootScope, $state, $location, $http, UsersService) {
   console.info("CheckAuthState", "-- start --");
 
+  $rootScope.goBack = function() {
+    history.back();
+    scope.$apply();
+  }
+
   $rootScope.checkAuthState = function() {
     if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {
 

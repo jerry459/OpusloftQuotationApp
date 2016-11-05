@@ -150,26 +150,26 @@ angular.module('starter')
       }
     };
 
-        ctrl.queryCustomer = function(item) {
-          CustomersService.findCustomer(item).then(function(data) {
-            $log.debug("CustomerCtrl.queryCustomer", "success", data);
+    ctrl.queryCustomer = function(item) {
+      CustomersService.findCustomer(item).then(function(data) {
+        $log.debug("CustomerCtrl.queryCustomer", "success", data);
 
-            $state.go('customer.search', {
-              'obj': data
-            }, {
-              reload: false
-            });
+        $state.go('customer.search', {
+          'obj': data
+        }, {
+          reload: false
+        });
 
-          }, function(err) {
-            $log.debug("CustomerCtrl.queryCustomer", "error", err);
-            debugger;
+      }, function(err) {
+        $log.debug("CustomerCtrl.queryCustomer", "error", err);
+        debugger;
 
-          }).catch(function(ex) {
-            $log.debug("CustomerCtrl.queryCustomer", "exception", ex);
-            debugger;
+      }).catch(function(ex) {
+        $log.debug("CustomerCtrl.queryCustomer", "exception", ex);
+        debugger;
 
-          });
-        }
+      });
+    }
 
     ctrl.queryCustomerQuotation = function(item) {
       CustomersService.queryCustomerQuotation(item).then(function(data) {
@@ -185,6 +185,21 @@ angular.module('starter')
 
       });
     }
+
+        ctrl.addCustomer = function(item) {
+          CustomersService.addCustomer(item).then(function(data) {
+            $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
+
+          }, function(err) {
+            $log.debug("CustomerCtrl.queryCustomerQuotation", "error", err);
+            debugger;
+
+          }).catch(function(ex) {
+            $log.debug("CustomerCtrl.queryCustomerQuotation", "exception", ex);
+            debugger;
+
+          });
+        }
 
     ctrl.init();
 
