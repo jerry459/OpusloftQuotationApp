@@ -3,7 +3,7 @@
 		<div id="page_web05">
 			<div id="page02_01">
 				<div id="page_05_01">
-					<p class="text_03">報價單</p>
+					<p class="text_03_01">報價單</p>
 				</div>
 			</div>
 			<div id="page03_02">
@@ -28,7 +28,6 @@
 			</div>
 			<div id="page_05_03" ng-repeat="(key, item) in quotation.goodsList">
 				<!-- ng-repeat="(key, item) in ele" -->
-
 				<table width="100%" border="0">
 					<tr>
 						<td width="15%" class="text_list_05_02">{{item.itemId}}</td>
@@ -36,24 +35,24 @@
 						<td width="10%" class="text_list_05_02">
 							<select ng-model="item.amount" ng-options="n for n in [] | range:1:10" ng-change="addAmount(item.itemId);">
 						</td>
-						<td width="14%" class="text_list_05_02">${{item.unitPrice}}</td>
-						<td width="15%" class="text_list_05_02">${{item.amount*item.unitPrice}}</td>
-						<td width="6%"><img src="./images/edit_1.png" width="24" height="24" ng-click="removeGoods(key)" /></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div id="page_web04">
+	          <td width="14%" class="text_list_05_02">${{item.unitPrice}}</td>
+	          <td width="15%" class="text_list_05_02">${{item.amount*item.unitPrice}}</td>
+	          <td width="6%"><img src="./images/edit_1.png" width="24" height="24" ng-click="removeGoods(key)" /></td>
+	        </tr>
+	      </table>
+	    </div>
+	  </div>
+	  <div id="page_web04">
 
-			<p class="text_list_05">合計：　$ 26,600 元 </p>
-		</div>
-		<div id="page_web03">
-			<div id="page_web_bott01">
-				<input name="button" type="button" class="but_005" id="button" value="客戶資訊" ui-sref="customer({ 'obj': quotation })" />
-			</div>
-			<div id="page_web_bott02">
-				<input name="button" type="button" class="but_006" id="button" value="存檔" ng-click="saveQuotation();" />
-			</div>
-		</div>
+	    <p class="text_list_05">合計：　$ 26,600 元 </p>
+	  </div>
+	  <div id="page_web03_01">
+	    <div id="page_web_bott01">
+	    <input name="button" type="button" class="but_005" id="button" value="客戶資訊" ui-sref="customer({ 'obj': quotation })"  />
+	  </div>
+	  <div id="page_web_bott02">
+	  <input name="button" type="button" class="but_006" id="button" value="存檔" ng-click="saveQuotation();" />
+	  </div>
+	</div>
 	</div>
 </ion-content>

@@ -1,4 +1,4 @@
-/* Empty. Add your own CSS if you like */
+﻿/* Empty. Add your own CSS if you like */
 
 @charset "utf-8";
 body {
@@ -50,12 +50,17 @@ body {
   width: 604px;
 }
 
+#page_web03_01 {
+  height: 110px;
+  width: 604px;
+}
+
 #page_web04 {
-  height: 70px;
+  height: 30px;
 }
 
 #page_web05 {
-  height: 735px;
+  height: 780px;
   width: 604px;
 }
 
@@ -338,7 +343,7 @@ body {
   width: 200px;
   border: 0;
   background-color: #937051;
-  margin-left: 1px;
+  margin-left: 80px;
   margin-top: 60px;
   border-radius: 7px;
   box-shadow: 1px 1px 4px 2px #666;
@@ -507,6 +512,7 @@ body {
   line-height: 32px;
   text-align: left;
   padding-left: 20px;
+  margin-top: 10px;
 }
 
 .text_list_05 {
@@ -572,6 +578,7 @@ body {
   opacity: .7;
   width: 560px;
   margin-left: 20px;
+  margin-top: 40px;
   border-top-width: 2px;
   border-top-style: solid;
   border-top-color: #C88484;
