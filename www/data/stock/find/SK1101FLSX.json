@@ -1,0 +1,57 @@
+{
+  "returnCode": 0,
+  "returnData": {
+    "total": -668,
+    "stockNo": "SK1101FLSX",
+    "stockName": "避震器總成/Wish/後右/Y-KYB",
+    "price": 1000,
+    "warehouseList": [{
+      "whNo": "A",
+      "num": 10
+    }, {
+      "whNo": "A_1",
+      "num": 3
+    }, {
+      "whNo": "B",
+      "num": -896
+    }, {
+      "whNo": "B_1",
+      "num": 14
+    }, {
+      "whNo": "C",
+      "num": 9
+    }, {
+      "whNo": "C_1",
+      "num": 7
+    }, {
+      "whNo": "C2025",
+      "num": 2
+    }, {
+      "whNo": "C2146",
+      "num": 8
+    }, {
+      "whNo": "D",
+      "num": 5
+    }, {
+      "whNo": "D_1",
+      "num": 2
+    }, {
+      "whNo": "E",
+      "num": 5
+    }, {
+      "whNo": "ZZA",
+      "num": 46
+    }, {
+      "whNo": "ZZC",
+      "num": 42
+    }, {
+      "whNo": "ZZD",
+      "num": 37
+    }, {
+      "whNo": "ZZE",
+      "num": 38
+    }]
+  },
+  "returnDesc": "成功!!!",
+  "status": "success"
+}

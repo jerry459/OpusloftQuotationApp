@@ -1,78 +1,43 @@
 <ion-content scroll="false">
 	<div id="page_web01" ui-view>
-	  <div id="page_web05">
-	    <div id="page02_01">
-	      <div id="page_05_01" >
-	        <p class="text_03_01">報價單</p>
-	      </div>
-	    </div>
-	    <div id="page03_02">
-	      <div  id="list_list_01">
-	        <p class="text_list_04">報價日期 : {{quotation.createDate}}</p>
-	      </div>
-	      <div id="list_list_04">
-	        <p><img src="./images/add-1.png" width="101" height="101" /></p>
-	      </div>
-	    </div>
-	    <div id="page_05_02">
-	      <table width="100%" border="0">
-	        <tr>
-	          <td width="15%" class="text_list_05_01">商品編號</td>
-	          <td width="40%" class="text_list_05_01">商品名稱</td>
-	          <td width="11%" class="text_list_05_01">數量</td>
-	          <td width="12%" class="text_list_05_01">單價</td>
-	          <td width="15%" class="text_list_05_01">小計</td>
-	          <td width="7%">&nbsp;</td>
-	        </tr>
-	      </table>
-	    </div>
-	    <div id="page_05_03" ng-repeat="(key, item) in quotation.goodsList"> <!-- ng-repeat="(key, item) in ele" -->
-	      <table width="100%" border="0">
-	        <tr>
-	          <td width="15%" class="text_list_05_02">{{item.itemId}}</td>
-	          <td width="40%" class="text_list_05_02">{{item.itemName}}</td>
-	          <td width="10%" class="text_list_05_02">{{item.amount}}</td>
+		<div id="page_web05">
+			<div id="page02_01">
+				<div id="page_05_01">
+					<p class="text_03_01">報價單</p>
+				</div>
+			</div>
+			<div id="page03_02">
+				<div id="list_list_01">
+					<p class="text_list_04">報價日期 : {{quotation.createDate}}</p>
+				</div>
+				<div id="list_list_04">
+					<p><img src="./images/add-1.png" width="101" height="101" /></p>
+				</div>
+			</div>
+			<div id="page_05_02">
+				<table width="100%" border="0">
+					<tr>
+						<td width="15%" class="text_list_05_01">商品編號</td>
+						<td width="40%" class="text_list_05_01">商品名稱</td>
+						<td width="11%" class="text_list_05_01">數量</td>
+						<td width="12%" class="text_list_05_01">單價</td>
+						<td width="15%" class="text_list_05_01">小計</td>
+						<td width="7%">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+			<div id="page_05_03" ng-repeat="(key, item) in quotation.goodsList">
+				<!-- ng-repeat="(key, item) in ele" -->
+				<table width="100%" border="0">
+					<tr>
+						<td width="15%" class="text_list_05_02">{{item.itemId}}</td>
+						<td width="40%" class="text_list_05_02">{{item.itemName}}</td>
+						<td width="10%" class="text_list_05_02">
+							<select ng-model="item.amount" ng-options="n for n in [] | range:1:10" ng-change="addAmount(item.itemId);">
+						</td>
 	          <td width="14%" class="text_list_05_02">${{item.unitPrice}}</td>
 	          <td width="15%" class="text_list_05_02">${{item.amount*item.unitPrice}}</td>
 	          <td width="6%"><img src="./images/edit_1.png" width="24" height="24" ng-click="removeGoods(key)" /></td>
-	        </tr>
-	      </table>
-	    </div>
-	    <div id="page_05_03">
-	      <table width="100%" border="0">
-	        <tr>
-	          <td width="15%" class="text_list_05_02">CO-054558 </td>
-	          <td width="40%" class="text_list_05_02">奧爾良 清水模 茶几 </td>
-	          <td width="10%" class="text_list_05_02"><label for="select"></label>
-	            <select name="select" size="1" id="select">
-	              <option>1</option>
-	              <option>2</option>
-	              <option>3</option>
-	              <option>4</option>
-	              <option>5</option>
-	            </select></td>
-	          <td width="14%" class="text_list_05_02">$24,500</td>
-	          <td width="15%" class="text_list_05_02">$24,500</td>
-	          <td width="6%"><img src="./images/edit_1.png" width="24" height="24" /></td>
-	        </tr>
-	      </table>
-	    </div>
-	    <div id="page_05_03">
-	      <table width="100%" border="0">
-	        <tr>
-	          <td width="15%" class="text_list_05_02">AG-5469</td>
-	          <td width="40%" class="text_list_05_02">仿舊復古燈飾 手繪檯燈 (不含燈泡) </td>
-	          <td width="10%" class="text_list_05_02"><label for="select"></label>
-	            <select name="select" size="1" id="select">
-	              <option>1</option>
-	              <option>2</option>
-	              <option>3</option>
-	              <option>4</option>
-	              <option>5</option>
-	            </select></td>
-	          <td width="14%" class="text_list_05_02">$3,380</td>
-	          <td width="15%" class="text_list_05_02">$3,380</td>
-	          <td width="6%"><img src="./images/edit_1.png" width="24" height="24" /></td>
 	        </tr>
 	      </table>
 	    </div>
