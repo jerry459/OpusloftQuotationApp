@@ -8,7 +8,8 @@ angular
   .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
-    $urlRouterProvider.when('/customer/:customerNo', '/customer/:customerNo');
+    //$urlRouterProvider.when('/customer/success', '/customer/success');
+    //$urlRouterProvider.when('/customer/:customerNo', '/customer/:customerNo');
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -74,11 +75,11 @@ angular
           obj: null
         }
       })
-      .state('customer.modify', {
-        url: '/:customerNo',
-        templateUrl: 'templates/customer.modify.html',
-        controller: 'CustomerCtrl'
-      })
+      //.state('customer.modify', {
+      //  url: '/:customerNo',
+      //  templateUrl: 'templates/customer.modify.html',
+      //  controller: 'CustomerCtrl'
+      //})
       .state('customer.search', {
         url: '/search',
         templateUrl: 'templates/customer.search.html',

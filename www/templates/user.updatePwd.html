@@ -2,17 +2,19 @@
   <ion-scroll direction="xy">
     <div id="page_web01" ui-view>
       <div id="login_01"><img src="images/sys_login-2.png" width="385" height="160" /></div>
-      <div id="login_02">
-        <div align="center">
-          <p class="input-field-text"><input type="text" class="input_text02" placeholder="帳號" size="50" ng-model="loginData.account" readonly /></p>
+
+      <div class="list list-inset list-inset-query">
+        <div class="item item-input-inset  item-input-query">
+          <input type="text" placeholder="請輸入帳號" ng-model="loginData.account" readonly />
         </div>
-        <div align="center">
-          <p class="input-field-text"><input type="password" class="input_text02" placeholder="密碼" size="50" ng-model="loginData.pwd" /></p>
+        <div class="item item-input-inset  item-input-query">
+          <input type="password" placeholder="請輸入密碼" ng-model="loginData.pwd" />
         </div>
       </div>
+
       <div id="login_04">
         <div align="center">
-          <img src="images/but_login-1.png" width="480" height="119" ng-click="updatePwd(loginData);" />
+          <img src="images/but_login-2.png" width="480" height="119" ng-click="updatePwd(loginData);" />
         </div>
       </div>
     </div>
