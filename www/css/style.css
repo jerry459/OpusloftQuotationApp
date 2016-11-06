@@ -366,11 +366,13 @@ body {
 	display: inline;
 	height: initial;
 }
-
+.input-field-text{
+	margin: 10px 0;
+}
 .input_text02 {
   appearance: normal;
   border: 1px solid #999;
-  border-radius: 5px;
+  border-radius: 4px;
   box-shadow: inset 1px 1px 1px #666;
   box-sizing: border-box;
   font-size: 36px;
