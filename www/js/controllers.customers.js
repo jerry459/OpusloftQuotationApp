@@ -186,20 +186,23 @@ angular.module('starter')
       });
     }
 
-        ctrl.addCustomer = function(item) {
-          CustomersService.addCustomer(item).then(function(data) {
-            $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
+    ctrl.addCustomer = function(item) {
+      CustomersService.addCustomer(item).then(function(data) {
+        $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
 
-          }, function(err) {
-            $log.debug("CustomerCtrl.queryCustomerQuotation", "error", err);
-            debugger;
+        $state.go("customer.success");
 
-          }).catch(function(ex) {
-            $log.debug("CustomerCtrl.queryCustomerQuotation", "exception", ex);
-            debugger;
+      }, function(err) {
+        $log.debug("CustomerCtrl.queryCustomerQuotation", "error", err);
+        debugger;
 
-          });
-        }
+        $state.go("fail");
+      }).catch(function(ex) {
+        $log.debug("CustomerCtrl.queryCustomerQuotation", "exception", ex);
+        debugger;
+
+      });
+    }
 
     ctrl.init();
 
