@@ -16,7 +16,6 @@ angular.module('starter')
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
-      debugger
 
       if ($state.params != undefined && $state.params.obj != undefined) {
         if ($state.$current.name == "customer.search")
@@ -187,6 +186,12 @@ angular.module('starter')
     }
 
     ctrl.addCustomer = function(item) {
+
+      if (item == undefined || item.customerName == undefined || item.customerName == "") {
+        alert("至少需要輸入名稱");
+        return;
+      }
+
       CustomersService.addCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
 
