@@ -17,11 +17,13 @@ angular
         url: '',
         templateUrl: 'templates/_base.html'
       })
+      // 使用者相關
       .state('user', {
         url: '/user',
         parent: 'base',
         templateUrl: 'templates/user.html'
       })
+      // 使用者登入
       .state('user.login', {
         url: '/login',
         templateUrl: 'templates/user.login.html',
@@ -30,6 +32,7 @@ angular
           obj: null
         }
       })
+      // 使用者變更密碼
       .state('user.updatePwd', {
         url: '/updatePwd',
         templateUrl: 'templates/user.updatePwd.html',
@@ -38,6 +41,7 @@ angular
           obj: null
         }
       })
+      // 首頁
       .state('home', {
         url: '/home',
         parent: 'base',
@@ -72,8 +76,7 @@ angular
       })
       .state('customer.modify', {
         url: '/:customerNo',
-        parent: 'base',
-        templateUrl: 'templates/customer.html',
+        templateUrl: 'templates/customer.modify.html',
         controller: 'CustomerCtrl'
       })
       .state('customer.search', {
