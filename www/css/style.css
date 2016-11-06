@@ -130,7 +130,7 @@ body {
 	font-family: "微軟正黑體";
 	text-shadow: 1px 1px 3px #666;
 	line-height: 60px;
-	padding-left: 0px;
+	padding-left: 120px;
 }
 .text_03_01 {
 	font-size: 41px;
@@ -138,6 +138,14 @@ body {
 	font-family: "微軟正黑體";
 	text-shadow: 1px 1px 3px #666;
 	line-height: 60px;
+}
+.text_03_02 {
+	font-size: 41px;
+	color: #9A4D3D;
+	font-family: "微軟正黑體";
+	text-shadow: 1px 1px 3px #666;
+	line-height: 60px;
+	padding-left: 80px;
 }
 
 
@@ -214,7 +222,8 @@ body {
 	font-size: 50px;
 	color: #999;
 	font-family: "微軟正黑體";
-	padding-top: 50px;
+	padding-top: 80px;
+	margin-left:  5px;
 }
 
 .text_05 {
@@ -245,7 +254,7 @@ body {
 
 #page03_05 {
 	padding-top: 10px;
-	padding-left: 90px;
+	padding-left: 10px;
 	height: 570px;
 }
 
@@ -633,8 +642,8 @@ body {
 	float: left;
 }
 #title_02{
-	width: 65px;
-	margin-left: 460px;
+	width: 66px;
+	margin-left: 500px;
 	margin-top: 1px;
 }
 .scoll_01{
