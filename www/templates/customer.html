@@ -1,94 +1,49 @@
-﻿<ion-content scroll="false">
-	<ion-scroll direction="xy">
-		<div style="display: none;">
-			<div>客戶資訊</div>
-			<div>
-				<div align="center">
-					<input type="hidden" class="input_text02" placeholder="客戶代碼" size="50" ng-model="customerData.customerUnino" />
-					<input type="text" class="input_text02" placeholder="客戶編號" size="50" ng-model="customerData.customerNo" />
-				</div>
-				<div align="center">
-					<input type="text" class="input_text02" placeholder="名稱" size="50" ng-model="customerData.customerName" />
-				</div>
-				<div align="center">
-					<input type="text" class="input_text02" placeholder="聯絡人" size="50" ng-model="customerData.contactName" />
-				</div>
-				<div align="center">
-					<input type="text" class="input_text02" placeholder="電話" size="50" ng-model="customerData.customerTel" />
-				</div>
-				<div align="center">
-					<input type="text" class="input_text02" placeholder="傳真" size="50" ng-model="customerData.customerFax" />
-				</div>
-				<div align="center">
-					<input type="text" class="input_text02" placeholder="電子郵件" size="50" ng-model="customerData.customerEmail" />
-				</div>
-				<div align="center">
-					<div class="row" style="padding-left: 42px;">
-						<input type="text" class="input_text02 input_text02_1" placeholder="郵遞區號" maxlength='5' ng-model="customerData.addrZip" readonly="false" /> &nbsp;
-						<select name="selAddr1" class="input_text02_1" ng-model="addr1Selected" ng-options="item.addr1nm for item in addr1" ng-change="addr1Change(addr1Selected);">
-					</select>
-						<select name="selAddr2" class="input_text02_1" ng-model="addr2Selected" ng-options="item.addr2nm for item in addr2" ng-change="addr2Change(addr2Selected);">
-					</select>
-					</div>
-					<div class="row" style="padding-left: 42px;">
-						<select name="selAddr3" class="input_text02_1" ng-model="addr3Selected" ng-options="item.addr3nm for item in addr3" ng-change="addr3Change(addr3Selected);">
-					</select>
-					</div>
-					<div class="row" style="padding-left: 42px;">
-						<input type="text" class="input_text02" placeholder="地址" ng-model="customerData.addr" />
-					</div>
-				</div>
-				<div align="center">
-					<input type="text" class="input_text02" placeholder="折扣 ( ex : 0.95 )" size="50" ng-model="customerData.customerPayrate" />
-				</div>
-				<div align="center">
-					<button ng-click="addCustomer(customerData);">新增</button>
-					<button ng-click=" queryCustomer(customerData);">查詢</button>
-				</div>
-			</div>
-		</div>
 
+<ion-content scroll="false">
+	<ion-scroll direction="xy">
 		<div id="page_web01" ui-view>
 
 			<div id="login_01">
-				<div id="title_01"><p class="text_03">客戶資訊</p> </div>
-				<div id="title_02"><img src="images/back_01.png" width="66" height="61" class="pic_01" /></div>
-			<div align="center" id="login_03">
+				<div id="title_01">
+					<p class="text_03">客戶資訊</p>
+				</div>
+				<div id="title_02">
+					<img src="images/back_01.png" width="66" height="61" class="pic_01" ng-click="goBack()" /></div>
+				<div align="center" id="login_03">
 
+					<div class="list_01">
+						<input type="hidden" placeholder="客戶代碼" ng-model="customerData.customerUnino" />
+						<label class="item item-input">
+				    <input type="text" placeholder="客戶編號" ng-model="customerData.customerNo" />
+				  </label>
+						<label class="item item-input">
+				    <input type="text" placeholder="名稱" ng-model="customerData.customerName" />
+				  </label>
+						<label class="item item-input">
+				    <input type="text" placeholder="聯絡人" ng-model="customerData.contactName" />
+				  </label>
+						<label class="item item-input">
+				    <input type="text" placeholder="電話" ng-model="customerData.customerTel" />
+				  </label>
+						<label class="item item-input">
+				    <input type="text" placeholder="傳真" ng-model="customerData.customerFax">
+				  </label>
+						<label class="item item-input">
+				    <input type="text" placeholder="地址" ng-model="customerData.addr3" />
+				  </label>
+						<label class="item item-input">
+						<input type="text" placeholder="折扣 ( ex : 0.95 )" ng-model="customerData.customerPayrate" />
+					</label>
+					</div>
 
+				</div>
+				<div id="login_04">
 
-<div class="list_01"><input type="hidden" placeholder="客戶代碼" ng-model="customerData.customerUnino" />
-    <label class="item item-input">
-    <input type="text" placeholder="客戶編號" ng-model="customerData.customerNo">
-  </label>
-  <label class="item item-input">
-    <input type="text" placeholder="名稱" ng-model="customerData.customerName">
-  </label>
-<label class="item item-input">
-    <input type="text" placeholder="聯絡人" ng-model="customerData.contactName">
-  </label>
-  <label class="item item-input">
-    <input type="text" placeholder="電話" ng-model="customerData.customerTel">
-  </label>
-<label class="item item-input">
-    <input type="text" placeholder="傳真" ng-model="customerData.customerFax">
-  </label>
-  <label class="item item-input">
-    <input type="text" placeholder="地址" ng-model="customerData.addr3">
-  </label>
+					<button class="but_005" ng-click="addCustomer(customerData);">新增</button>
+					<button class="but_006" ng-click=" queryCustomer(customerData);">查詢</button>
 
-
-</div>
-
-
- </div>
-			<div id="login_04">
-
-				<button class="but_005" ng-click="addCustomer(customerData);">新增</button>
-				<button class="but_006" ng-click=" queryCustomer(customerData);">查詢</button>
-
+				</div>
 			</div>
-		</div>
 		</div>
 	</ion-scroll>
 </ion-content>

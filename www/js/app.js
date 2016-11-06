@@ -8,6 +8,7 @@ angular
   .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+    $urlRouterProvider.when('/customer/:customerNo', '/customer/:customerNo');
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -69,6 +70,12 @@ angular
           obj: null
         }
       })
+      .state('customer.modify', {
+        url: '/:customerNo',
+        parent: 'base',
+        templateUrl: 'templates/customer.html',
+        controller: 'CustomerCtrl'
+      })
       .state('customer.search', {
         url: '/search',
         templateUrl: 'templates/customer.search.html',
@@ -80,6 +87,14 @@ angular
       .state('customer.quotation', {
         url: '/quotation',
         templateUrl: 'templates/customer.quotation.html',
+        controller: 'CustomerCtrl',
+        params: {
+          obj: null
+        }
+      })
+      .state('customer.success', {
+        url: '/success',
+        templateUrl: 'templates/customer.success.html',
         controller: 'CustomerCtrl',
         params: {
           obj: null
@@ -97,6 +112,10 @@ angular
         params: {
           obj: null
         }
+      })
+      .state('fail', {
+        url: '/fail',
+        templateUrl: 'templates/fail.html',
       });
   })
 
@@ -120,6 +139,11 @@ angular
 
 .run(function($rootScope, $state, $location, $http, UsersService) {
   console.info("CheckAuthState", "-- start --");
+
+  $rootScope.goBack = function() {
+    history.back();
+    scope.$apply();
+  }
 
   $rootScope.checkAuthState = function() {
     if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {

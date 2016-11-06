@@ -1,30 +1,31 @@
-﻿<ion-content scroll="false">
-	<ion-scroll direction="xy">
+<ion-content scroll="false">
+	<ion-scroll direction="y">
 		<div id="page_web01" ui-view>
+
 			<div id="page02_01">
 				<div id="round_01">
 					<p class="text_03_01">商品查詢</p>
 				</div>
+				<div id="title_02">
+					<img src="images/back_01.png" width="66" height="61" class="pic_01" ng-click="goBack()" />
+				</div>
 			</div>
+
+
 			<div id="page03_05">
 				<p class="text_04">請掃描商品條碼查詢</p>
-
 			</div>
-			<div id="page03_06">
-
-<div class="list list-inset">
-  <label class="item item-input">
-    <input type="text" placeholder="First Name">
-    <button class="button button-large button-kiwi icon ion-search"> 搜尋</button>
-
-    <button class="button button-large button-kiwi icon ion-qr-scanner"> 掃瞄</button>
-  </label>
-</div>
-				
+			<div>
+				<div class="list list-inset list-inset-query">
+					<div class="item item-input-inset  item-input-query">
+						<label class="item item-input-wrapper item-input-query">
+					    <input type="text" placeholder="請輸入商品條碼" ng-model="queryCode" />
+						</label>
+						<button class="button button-large button-kiwi icon ion-search" ng-click="clickQuery(queryCode)"> 搜尋</button>
+						<button class="button button-large button-kiwi icon ion-qr-scanner" ng-click="scanBarcode()"> 掃瞄</button>
+					</div>
+				</div>
 			</div>
-
-
-
 		</div>
 	</ion-scroll>
 </ion-content>
