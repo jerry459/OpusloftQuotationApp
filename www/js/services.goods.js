@@ -7,22 +7,25 @@ angular.module('services.goods', [])
     self.getGoods = function(itemId) {
       $log.info("GoodsService.getGoods", "-- start [ ", itemId, " ]");
 
-      var itemPart = "/find/" + itemId;
+      var itemPart = "/find";
       var httpMethod = "POST";
       if (AppConfig.DEBUG_MODE) {
-        itemPart += ".json";
+        itemPart += "/" + itemId + ".json";
         httpMethod = "GET";
       }
 
       var d = $q.defer();
       var api = serviceBaseUrl + itemPart;
 
+      var data = {};
+      data.stockNo = itemId;
+
       var config = {
         'method': httpMethod,
         'url': api,
         'data': {
           'token': $rootScope.user.accessToken,
-          'inputData': {}
+          'inputData': data
         }
       }
 

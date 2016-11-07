@@ -25,7 +25,7 @@ angular.module('starter')
       }
       $log.info("CustomerCtrl", "-- customers --", ctrl.customers);
 
-      ctrl.getAddr1();
+      //ctrl.getAddr1();
     }
 
     ctrl.selCustomer = function(cust) {

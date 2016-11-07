@@ -167,6 +167,8 @@ angular
 
         $state.go("user.login");
       } else {
+        var currentTime = (new Date()).getTime();
+        if ( user.accessTokenExpire < currentTime ) UsersService.clearLocalStorage();
         //$http.defaults.headers.common.Authorization = user.accessToken;
         /*
         $http.defaults.headers.common = {

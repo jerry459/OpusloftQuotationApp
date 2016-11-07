@@ -93,9 +93,12 @@ angular.module('services.users', [])
       localStorage.removeItem("loginId");
       localStorage.removeItem("userName");
       localStorage.removeItem("accessToken");
+      localStorage.removeItem("accessTokenExpire");
       localStorage.removeItem("userStatus");
       localStorage.removeItem("storeNo");
       localStorage.removeItem("storeName");
+
+      sessionStorage.removeItem("quotation");
 
       $log.info("UsersService.clearLocalStorage", "-- end --");
     }
@@ -106,6 +109,7 @@ angular.module('services.users', [])
       localStorage.setItem("loginId", user.loginId);
       localStorage.setItem("userName", user.userName);
       localStorage.setItem("accessToken", user.accessToken);
+      localStorage.setItem("accessTokenExpire", user.accessTokenExpire);
       localStorage.setItem("userStatus", user.userStatus);
       localStorage.setItem("storeNo", user.storeNo);
       localStorage.setItem("storeName", user.storeName);
@@ -122,6 +126,7 @@ angular.module('services.users', [])
       user.loginId = localStorage.getItem("loginId");
       user.userName = localStorage.getItem("userName");
       user.accessToken = localStorage.getItem("accessToken");
+      user.accessTokenExpire = localStorage.getItem("accessTokenExpire");
       user.userStatus = localStorage.getItem("userStatus");
       user.storeNo = localStorage.getItem("storeNo");
       user.storeName = localStorage.getItem("storeName");
