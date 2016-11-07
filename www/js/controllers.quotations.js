@@ -7,6 +7,7 @@ angular.module('starter')
 
     ctrl.today = $filter('date')(new Date(), AppConfig.DATE_FORMAT);
     ctrl.quotation = {};
+    ctrl.quotation.quoTax = 0.05;
     ctrl.quotation.customer = {};
     ctrl.quotation.goodsList = {};
 
@@ -25,6 +26,7 @@ angular.module('starter')
               ctrl.quotation = JSON.parse(quot);
             }
           }
+
           if (params.obj && params.obj.stockNo) {
             var goods = {};
             goods.itemId = params.obj.stockNo;
@@ -33,8 +35,11 @@ angular.module('starter')
             goods.amount = 1;
 
             ctrl.quotation.goodsList[goods.itemId] = goods;
-            sessionStorage.setItem("quotation", JSON.stringify(ctrl.quotation));
+          } else if (params.obj && params.obj.customerNo) {
+            ctrl.quotation.customer = params.obj;
           }
+
+          sessionStorage.setItem("quotation", JSON.stringify(ctrl.quotation));
         }
       }
     }
@@ -46,12 +51,12 @@ angular.module('starter')
       }
     }
 
-        ctrl.addAmount = function(itemId) {
-          if (ctrl.quotation.goodsList[itemId]) {
-            //ctrl.quotation.goodsList[itemId].amount++;
-            sessionStorage.setItem("quotation", JSON.stringify(ctrl.quotation));
-          }
-        }
+    ctrl.addAmount = function(itemId) {
+      if (ctrl.quotation.goodsList[itemId]) {
+        //ctrl.quotation.goodsList[itemId].amount++;
+        sessionStorage.setItem("quotation", JSON.stringify(ctrl.quotation));
+      }
+    }
 
     ctrl.init();
 

@@ -1,0 +1,57 @@
+{
+    "returnCode": 0,
+    "returnData": {
+        "custNo": "C2637",
+        "quoTotal": 8000,
+        "quoNo": "201412200002",
+        "quoTax": 0,
+        "quoSum": 8000,
+        "detailList": [
+            {
+                "quoNo": "201412200002",
+                "stockName": "避震器總成/Camry'97/前左/厚木",
+                "stockSpec": "前左",
+                "subtotal": 2000,
+                "stockQty": 1,
+                "stockPrice": 2000,
+                "seq": 1,
+                "stockNo": "201412200002"
+            },
+            {
+                "quoNo": "201412200002",
+                "stockName": "避震器總成/Camry'97/前右/厚木",
+                "stockSpec": "前右",
+                "subtotal": 2000,
+                "stockQty": 1,
+                "stockPrice": 2000,
+                "seq": 2,
+                "stockNo": "201412200002"
+            },
+            {
+                "quoNo": "201412200002",
+                "stockName": "避震器總成/Camry'97/後左/厚木",
+                "stockSpec": "後左",
+                "subtotal": 2000,
+                "stockQty": 1,
+                "stockPrice": 2000,
+                "seq": 3,
+                "stockNo": "201412200002"
+            },
+            {
+                "quoNo": "201412200002",
+                "stockName": "避震器總成/Camry'97/後右/厚木",
+                "stockSpec": "後右",
+                "subtotal": 2000,
+                "stockQty": 1,
+                "stockPrice": 2000,
+                "seq": 4,
+                "stockNo": "201412200002"
+            }
+        ],
+        "quoDate2": "2014-12-23 00:00:00.0",
+        "quoDate1": "2014-12-20 00:00:00.0",
+        "custName": "嘉鴻汽車材料行"
+    },
+    "returnDesc": "成功!!!",
+    "status": "success"
+}
