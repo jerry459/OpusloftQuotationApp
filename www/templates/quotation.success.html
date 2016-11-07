@@ -5,27 +5,24 @@
 			<div id="page_web05">
 				<div id="page02_01">
 
-					<p class="text_03_01">客戶資訊</p>
+					<p class="text_03_01">報價單</p>
 
-					<p class="assertive">客戶資訊新增成功</p>
+					<p class="assertive">報價單已存檔</p>
 
 					<div class="card col col-75 center">
 						<div class="item item-divider bgc-kiwi">
-							<h2 class="light">客戶已存檔</h2>
+							<h2 class="light">報價單號</h2>
 						</div>
 						<div class="item item-text-wrap">
-							<p>客戶編號：{{customerNo}}</p>
+							<p>{{quotNo}}</p>
 						</div>
-						<!-- div class="item item-divider">
-					    I'm a Footer in a Card!
-					  </div -->
 					</div>
 				</div>
 
 			</div>
 			<div id="login_04_01">
 
-				<button class="but_005" ui-sref="customer">客戶資訊</button>
+				<button class="but_005" ui-sref="quotation.modify({'quotNo': quotNo})">修改報價單</button>
 				<button class="but_006" ui-sref="home">回主畫面</button>
 
 			</div>

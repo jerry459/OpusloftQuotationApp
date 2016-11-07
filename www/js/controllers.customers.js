@@ -13,6 +13,8 @@ angular.module('starter')
     $scope.customer = {};
     $scope.quotations = {};
     var ctrl = $scope;
+    var params = $state.params;
+    ctrl.typeFlag = ( params && params.flag ) ?  params.flag : 'search';
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
@@ -22,6 +24,8 @@ angular.module('starter')
           ctrl.customers = $state.params.obj;
         if ($state.$current.name == "customer.quotation")
           ctrl.customer = $state.params.obj;
+        if ($state.$current.name == "customer.success")
+          ctrl.customerNo = $state.params.obj;
       }
       $log.info("CustomerCtrl", "-- customers --", ctrl.customers);
 
@@ -29,11 +33,18 @@ angular.module('starter')
     }
 
     ctrl.selCustomer = function(cust) {
-      if (cust) {
+      if (cust && ctrl.typeFlag != 'add2quot') {
         $state.go('customer.quotation', {
           'obj': cust
         }, {
           reload: false
+        });
+      }else if (cust && ctrl.typeFlag == 'add2quot') {
+        $state.go('quotation.new', {
+          'obj': cust,
+          'flag': ctrl.typeFlag
+        }, {
+          reload: true
         });
       }
     }
@@ -195,7 +206,9 @@ angular.module('starter')
       CustomersService.addCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
 
-        $state.go("customer.success");
+        $state.go("customer.success", {
+          "obj": data.customerNo
+        });
 
       }, function(err) {
         $log.debug("CustomerCtrl.queryCustomerQuotation", "error", err);

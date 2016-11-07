@@ -53,18 +53,25 @@ angular
         url: '/goods',
         parent: 'base',
         templateUrl: 'templates/goods.html',
-        controller: 'GoodsCtrl'
+        controller: 'GoodsCtrl',
+        params: {
+          flag: ''
+        }
       })
       .state('goods.query', {
         url: '/:itemId',
         templateUrl: 'templates/goods.item.html',
-        controller: 'GoodsCtrl'
+        controller: 'GoodsCtrl',
+        params: {
+          flag: ''
+        }
       })
       .state('barcode', {
         url: '/barcode',
         parent: 'base',
         templateUrl: 'templates/barcode.html',
-        controller: 'BarcodeCtrl'
+        controller: 'BarcodeCtrl',
+        params: {}
       })
       .state('customer', {
         url: '/customer',
@@ -72,7 +79,8 @@ angular
         templateUrl: 'templates/customer.html',
         controller: 'CustomerCtrl',
         params: {
-          obj: null
+          obj: null,
+          flag: ''
         }
       })
       //.state('customer.modify', {
@@ -114,7 +122,26 @@ angular
         templateUrl: 'templates/quotation.new.html',
         controller: 'QuotationCtrl',
         params: {
-          obj: null
+          obj: null,
+          flag: ''
+        }
+      })
+      .state('quotation.success', {
+        url: '/success',
+        templateUrl: 'templates/quotation.success.html',
+        controller: 'QuotationCtrl',
+        params: {
+          obj: null,
+          flag: ''
+        }
+      })
+      .state('quotation.modify', {
+        url: '/:quotNo',
+        templateUrl: 'templates/quotation.new.html',
+        controller: 'QuotationCtrl',
+        params: {
+          obj: null,
+          flag: ''
         }
       })
       .state('fail', {
@@ -124,6 +151,20 @@ angular
   })
 
 .run(function($ionicPlatform) {
+  //  $ionicPlatform.registerBackButtonAction(function() {
+  //    if (condition) {
+  //      navigator.app.exitApp();
+  //    } else {
+  //      handle back action!
+  //    }
+  //  }, 100);
+
+  $ionicPlatform.onHardwareBackButton(function() {
+    event.preventDefault();
+    event.stopPropagation();
+    //alert('going back now y all');
+  });
+
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -168,19 +209,23 @@ angular
         $state.go("user.login");
       } else {
         var currentTime = (new Date()).getTime();
-        if ( user.accessTokenExpire < currentTime ) UsersService.clearLocalStorage();
-        //$http.defaults.headers.common.Authorization = user.accessToken;
-        /*
-        $http.defaults.headers.common = {
-          'Token': user.accessToken
-        };
-        $http.defaults.headers.post = {
-          'Token': user.accessToken
-        };
-        $http.defaults.headers.get = {
-          'Token': user.accessToken
-        };
-        */
+        if (user.accessTokenExpire < currentTime) {
+          UsersService.clearLocalStorage();
+          $state.go("user.login");
+        } else {
+          //$http.defaults.headers.common.Authorization = user.accessToken;
+          /*
+          $http.defaults.headers.common = {
+            'Token': user.accessToken
+          };
+          $http.defaults.headers.post = {
+            'Token': user.accessToken
+          };
+          $http.defaults.headers.get = {
+            'Token': user.accessToken
+          };
+          */
+        }
       }
     } else {
       if ($http.defaults.headers.common)

@@ -5,6 +5,7 @@ angular.module('starter')
     var ctrl = $scope;
     var params = $state.params;
     var goods = {};
+    ctrl.typeFlag = ( params && params.flag ) ?  params.flag : 'new';
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
@@ -45,7 +46,7 @@ angular.module('starter')
         ctrl.goods.total = res.total;
         ctrl.goods.stockNo = res.stockNo;
         ctrl.goods.stockName = res.stockName;
-        ctrl.goods.price = res.price;
+        ctrl.goods.stockPrice = res.stockPrice;
         ctrl.goods.warehouseList = res.warehouseList;
 
       }, function(err) {

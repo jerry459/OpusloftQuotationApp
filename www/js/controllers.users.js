@@ -32,7 +32,7 @@ angular.module('starter')
         user.loginId = res.emUserid; //res.loginId;
         user.userName = res.emName; //res.userName;
         user.accessToken = res.token; //res.accessToken;
-        user.accessTokenExpire = (new Date()).getTime();
+        user.accessTokenExpire = (new Date()).getTime() + (1000 * 60 * 60 * 12);
         user.userStatus = res.emUserid ? 1 : 0; //res.status;
         user.storeNo = res.emDpno;
         user.storeName = res.emDpname; //res.storeName;
