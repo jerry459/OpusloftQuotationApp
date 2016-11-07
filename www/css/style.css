@@ -368,6 +368,34 @@ body {
   color: #FFFFFF;
 }
 
+.but_007 {
+  height: 60px;
+  width: 200px;
+  border: 0;
+  background-color: #937051;
+  /* margin-left: 80px; */
+  margin-top: 60px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px 2px #666;
+  font-size: 26px;
+  font-family: "微軟正黑體";
+  color: #FFFFFF;
+}
+
+.but_008 {
+  height: 60px;
+  width: 200px;
+  border: 0;
+  background-color: #937051;
+  margin-left: 20px;
+  margin-top: 60px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px 2px #666;
+  font-size: 26px;
+  font-family: "微軟正黑體";
+  color: #FFFFFF;
+}
+
 .input_text01 {
   appearance: normal;
   border: solid 1px #ccc;
