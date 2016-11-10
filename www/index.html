@@ -61,6 +61,9 @@
       <div ui-view></div>
     </ion-content>
   </ion-pane>
+  <script type="text/ng-template" id="spinner.html">
+    <ion-spinner icon="spiral-energized" ng-if="isLoading"></ion-spinner>
+  </script>
   <script type="text/ng-template" id="sysDialog.html">
     <ion-content has-header="true" padding="true" scroll="false">
       <ion-header-bar align-title="center" class="bar-stable">

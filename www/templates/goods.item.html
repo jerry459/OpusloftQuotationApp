@@ -11,22 +11,30 @@
 					<p class="text_list_01">{{goods.stockName}}</p>
 				</div>
 				<div id="list_list_02">
-					<p class="text_list_02">$ {{goods.price}}</p>
+					<p class="text_list_02">$ {{goods.stockPrice}}</p>
 				</div>
 			</div>
 			<div id="page03_03">
 				<hr width="98%" class="line9" />
 			</div>
-			<ion-scroll direction="y" style="height: 400px;">
+			<ion-scroll direction="y" style="height: 380px;">
 				<div id="page03_04" ng-repeat="item in goods.warehouseList">
 					<div id="list_list_01">
-						<p class="text_list_03">{{item.whNo}}</p>
+						<p class="text_list_03">{{item.whName}}</p>
 					</div>
 					<div id="list_list_02">
 						<p class="text_list_02">x {{item.num}}</p>
 					</div>
 				</div>
 			</ion-scroll>
+			<div id="page03_04">
+				<div id="list_list_01">
+					<p class="text_list_03">庫存總計</p>
+				</div>
+				<div id="list_list_02">
+					<p class="text_list_02">x {{goods.stockNum}}</p>
+				</div>
+			</div>
 		</div>
 		<div id="page_web03">
 			<div id="page_web_bott01">

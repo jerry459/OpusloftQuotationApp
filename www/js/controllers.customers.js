@@ -14,7 +14,7 @@ angular.module('starter')
     $scope.quotations = {};
     var ctrl = $scope;
     var params = $state.params;
-    ctrl.typeFlag = ( params && params.flag ) ?  params.flag : 'search';
+    ctrl.typeFlag = (params && params.flag) ? params.flag : 'search';
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
@@ -39,7 +39,7 @@ angular.module('starter')
         }, {
           reload: false
         });
-      }else if (cust && ctrl.typeFlag == 'add2quot') {
+      } else if (cust && ctrl.typeFlag == 'add2quot') {
         $state.go('quotation.new', {
           'obj': cust,
           'flag': ctrl.typeFlag
@@ -161,6 +161,15 @@ angular.module('starter')
     };
 
     ctrl.queryCustomer = function(item) {
+
+      var noData = false;
+      if (item != undefined) {
+        if (!item.customerNo && !item.customerName && !item.customerUnino && !item.customerTel && !item.customerPhone) {
+          noData = true;
+          return;
+        }
+      }
+
       CustomersService.findCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomer", "success", data);
 

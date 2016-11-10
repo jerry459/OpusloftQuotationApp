@@ -6,15 +6,6 @@
 					<p class="text_03_01">報價單</p>
 				</div>
 			</div>
-			<!-- div id="page03_02">
-				<div id="list_list_01">
-					<p class="text_list_04">報價日期 : {{quotation.createDate}}</p>
-				</div>
-				<div id="list_list_04">
-					<p><img src="./images/add-1.png" width="101" height="101" /></p>
-				</div>
-			</div -->
-
 
 			<div id="page06_01">
 				<div id="list_list_01">
@@ -22,10 +13,7 @@
 						<p ng-if="quotation.quotNo">報價單號 : {{quotation.quotNo}}</p>
 						報價日期 : {{quotation.createDate}}<br />
 						<!-- span ng-if="quotation.customer.customerNo" -->
-							客戶編號 : {{quotation.customer.customerNo}}<br />
-							名稱 : {{quotation.customer.customerName}}<br />
-							電話 : {{quotation.customer.customerTel}}<br />
-							地址 : {{quotation.customer.addr3}}
+						客戶編號 : {{quotation.customer.customerNo}}<br /> 名稱 : {{quotation.customer.customerName}}<br /> 電話 : {{quotation.customer.customerTel}}<br /> 地址 : {{quotation.customer.addr3}}
 						<!-- /span -->
 					</p>
 				</div>
@@ -34,7 +22,38 @@
 				</div>
 			</div>
 
-			<div id="page_05_02">
+				<ion-scroll direction="y" class="card card-quot-goods">
+					<div class="item item-quot-goods-list" ng-repeat="(key, item) in quotation.goodsList">
+						<div class="row row-quot-goods-list row-center">
+							<div class="col col-50">
+								<div class="row row-quot-goods-list">
+									<div class="col	">
+										{{item.itemId}}
+									</div>
+								</div>
+								<div class="row row-quot-goods-list">
+									<div class="col">
+										{{item.itemName}}
+									</div>
+								</div>
+							</div>
+							<div class="col col-10 center text-center col-center">
+								<input class="input-quot-amount text-center" type="number" min="1" placeholder="請輸入數量" ng-model="item.amount" ng-change="addAmount(item.itemId);" />
+							</div>
+							<div class="col col-10 center text-center col-center">
+								{{item.unitPrice | currency:"NT$ ":0}}
+							</div>
+							<div class="col col-10 center text-center col-center">
+								{{item.amount*item.unitPrice | currency:"NT$ ":0}}
+							</div>
+							<div class="col col-10 center text-right col-right">
+								<a class="ion-close-circled text_l function-color" ng-click="removeGoods(key)"></a>
+							</div>
+						</div>
+					</div>
+					<ion-scroll>
+
+			<!-- div id="page_05_02">
 				<table width="100%" border="0">
 					<tr>
 						<td width="15%" class="text_list_05_01">商品編號</td>
@@ -45,9 +64,10 @@
 						<td width="7%">&nbsp;</td>
 					</tr>
 				</table>
-			</div>
-			<div id="page_05_03" ng-repeat="(key, item) in quotation.goodsList">
-				<!-- ng-repeat="(key, item) in ele" -->
+			</div -->
+			<!-- ng-repeat="(key, item) in ele" -->
+			<!--div id="page_05_03" ng-repeat="(key, item) in quotation.goodsList">
+
 				<table width="100%" border="0">
 					<tr>
 						<td width="15%" class="text_list_05_02">{{item.itemId}}</td>
@@ -57,22 +77,21 @@
 						</td>
 	          <td width="14%" class="text_list_05_02">${{item.unitPrice}}</td>
 	          <td width="15%" class="text_list_05_02">${{item.amount*item.unitPrice}}</td>
-	          <td width="6%"><img src="./images/edit_1.png" width="24" height="24" ng-click="removeGoods(key)" /></td>
+	          <td width="6%"><img src="./images/edit_1.png" width="24" height="24" /></td>
 	        </tr>
 	      </table>
-	    </div>
-	  </div>
-	  <div id="page_web04">
-
-	    <p class="text_list_05">合計：　$ {{quotation.total}} 元 </p>
-	  </div>
-	  <div id="page_web03_01">
-	    <div id="page_web_bott01">
-	    <input name="button" type="button" class="but_005" id="button" value="客戶資訊" ui-sref="customer({ 'obj': quotation, 'flag': 'add2quot' })"  />
-	  </div>
-	  <div id="page_web_bott02">
-	  <input name="button" type="button" class="but_006" id="button" value="存檔" ng-click="saveQuotation();" />
-	  </div>
-	</div>
+	    </div -->
+		</div>
+		<div id="page_web04">
+			<p class="text_list_05-quot">合計：{{quotation.total | currency:"NT$ ":0}} 元 </p>
+		</div>
+		<div id="page_web03_01-quot">
+			<div id="page_web_bott01">
+				<input name="button" type="button" class="but_005" id="button" value="客戶資訊" ui-sref="customer({ 'obj': quotation, 'flag': 'add2quot' })" />
+			</div>
+			<div id="page_web_bott02">
+				<input name="button" type="button" class="but_006" id="button" value="存檔" ng-click="saveQuotation();" />
+			</div>
+		</div>
 	</div>
 </ion-content>

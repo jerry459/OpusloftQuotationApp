@@ -55,6 +55,10 @@ body {
   width: 604px;
 }
 
+#page_web03_01-quot {
+  text-align: center;
+}
+
 #page_web04 {
   height: 30px;
 }
@@ -554,6 +558,15 @@ body {
   margin-right: 50px;
 }
 
+.text_list_05-quot {
+  font-size: 35px;
+  color: #98414E;
+  font-family: "微軟正黑體";
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 70px;
+}
+
 .text_list_06 {
   font-family: "微軟正黑體";
   font-size: 16px;
@@ -627,9 +640,9 @@ body {
 }
 
 #page06_01 {
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 40px;
-  height: 190px;
+  height: 130px;
 }
 
 .text_list_05_01 {
@@ -712,6 +725,10 @@ body {
   height: 400px;
 }
 
+.text_l {
+  font-size: 32pt;
+}
+
 .text_m {
   font-size: 24pt;
 }
@@ -726,7 +743,53 @@ body {
   display: block;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+  padding-right: 0px;
+}
+
+.text-v-center {
+  vertical-align: middle;
+}
+
 .bgc-kiwi {
   background-color: #CABDB9;
   color: #fff;
+}
+
+.item.item-input-cust-search input {
+  font-size: 24px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.item.item-quot-goods-list {
+  background-color: #CECEC2;
+  color: #000000;
+  padding: 1px;
+}
+
+.input-quot-amount {
+  font-size: 12px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.row.row-quot-goods-list {
+  background-color: #CECEC2;
+  color: #000000;
+  padding: 1px;
+}
+
+a.function-color:before {
+  color: #AAA074;
+}
+
+.card.card-quot-goods {
+  background-color: #CECEC2;
+  height: 400px;
 }

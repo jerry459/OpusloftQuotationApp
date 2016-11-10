@@ -47,7 +47,12 @@ angular.module('starter')
         ctrl.goods.stockNo = res.stockNo;
         ctrl.goods.stockName = res.stockName;
         ctrl.goods.stockPrice = res.stockPrice;
+        ctrl.goods.stockNum = 0;
         ctrl.goods.warehouseList = res.warehouseList;
+
+        for(var k in ctrl.goods.warehouseList){
+          ctrl.goods.stockNum += ctrl.goods.warehouseList[k].num;
+        }
 
       }, function(err) {
         $log.debug("GoodsCtrl.queryGoods", "error", err);

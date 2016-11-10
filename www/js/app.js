@@ -7,7 +7,6 @@ angular
   .module('starter', ['ionic', 'ngCordova', 'ngDialog', 'ui.bootstrap', 'services.goods', 'services.users', 'services.quotations', 'services.customers', 'services.address'])
   .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
-    $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
     //$urlRouterProvider.when('/customer/success', '/customer/success');
     //$urlRouterProvider.when('/customer/:customerNo', '/customer/:customerNo');
     $urlRouterProvider.otherwise('/home');
@@ -148,6 +147,8 @@ angular
         url: '/fail',
         templateUrl: 'templates/fail.html',
       });
+
+    $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
   })
 
 .run(function($ionicPlatform) {
@@ -183,20 +184,52 @@ angular
 })
 
 .run(function($rootScope, $state, $location, $http, UsersService) {
-  console.info("CheckAuthState", "-- start --");
+    console.info("CheckAuthState", "-- start --");
 
-  $rootScope.goBack = function() {
-    history.back();
-    scope.$apply();
-  }
+    $rootScope.isLoading = false;
+    $rootScope.goBack = function() {
+      history.back();
+      scope.$apply();
+    }
 
-  $rootScope.checkAuthState = function() {
-    if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {
+    $rootScope.checkAuthState = function() {
+      if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {
 
-      UsersService.getUserFromLocalStorage();
-      var user = $rootScope.user;
+        UsersService.getUserFromLocalStorage();
+        var user = $rootScope.user;
 
-      if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
+        if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
+          if ($http.defaults.headers.common)
+            delete $http.defaults.headers.common['Token'];
+
+          if ($http.defaults.headers.post)
+            delete $http.defaults.headers.post['Token'];
+
+          if ($http.defaults.headers.get)
+            delete $http.defaults.headers.get['Token'];
+
+          $state.go("user.login");
+        } else {
+          var currentTime = (new Date()).getTime();
+          if (user.accessTokenExpire < currentTime) {
+            UsersService.clearLocalStorage();
+            $state.go("user.login");
+          } else {
+            //$http.defaults.headers.common.Authorization = user.accessToken;
+            /*
+            $http.defaults.headers.common = {
+              'Token': user.accessToken
+            };
+            $http.defaults.headers.post = {
+              'Token': user.accessToken
+            };
+            $http.defaults.headers.get = {
+              'Token': user.accessToken
+            };
+            */
+          }
+        }
+      } else {
         if ($http.defaults.headers.common)
           delete $http.defaults.headers.common['Token'];
 
@@ -205,39 +238,27 @@ angular
 
         if ($http.defaults.headers.get)
           delete $http.defaults.headers.get['Token'];
-
-        $state.go("user.login");
-      } else {
-        var currentTime = (new Date()).getTime();
-        if (user.accessTokenExpire < currentTime) {
-          UsersService.clearLocalStorage();
-          $state.go("user.login");
-        } else {
-          //$http.defaults.headers.common.Authorization = user.accessToken;
-          /*
-          $http.defaults.headers.common = {
-            'Token': user.accessToken
-          };
-          $http.defaults.headers.post = {
-            'Token': user.accessToken
-          };
-          $http.defaults.headers.get = {
-            'Token': user.accessToken
-          };
-          */
-        }
       }
-    } else {
-      if ($http.defaults.headers.common)
-        delete $http.defaults.headers.common['Token'];
-
-      if ($http.defaults.headers.post)
-        delete $http.defaults.headers.post['Token'];
-
-      if ($http.defaults.headers.get)
-        delete $http.defaults.headers.get['Token'];
     }
-  }
 
-  console.info("CheckAuthState", "-- end --");
-})
+    console.info("CheckAuthState", "-- end --");
+  })
+  // register the interceptor as a service, intercepts ALL angular ajax http calls
+  .factory('httpInterceptor', function($q, $window) {
+    return function(promise) {
+      return promise.then(function(response) {
+        // do something on success
+        // todo hide the spinner
+        //alert('stop spinner');
+        $('#mydiv').hide();
+        return response;
+
+      }, function(response) {
+        // do something on error
+        // todo hide the spinner
+        //alert('stop spinner');
+        $('#mydiv').hide();
+        return $q.reject(response);
+      });
+    };
+  });
