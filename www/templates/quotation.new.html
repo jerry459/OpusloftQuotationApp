@@ -37,17 +37,17 @@
 									</div>
 								</div>
 							</div>
-							<div class="col col-10 center text-center col-center">
+							<div class="col  center text-center col-center">
 								<input class="input-quot-amount text-center" type="number" min="1" placeholder="請輸入數量" ng-model="item.amount" ng-change="addAmount(item.itemId);" />
 							</div>
-							<div class="col col-10 center text-center col-center">
-								{{item.unitPrice | currency:"NT$ ":0}}
+							<div class="col col-10  center text-right col-center">
+								{{item.unitPrice | currency:"$ ":0}}
 							</div>
-							<div class="col col-10 center text-center col-center">
-								{{item.amount*item.unitPrice | currency:"NT$ ":0}}
+							<div class="col col-20  center text-right col-center">
+								{{item.amount*item.unitPrice | currency:"$ ":0}}
 							</div>
-							<div class="col col-10 center text-right col-right">
-								<a class="ion-close-circled text_l function-color" ng-click="removeGoods(key)"></a>
+							<div class="col center text-right col-right">
+								<a class="ion-close-circled text_m function-color" ng-click="removeGoods(key)"></a>
 							</div>
 						</div>
 					</div>

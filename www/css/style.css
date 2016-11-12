@@ -59,6 +59,10 @@ body {
   text-align: center;
 }
 
+#page_web03_01-quot2 {
+  text-align: center;
+}
+
 #page_web04 {
   height: 30px;
 }
@@ -792,4 +796,64 @@ a.function-color:before {
 .card.card-quot-goods {
   background-color: #CECEC2;
   height: 400px;
+}
+
+.card.card-cust-quot {
+  background-color: transparent;
+  margin: 0px 20px;
+  border-radius: 9px;
+  height: 550px;
+}
+
+.item.item-cust-quot-header {
+  background-color: #DED6CB;
+  color: #98414E;
+  font-size: 20pt;
+  font-family: "微軟正黑體";
+  text-align: center;
+  font-weight: normal;
+}
+
+.item.item-cust-quot-list {
+  background-color: transparent;
+  line-height: 32px;
+  padding: 10px;
+}
+
+.but_005.quot {
+  margin-top: 40px;
+}
+
+.but_006.quot {
+  margin-top: 40px;
+  margin-left: 0px;
+}
+
+.text_03.quot {
+  padding-left: 0px;
+  font-size: 36px;
+}
+
+.text_03-sub {
+  font-size: 18px;
+}
+
+.col.col-quot1{
+  width: 50%;
+}
+
+.col.col-quot2 {
+  width: 10%;
+}
+
+.col.col-quot3 {
+  width: 10%;
+}
+
+.col.col-quot4 {
+  width: 20%;
+}
+
+.col.col-quot5 {
+  width: 10%;
 }

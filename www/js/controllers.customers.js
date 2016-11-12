@@ -1,5 +1,5 @@
 angular.module('starter')
-  .controller('CustomerCtrl', function($rootScope, $scope, $state, $log, $q, $http, CustomersService, AddressService) {
+  .controller('CustomerCtrl', function($rootScope, $scope, $state, $log, $q, $http, $ionicLoading, CustomersService, AddressService) {
     $log.info("CustomerCtrl", "-- start --");
 
     $scope.customerData = {};
@@ -19,11 +19,17 @@ angular.module('starter')
     ctrl.init = function() {
       $rootScope.checkAuthState();
 
-      if ($state.params != undefined && $state.params.obj != undefined) {
+      if ($state.params != undefined && $state.params.customerNo != undefined) {
+        CustomersService.getCustomer($state.params.customerNo).then(function(data) {
+          ctrl.customer = data;
+        }, function(resp) {
+          $log.error("CustomerCtrl", "get customer fail.");
+          $state.go('home');
+        })
+      } else if ($state.params != undefined && $state.params.obj != undefined) {
         if ($state.$current.name == "customer.search")
           ctrl.customers = $state.params.obj;
-        if ($state.$current.name == "customer.quotation")
-          ctrl.customer = $state.params.obj;
+
         if ($state.$current.name == "customer.success")
           ctrl.customerNo = $state.params.obj;
       }
@@ -35,7 +41,8 @@ angular.module('starter')
     ctrl.selCustomer = function(cust) {
       if (cust && ctrl.typeFlag != 'add2quot') {
         $state.go('customer.quotation', {
-          'obj': cust
+          'obj': cust,
+          'customerNo': cust.customerNo
         }, {
           reload: false
         });

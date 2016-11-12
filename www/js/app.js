@@ -96,7 +96,7 @@ angular
         }
       })
       .state('customer.quotation', {
-        url: '/quotation',
+        url: '/:customerNo/quotation',
         templateUrl: 'templates/customer.quotation.html',
         controller: 'CustomerCtrl',
         params: {
@@ -146,25 +146,35 @@ angular
       .state('fail', {
         url: '/fail',
         templateUrl: 'templates/fail.html',
+      })
+      .state('test', {
+        url: '/test',
+        templateUrl: 'templates/test.html',
+        controller: 'TestCtrl',
       });
 
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+    $httpProvider.interceptors.push(function($rootScope) {
+      return {
+        request: function(config) {
+          $rootScope.$broadcast('loading:show')
+          return config
+        },
+        response: function(response) {
+          $rootScope.$broadcast('loading:hide')
+          return response
+        }
+      }
+    });
   })
 
 .run(function($ionicPlatform) {
-  //  $ionicPlatform.registerBackButtonAction(function() {
-  //    if (condition) {
-  //      navigator.app.exitApp();
-  //    } else {
-  //      handle back action!
-  //    }
-  //  }, 100);
-
-  $ionicPlatform.onHardwareBackButton(function() {
-    event.preventDefault();
-    event.stopPropagation();
-    //alert('going back now y all');
-  });
+  $ionicPlatform.registerBackButtonAction(function() {
+    //if (condition) {
+    if (false) {
+      navigator.app.exitApp();
+    } else {}
+  }, 100);
 
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -183,53 +193,31 @@ angular
   });
 })
 
-.run(function($rootScope, $state, $location, $http, UsersService) {
-    console.info("CheckAuthState", "-- start --");
+.run(function($rootScope, $state, $location, $http, $ionicLoading, UsersService) {
+  console.info("CheckAuthState", "-- start --");
 
-    $rootScope.isLoading = false;
-    $rootScope.goBack = function() {
-      history.back();
-      scope.$apply();
-    }
+  $rootScope.$on('loading:show', function() {
+    $ionicLoading.show({
+      templateUrl: 'spinner.html'
+    });
+  })
 
-    $rootScope.checkAuthState = function() {
-      if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {
+  $rootScope.$on('loading:hide', function() {
+    $ionicLoading.hide();
+  })
 
-        UsersService.getUserFromLocalStorage();
-        var user = $rootScope.user;
+  $rootScope.goBack = function() {
+    history.back();
+    scope.$apply();
+  }
 
-        if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
-          if ($http.defaults.headers.common)
-            delete $http.defaults.headers.common['Token'];
+  $rootScope.checkAuthState = function() {
+    if ($state.$current.name != "user.login" && $state.$current.name != "user.updatePwd") {
 
-          if ($http.defaults.headers.post)
-            delete $http.defaults.headers.post['Token'];
+      UsersService.getUserFromLocalStorage();
+      var user = $rootScope.user;
 
-          if ($http.defaults.headers.get)
-            delete $http.defaults.headers.get['Token'];
-
-          $state.go("user.login");
-        } else {
-          var currentTime = (new Date()).getTime();
-          if (user.accessTokenExpire < currentTime) {
-            UsersService.clearLocalStorage();
-            $state.go("user.login");
-          } else {
-            //$http.defaults.headers.common.Authorization = user.accessToken;
-            /*
-            $http.defaults.headers.common = {
-              'Token': user.accessToken
-            };
-            $http.defaults.headers.post = {
-              'Token': user.accessToken
-            };
-            $http.defaults.headers.get = {
-              'Token': user.accessToken
-            };
-            */
-          }
-        }
-      } else {
+      if (user == undefined || user.accessToken == undefined || user.accessToken == "") {
         if ($http.defaults.headers.common)
           delete $http.defaults.headers.common['Token'];
 
@@ -238,27 +226,54 @@ angular
 
         if ($http.defaults.headers.get)
           delete $http.defaults.headers.get['Token'];
+
+        $state.go("user.login");
+      } else {
+        var currentTime = (new Date()).getTime();
+        if (user.accessTokenExpire < currentTime) {
+          UsersService.clearLocalStorage();
+          $state.go("user.login");
+        } else {
+          //$http.defaults.headers.common.Authorization = user.accessToken;
+          /*
+          $http.defaults.headers.common = {
+            'Token': user.accessToken
+          };
+          $http.defaults.headers.post = {
+            'Token': user.accessToken
+          };
+          $http.defaults.headers.get = {
+            'Token': user.accessToken
+          };
+          */
+        }
       }
+    } else {
+      if ($http.defaults.headers.common)
+        delete $http.defaults.headers.common['Token'];
+
+      if ($http.defaults.headers.post)
+        delete $http.defaults.headers.post['Token'];
+
+      if ($http.defaults.headers.get)
+        delete $http.defaults.headers.get['Token'];
     }
+  }
 
-    console.info("CheckAuthState", "-- end --");
-  })
-  // register the interceptor as a service, intercepts ALL angular ajax http calls
-  .factory('httpInterceptor', function($q, $window) {
-    return function(promise) {
-      return promise.then(function(response) {
-        // do something on success
-        // todo hide the spinner
-        //alert('stop spinner');
-        $('#mydiv').hide();
-        return response;
+  console.info("CheckAuthState", "-- end --");
+})
 
-      }, function(response) {
-        // do something on error
-        // todo hide the spinner
-        //alert('stop spinner');
-        $('#mydiv').hide();
-        return $q.reject(response);
-      });
-    };
-  });
+.controller('TestCtrl', function($rootScope, $scope, $state, $log, $q, $http, $ionicLoading, UsersService) {
+  $log.info("TestCtrl", "-- start --");
+
+  var ctrl = $scope;
+
+  ctrl.init = function() {
+
+  };
+
+  ctrl.init();
+
+  $log.info("TestCtrl", "-- end --");
+  return ctrl;
+});
