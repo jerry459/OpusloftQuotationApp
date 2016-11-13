@@ -1,5 +1,5 @@
 angular.module('starter')
-  .controller('CustomerCtrl', function($rootScope, $scope, $state, $log, $q, $http, $ionicLoading, CustomersService, AddressService) {
+  .controller('CustomerCtrl', function($rootScope, $scope, $state, $log, $q, $http, $filter, $ionicLoading, CustomersService, QuotationsService) {
     $log.info("CustomerCtrl", "-- start --");
 
     $scope.customerData = {};
@@ -19,9 +19,9 @@ angular.module('starter')
     ctrl.init = function() {
       $rootScope.checkAuthState();
 
-      if ($state.params != undefined && $state.params.customerNo != undefined) {
+      if ($state.params != undefined && $state.params.customerNo != undefined && $state.$current.name == "customer.edit") {
         CustomersService.getCustomer($state.params.customerNo).then(function(data) {
-          ctrl.customer = data;
+          ctrl.customerData = data;
         }, function(resp) {
           $log.error("CustomerCtrl", "get customer fail.");
           $state.go('home');
@@ -37,7 +37,7 @@ angular.module('starter')
           }
         } else if ($state.$current.name == "customer.quotation") {
           ctrl.customer = $state.params.obj;
-          ctrl.queryCustomerQuotation($state.params.customerNo);
+          ctrl.getCustomerQuotation($state.params.customerNo);
         } else if ($state.$current.name == "customer.success") {
           ctrl.customerNo = $state.params.obj;
         }
@@ -76,107 +76,6 @@ angular.module('starter')
           reload: true
         });
       }
-    }
-
-    ctrl.getAddr1 = function() {
-      AddressService.getAddr1().then(function(data) {
-        $log.debug("CustomerCtrl.getAddr1", "success", data);
-
-        ctrl.addr1 = data;
-      }, function(err) {
-        $log.debug("CustomerCtrl.getAddr1", "error", err);
-        debugger;
-
-      }).catch(function(ex) {
-        $log.debug("CustomerCtrl.getAddr1", "exception", ex);
-        debugger;
-
-      });
-    }
-
-    ctrl.getAddr2 = function(addr1No) {
-      AddressService.getAddr2(addr1No).then(function(data) {
-        $log.debug("CustomerCtrl.getAddr2", "success", data);
-
-        ctrl.addr2 = data;
-      }, function(err) {
-        $log.debug("CustomerCtrl.getAddr2", "error", err);
-        debugger;
-
-      }).catch(function(ex) {
-        $log.debug("CustomerCtrl.getAddr2", "exception", ex);
-        debugger;
-
-      });
-    }
-
-    ctrl.getAddr3 = function(addr2No) {
-      AddressService.getAddr3(addr2No).then(function(data) {
-        $log.debug("CustomerCtrl.getAddr3", "success", data);
-
-        ctrl.addr3 = data;
-      }, function(err) {
-        $log.debug("CustomerCtrl.getAddr3", "error", err);
-        debugger;
-
-      }).catch(function(ex) {
-        $log.debug("CustomerCtrl.getAddr3", "exception", ex);
-        debugger;
-
-      });
-    }
-
-    ctrl.addr1Change = function(item) {
-      ctrl.addr1Selected = (item != undefined && item.addr1nm != undefined) ? item : {};
-
-      if (ctrl.addr1Selected != undefined && ctrl.addr1Selected.addr1nm != undefined) {
-        ctrl.customerData.addr = ctrl.addr1Selected.addr1nm;
-      } else {
-        ctrl.addr1Selected = {};
-        ctrl.customerData.addr = "";
-      }
-
-      ctrl.getAddr2(item.addr1no);
-    }
-
-    ctrl.addr2Change = function(item) {
-      ctrl.addr2Selected = (item != undefined && item.addr2nm != undefined) ? item : {};
-
-      if (ctrl.addr1Selected != undefined && ctrl.addr1Selected.addr1nm != undefined) {
-        ctrl.customerData.addr = ctrl.addr1Selected.addr1nm;
-      } else {
-        ctrl.addr1Selected = {};
-        ctrl.customerData.addr = "";
-      }
-
-      if (ctrl.addr2Selected != undefined && ctrl.addr2Selected.addr2nm != undefined) {
-        ctrl.customerData.addr = ctrl.addr2Selected.mailno + ctrl.customerData.addr + ctrl.addr2Selected.addr2nm;
-        ctrl.customerData.addrZip = ctrl.addr2Selected.mailno;
-      }
-
-      ctrl.getAddr3(item.addr2no);
-    }
-
-    ctrl.addr3Change = function(item) {
-      debugger;
-
-      ctrl.addr3Selected = (item != undefined && item.addr3nm != undefined) ? item : {};
-
-      if (ctrl.addr1Selected != undefined && ctrl.addr1Selected.addr1nm != undefined) {
-        ctrl.customerData.addr = ctrl.addr1Selected.addr1nm;
-      } else {
-        ctrl.addr1Selected = {};
-        ctrl.customerData.addr = "";
-      }
-
-      if (ctrl.addr2Selected != undefined && ctrl.addr2Selected.addr2nm != undefined) {
-        ctrl.customerData.addr = ctrl.addr2Selected.mailno + ctrl.customerData.addr + ctrl.addr2Selected.addr2nm;
-      }
-
-      if (ctrl.addr3Selected != undefined && ctrl.addr3Selected.addr3nm != undefined) {
-        ctrl.customerData.addr += ctrl.addr3Selected.addr3nm;
-      }
-
     }
 
     ctrl.clickQuery = function(itemId) {
@@ -223,16 +122,26 @@ angular.module('starter')
       });
     }
 
-    ctrl.queryCustomerQuotation = function(customerNo) {
-      CustomersService.queryCustomerQuotation(customerNo).then(function(data) {
-        $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
+    ctrl.getCustomerQuotation = function(customerNo) {
+      QuotationsService.getCustomerQuotation(customerNo).then(function(data) {
+        $log.debug("CustomerCtrl.getCustomerQuotation", "success", data);
+
+        $scope.quotations = {};
+        for (var index in data) {
+          var quot = {};
+          quot.quotNo = data[index].quoNo;
+          quot.sum = data[index].quoSum;
+          quot.total = data[index].quoTotal;
+          quot.createDate = $filter('date')(new Date(data[index].quoDate1), AppConfig.DATE_FORMAT);
+          $scope.quotations[data[index].quotNo] = quot;
+        }
 
       }, function(err) {
-        $log.debug("CustomerCtrl.queryCustomerQuotation", "error", err);
+        $log.debug("CustomerCtrl.getCustomerQuotation", "error", err);
         debugger;
 
       }).catch(function(ex) {
-        $log.debug("CustomerCtrl.queryCustomerQuotation", "exception", ex);
+        $log.debug("CustomerCtrl.getCustomerQuotation", "exception", ex);
         debugger;
 
       });
@@ -246,19 +155,19 @@ angular.module('starter')
       }
 
       CustomersService.addCustomer(item).then(function(data) {
-        $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
+        $log.debug("CustomerCtrl.addCustomer", "success", data);
 
         $state.go("customer.success", {
           "obj": data.customerNo
         });
 
       }, function(err) {
-        $log.debug("CustomerCtrl.queryCustomerQuotation", "error", err);
+        $log.debug("CustomerCtrl.addCustomer", "error", err);
         debugger;
 
         $state.go("fail");
       }).catch(function(ex) {
-        $log.debug("CustomerCtrl.queryCustomerQuotation", "exception", ex);
+        $log.debug("CustomerCtrl.addCustomer", "exception", ex);
         debugger;
 
       });

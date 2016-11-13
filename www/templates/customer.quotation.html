@@ -8,20 +8,20 @@
 			報價歷史紀錄
 		</div>
 
-		<ion-scroll direction="y"  style="height: 570px">
-			<div class="card card-cust-list" ng-repeat="item in [] | range:1:20" ng-click="">
+		<ion-scroll style="height: 570px">
+			<div class="card card-cust-list" ng-repeat="(key, item) in quotations" ui-sref="quotation.modify({'quotNo': item.quotNo})">
 				<div class="item item-divider search-result-list">
 					<div class="row">
 						<div class="col col-100 text_s2">
-							<label>單號</label> {{item.quotNo}}xxxxxxxxxxxxxx
+							<label>單號</label> {{item.quotNo}}
 						</div>
 					</div>
 					<div class="row">
 						<div class="col col-50 text_s2">
-							{{item.total | currency :"NT$ ":0}}NT$ 0,000,000
+							{{item.total | currency :"NT$ ":0}}
 						</div>
 						<div class="col col-50 text-right text_s2">
-							{{item.createDate}}2016/10/10
+							{{item.createDate}}
 						</div>
 					</div>
 				</div>

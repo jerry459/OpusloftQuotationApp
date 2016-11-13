@@ -82,6 +82,15 @@ angular
           flag: ''
         }
       })
+      .state('customer.edit', {
+        url: '/:customerNo/edit',
+        templateUrl: 'templates/customer.edit.html',
+        controller: 'CustomerCtrl',
+        params: {
+          obj: null,
+          flag: 'edit'
+        }
+      })
       //.state('customer.modify', {
       //  url: '/:customerNo',
       //  templateUrl: 'templates/customer.modify.html',

@@ -47,25 +47,29 @@ angular.module('services.quotations', [])
       return d.promise;
     }
 
-        self.saveQuotation = function(quot) {
-          $log.info("QuotationsService.saveQuotation", quot);
 
-          var itemPart = "/save";
+        self.getCustomerQuotation = function(customerNo) {
+          $log.info("QuotationsService.getCustomerQuotation", "-- start [ ", customerNo, " ]");
+
+          var itemPart = "/findCustomer";
           var httpMethod = "POST";
           if (AppConfig.DEBUG_MODE) {
-            itemPart += "/success.json";
+            itemPart += "/" + customerNo + ".json";
             httpMethod = "GET";
           }
 
           var d = $q.defer();
           var api = serviceBaseUrl + itemPart;
 
+          var data = {};
+          data.custNo = customerNo;
+
           var config = {
             'method': httpMethod,
             'url': api,
             'data': {
               'token': $rootScope.user.accessToken,
-              'inputData': quot
+              'inputData': data
             }
           }
 
@@ -78,14 +82,54 @@ angular.module('services.quotations', [])
           }).error(function(err) {
             err = {
               'errOrg': err,
-              'returnDesc': '新增報價單失敗 !!'
+              'returnDesc': '查無客戶的報價單 !!'
             };
             d.reject(err);
           });
 
-          $log.info("QuotationsService.saveQuotation", "-- end --");
+          $log.info("QuotationsService.getCustomerQuotation", "-- end --");
           return d.promise;
         }
+
+    self.saveQuotation = function(quot) {
+      $log.info("QuotationsService.saveQuotation", quot);
+
+      var itemPart = "/save";
+      var httpMethod = "POST";
+      if (AppConfig.DEBUG_MODE) {
+        itemPart += "/success.json";
+        httpMethod = "GET";
+      }
+
+      var d = $q.defer();
+      var api = serviceBaseUrl + itemPart;
+
+      var config = {
+        'method': httpMethod,
+        'url': api,
+        'data': {
+          'token': $rootScope.user.accessToken,
+          'inputData': quot
+        }
+      }
+
+      $http(config).success(function(data) {
+        if (data.returnCode > -1) {
+          d.resolve(data.returnData);
+        } else {
+          d.reject(data);
+        }
+      }).error(function(err) {
+        err = {
+          'errOrg': err,
+          'returnDesc': '新增報價單失敗 !!'
+        };
+        d.reject(err);
+      });
+
+      $log.info("QuotationsService.saveQuotation", "-- end --");
+      return d.promise;
+    }
 
     return self;
   })
