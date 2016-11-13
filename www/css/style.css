@@ -737,8 +737,20 @@ body {
   font-size: 24pt;
 }
 
+.text_m label {
+  font-size: 24pt !important;
+}
+
 .text_s {
   font-size: 12pt;
+}
+
+.text_s2 {
+  font-size: 18pt;
+}
+
+.text_s2 label {
+  font-size: 18pt !important;
 }
 
 .center {
@@ -805,13 +817,22 @@ a.function-color:before {
   height: 550px;
 }
 
+.card.card-cust-quot-title {
+  background-color: transparent;
+  margin: 0px 40px;
+  border-radius: 9px;
+  border: 0px;
+}
+
 .item.item-cust-quot-header {
-  background-color: #DED6CB;
-  color: #98414E;
-  font-size: 20pt;
-  font-family: "微軟正黑體";
+  background-color: #B8A387;
+  margin: 0px 40px;
+  border-radius: 9px;
+  color: white;
+  font-size: 16pt;
   text-align: center;
-  font-weight: normal;
+  padding: 18px;
+  border: 0px;
 }
 
 .item.item-cust-quot-list {
@@ -824,9 +845,18 @@ a.function-color:before {
   margin-top: 40px;
 }
 
+.but_005.quot2 {
+  margin-top: -10px;
+}
+
 .but_006.quot {
   margin-top: 40px;
-  margin-left: 0px;
+  margin-left: 40px;
+}
+
+.but_006.quot2 {
+  margin-top: -10px;
+  margin-left: 40px;
 }
 
 .text_03.quot {
@@ -838,7 +868,7 @@ a.function-color:before {
   font-size: 18px;
 }
 
-.col.col-quot1{
+.col.col-quot1 {
   width: 50%;
 }
 
@@ -856,4 +886,35 @@ a.function-color:before {
 
 .col.col-quot5 {
   width: 10%;
+}
+
+.search-result-title {
+  background-color: #B8A387;
+  color: white;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 24px;
+}
+
+.search-result-list {
+  background-color: transparent;
+  font-size: 18px;
+  padding: 8px;
+}
+
+.search-result-list label {
+  background-color: transparent;
+  font-size: 18px;
+  padding: 0px 8px 0px 0px;
+  font-weight: bold;
+}
+
+.card.card-cust-list {
+  background-color: transparent;
+  margin: 8px 40px;
+  border-radius: 4px;
+}
+
+.cust-list-body {
+  height: 570px;
 }

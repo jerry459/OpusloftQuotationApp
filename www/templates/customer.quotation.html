@@ -4,32 +4,32 @@
 			<p align="center" class="text_03 quot">{{customer.customerName}}</p>
 		</div>
 
-		<div class="card card-cust-quot">
-			<div class="item item-divider item-cust-quot-header">
-				報價歷史紀錄
-			</div>
-			<ion-scroll direction="y">
-				<div class="item item-text-wrap item-cust-quot-list row" ng-repeat="n in [] | range:1:20">
-					<div class="col col-50">
-						NO. 20130212001
-					</div>
-					<div class="col col-25 text-right">
-						{{10000 | currency :"NT$ ":0}}
-					</div>
-					<div class="col col-25 text-right">
-						2013/02/12
-					</div>
-				</div>
-			</ion-scroll>
+		<div class="item item-cust-quot-header">
+			報價歷史紀錄
 		</div>
 
+		<ion-scroll direction="y"  style="height: 570px">
+			<div class="card card-cust-list" ng-repeat="item in [] | range:1:20" ng-click="">
+				<div class="item item-divider search-result-list">
+					<div class="row">
+						<div class="col col-100 text_s2">
+							<label>單號</label> {{item.quotNo}}xxxxxxxxxxxxxx
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-50 text_s2">
+							{{item.total | currency :"NT$ ":0}}NT$ 0,000,000
+						</div>
+						<div class="col col-50 text-right text_s2">
+							{{item.createDate}}2016/10/10
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-scroll>
 		<div id="page_web03_01-quot2">
-			<div id="page_web_bott01">
-				<button class="but_005 quot" ui-sref="customer">重新查詢</button>
-			</div>
-			<div id="page_web_bott02">
-				<button class="but_006 quot" ui-sref="quotation.new({'obj': customer, 'flag': 'add2quot'})" />新增報價</button>
-			</div>
+			<button class="but_005 quot2" ui-sref="customer">重新查詢</button>
+			<button class="but_006 quot2" ui-sref="quotation.new({'obj': customer, 'flag': 'add2quot'})" />新增報價</button>
 		</div>
 	</div>
 </ion-content>

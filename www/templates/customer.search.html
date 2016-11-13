@@ -1,30 +1,41 @@
 <ion-content scroll="false">
-	<div id="page_web01_02" ui-view>
+	<div id="page_web01_02">
 		<div id="login_01">
-			<p class="text_03">客戶資訊</p>
+			<p align="center" class="text_03 quot">客戶資訊</p>
 		</div>
-		<p align="center" class="text_list_01">查詢結果</p>
 
-		<ion-scroll direction="y">
-			<div style="height: 600px;padding: 5px;">
-				<div ng-repeat="item in customers" ng-click="selCustomer(item);">
-					<div id="round_03">
-						<table width="100%" border="0">
-							<tr>
-								<td width="87%">{{item.customerName}}</td>
-								<td width="13%">
-									<div align="right"><img src="images/edit_2.png" width="33" height="30" /></div>
-								</td>
-							</tr>
-						</table>
+		<!-- div class="card card-cust-quot-title">
+			<div class="item item-divider search-result-header">
+				查詢結果
+			</div>
+		</div -->
+
+		<ion-scroll direction="y" class="cust-list-body">
+
+			<div class="card card-cust-list" ng-repeat="item in customers" ng-click="selCustomer(item);">
+				<div class="item item-divider search-result-title">
+					{{item.customerName}}
+				</div>
+				<div class="item item-text-wrap search-result-list">
+					<div class="row">
+						<div class="col col-50">
+							<label>聯絡電話</label> {{item.customerTel}}
+						</div>
+						<div class="col col-50">
+							<label>行動電話</label> {{item.customerPhone}}
+						</div>
 					</div>
-					<div id="list_round_03">
-						電話 : {{item.customerTel}}
-						<br /> 傳真 : {{item.customerFax}}
-						<br /> 地址 : {{item.addr3}}
+					<div class="row">
+						<div class="col col-100">
+							<label>地　　址</label> {{item.addr3}}
+						</div>
 					</div>
 				</div>
 			</div>
 		</ion-scroll>
+
+		<div id="page_web03_01-quot2">
+			<button class="but_005 quot" ui-sref="customer">重新查詢</button>
+		</div>
 	</div>
 </ion-content>

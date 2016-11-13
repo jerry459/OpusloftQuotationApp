@@ -27,11 +27,33 @@ angular.module('starter')
           $state.go('home');
         })
       } else if ($state.params != undefined && $state.params.obj != undefined) {
-        if ($state.$current.name == "customer.search")
+        if ($state.$current.name == "customer.search") {
           ctrl.customers = $state.params.obj;
-
-        if ($state.$current.name == "customer.success")
+          if (ctrl.customers && Object.prototype.toString.call(ctrl.customers) === "[object Array]") {
+            sessionStorage.setItem("customer.search.result", JSON.stringify(ctrl.customers));
+          } else {
+            var customers = sessionStorage.getItem("customer.search.result");
+            if (customers && customers != "") ctrl.customers = JSON.parse(customers);
+          }
+        } else if ($state.$current.name == "customer.quotation") {
+          ctrl.customer = $state.params.obj;
+          ctrl.queryCustomerQuotation($state.params.customerNo);
+        } else if ($state.$current.name == "customer.success") {
           ctrl.customerNo = $state.params.obj;
+        }
+      } else if ($state.params == undefined) {
+        if ($state.$current.name == "customer.search") {
+          var condition = sessionStorage.getItem("customer.search.condition");
+          if (condition && condition != "") ctrl.queryCustomer(JSON.parse(condition));
+        }
+      } else {
+        if (sessionStorage.hasOwnProperty("customer.search.condition")) {
+          delete sessionStorage["customer.search.condition"];
+        }
+        if ($state.$current.name == "customer.search") {
+          var customers = sessionStorage.getItem("customer.search.result");
+          if (customers && customers != "") ctrl.customers = JSON.parse(customers);
+        }
       }
       $log.info("CustomerCtrl", "-- customers --", ctrl.customers);
 
@@ -175,7 +197,11 @@ angular.module('starter')
           noData = true;
           return;
         }
+      } else {
+        return;
       }
+
+      if (item) sessionStorage.setItem("customer.search.condition", JSON.stringify(item));
 
       CustomersService.findCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomer", "success", data);
@@ -197,8 +223,8 @@ angular.module('starter')
       });
     }
 
-    ctrl.queryCustomerQuotation = function(item) {
-      CustomersService.queryCustomerQuotation(item).then(function(data) {
+    ctrl.queryCustomerQuotation = function(customerNo) {
+      CustomersService.queryCustomerQuotation(customerNo).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomerQuotation", "success", data);
 
       }, function(err) {
