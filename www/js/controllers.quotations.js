@@ -1,5 +1,5 @@
 angular.module('starter')
-  .controller('QuotationCtrl', function($rootScope, $scope, $state, $log, $q, $http, $filter, uibDateParser, QuotationsService) {
+  .controller('QuotationCtrl', function($rootScope, $scope, $state, $log, $q, $http, $filter, uibDateParser, QuotationsService, CustomersService) {
     $log.info("QuotationCtrl", "-- start --");
 
     var ctrl = $scope;
@@ -52,7 +52,7 @@ angular.module('starter')
         if (params.obj) {
           ctrl.quotNo = params.obj
         }
-      } else if ($state.$current.name == "quotation.modify") {
+      } else if ($state.$current.name == "quotation.edit") {
         if (params && params.quotNo) {
           ctrl.quotation.quotNo = params.quotNo;
 
@@ -60,6 +60,11 @@ angular.module('starter')
 
             QuotationsService.getQuotation(ctrl.quotation.quotNo).then(function(res) {
               $log.debug("QuotationsService.getQuotation", "res", res);
+
+              if (res.quoNo == undefined) {
+                $state.go('quotation.fail');
+                return;
+              }
 
               var quot = {};
               quot.quotNo = res.quoNo;
@@ -86,6 +91,19 @@ angular.module('starter')
               }
               ctrl.quotation = quot;
               ctrl.calcQuotation();
+              if (ctrl.quotation.customer.customerNo != undefined) {
+                CustomersService.getCustomer(ctrl.quotation.customer.customerNo).then(function(data) {
+                  debugger;
+
+                  ctrl.quotation.customer = data;
+
+                  sessionStorage.setItem("quotation", JSON.stringify(ctrl.quotation));
+                }, function(resp) {
+                  $log.error("CustomerCtrl", "get customer fail.");
+                  $state.go('home');
+                })
+              }
+
               sessionStorage.setItem("quotation", JSON.stringify(ctrl.quotation));
             }, function(err) {
               $log.debug("QuotationsService.getQuotation", "error", err);
@@ -122,17 +140,17 @@ angular.module('starter')
       }
     }
 
-    ctrl.saveQuotation = function() {
+    ctrl.saveQuotation = function(act) {
       var quot = {}
       if (ctrl.quotation.customer.hasOwnProperty("customerNo")) {
         quot.custNo = ctrl.quotation.customer.customerNo;
       } else {
-        quot.custNo = "0000";
+        quot.custNo = "000000";
       }
       quot.quoSum = ctrl.quotation.sum;
       quot.quoTax = 0.05;
       quot.quoTotal = ctrl.quotation.total;
-      quot.detaList = [];
+      quot.detailList = [];
 
       var seq = 0;
       for (var k in ctrl.quotation.goodsList) {
@@ -146,29 +164,46 @@ angular.module('starter')
           data.stockQty = item.amount;
           data.subtotal = item.subTotal;
 
-          quot.detaList.push(data);
+          quot.detailList.push(data);
         }
       }
 
-      if (quot.detaList.length > 0) {
+      if (quot.detailList.length > 0) {
+        if (act == 'new') {
+          QuotationsService.saveQuotation(quot).then(function(res) {
+            $log.debug("QuotationsService.saveQuotation", "res", res);
 
-        QuotationsService.saveQuotation(quot).then(function(res) {
-          $log.debug("QuotationsService.saveQuotation", "res", res);
+            $state.go('quotation.success', {
+              'obj': res.quoNo
+            });
 
-          $state.go('quotation.success', {
-            'obj': res.quoNo
+          }, function(err) {
+            $log.debug("QuotationsService.saveQuotation", "error", err);
+            debugger;
+
+          }).catch(function(ex) {
+            $log.debug("QuotationsService.saveQuotation", "exception", ex);
+            debugger;
+
           });
+        } else {
+          QuotationsService.updateQuotation(quot).then(function(res) {
+            $log.debug("QuotationsService.updateQuotation", "res", res);
 
-        }, function(err) {
-          $log.debug("QuotationsService.saveQuotation", "error", err);
-          debugger;
+            $state.go('quotation.success', {
+              'obj': res.quoNo
+            });
 
-        }).catch(function(ex) {
-          $log.debug("QuotationsService.saveQuotation", "exception", ex);
-          debugger;
+          }, function(err) {
+            $log.debug("QuotationsService.updateQuotation", "error", err);
+            debugger;
 
-        });
+          }).catch(function(ex) {
+            $log.debug("QuotationsService.updateQuotation", "exception", ex);
+            debugger;
 
+          });
+        }
       }
     }
 

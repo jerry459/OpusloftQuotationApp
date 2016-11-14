@@ -1,49 +1,47 @@
-<ion-content scroll="false">
-	<div id="page_web01_02">
-		<div id="login_01">
-			<p align="center" class="text_03 quot">客戶資訊</p>
-		</div>
+<ion-content scroll="false" ui-view>
+	<div class="page-have-footer">
+		<ion-header-bar class="page-header">
+			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
+		</ion-header-bar>
 
-		<!-- div class="card card-cust-quot-title">
-			<div class="item item-divider search-result-header">
-				查詢結果
-			</div>
-		</div -->
+		<div class="page-content">
+			<p class="page-title">客戶資訊</p>
 
-		<ion-scroll direction="y" class="cust-list-body">
-
-			<div class="card card-cust-list" ng-repeat="item in customers">
-				<div class="item item-divider search-result-title">
-					<div class="row">
-						<div class="col col-75" style="line-height: 32px;">
-							[{{item.customerNo}}] {{item.customerName}}
+			<ion-scroll direction="y" style="height: 550px;">
+				<div class="card card-cust-list" ng-repeat="item in customers">
+					<!--  | filter:{visible: true} | limitTo: 50 -->
+					<div class="item item-divider search-result-title">
+						<div class="row">
+							<div class="col col-75" style="line-height: 32px;">
+								[{{item.customerNo}}] {{item.customerName}}
+							</div>
+							<div class="col col-25 text-right text_m">
+								<i ui-sref="customer.edit({ 'customerNo': item.customerNo })" class="icon ion-compose white"></i>
+								<i class="icon ion-ios-paper white" ng-click="selCustomer(item);"></i>
+							</div>
 						</div>
-						<div class="col col-25 text-right text_m">
-						<i ui-sref="customer.edit({ 'customerNo': item.customerNo })" class="icon ion-compose white"></i>
-							<i class="icon ion-ios-paper white" ng-click="selCustomer(item);"></i>
+					</div>
+					<div class="item item-text-wrap search-result-list">
+						<div class="row">
+							<div class="col col-50 text-left">
+								<label>聯絡電話</label> {{item.customerTel}}
+							</div>
+							<div class="col col-50 text-left">
+								<label>行動電話</label> {{item.customerPhone}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-100 text-left">
+								<label>地　　址</label> {{item.addr3}}
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="item item-text-wrap search-result-list">
-					<div class="row">
-						<div class="col col-50">
-							<label>聯絡電話</label> {{item.customerTel}}
-						</div>
-						<div class="col col-50">
-							<label>行動電話</label> {{item.customerPhone}}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-100">
-							<label>地　　址</label> {{item.addr3}}
-						</div>
-					</div>
-				</div>
-			</div>
-		</ion-scroll>
-
-		<div id="page_web03_01-quot2">
-			<button class="but_005 quot" ui-sref="customer">重新查詢</button>
+			</ion-scroll>
 		</div>
+
+		<ion-footer-bar class="page-footer block">
+			<button class="footer" ui-sref="customer">重新查詢</button>
+		</ion-footer-bar>
 	</div>
 </ion-content>

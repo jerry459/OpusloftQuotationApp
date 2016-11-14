@@ -1,55 +1,51 @@
-<ion-content scroll="false">
-	<!-- ion-scroll direction="y" -->
-	<div id="page_web01" ui-view>
-		<div id="login_01">
-			<div class="row">
-				<label class="text_03 center">客戶資訊</label>
-			</div>
+<ion-content scroll="false" ui-view>
+	<div class="page-have-footer">
+		<ion-header-bar class="page-header">
+			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
+		</ion-header-bar>
 
-			<div align="center" id="login_03">
+		<div class="page-content">
+			<p class="page-title">客戶資訊</p>
 
-				<div class="list_01">
-					<label class="item item-input item-input-cust-search">
-						<label class="text_s2 gray">客戶編號</label>
-					<input type="text" ng-model="customerData.customerNo" />
-					</label>
-					<label class="item item-input item-input-cust-search">
-						<label class="text_s2 gray">客戶名稱</label>
-					<input type="text" ng-model="customerData.customerName" />
-					</label>
-					<label class="item item-input item-input-cust-search">
-						<label class="text_s2 gray">統一編號</label>
-					<input type="text" ng-model="customerData.customerUnino" />
-					</label>
-					<!-- label class="item item-input">
-				    <input type="text" placeholder="聯絡人" ng-model="customerData.contactName" />
-				  </label -->
-					<label class="item item-input item-input-cust-search">
-						<label class="text_s2 gray">聯絡電話</label>
-					<input type="text" ng-model="customerData.customerTel" />
-					</label>
-					<label class="item item-input item-input-cust-search">
-						<label class="text_s2 gray">行動電話</label>
-					<input type="text" ng-model="customerData.customerPhone">
-					</label>
-					<!-- label class="item item-input item-input-cust-search">
-				    <input type="text" placeholder="傳真" ng-model="customerData.customerFax">
-				  </label -->
-					<!-- label class="item item-input">
-				    <input type="text" placeholder="地址" ng-model="customerData.addr3" />
-				  </label -->
-					<!-- label class="item item-input">
-						<input type="text" placeholder="折扣 ( ex : 0.95 )" ng-model="customerData.customerPayrate" />
-					</label -->
-				</div>
-
-			</div>
-			<div id="login_04">
-				<button class="but_005" ui-sref="customer({})" ui-sref-opts="{reload: true}">客戶資訊</button>
-				<button class="but_006 quot" ng-click="saveCustomer(customerData);">存檔</button>
+			<div class="list_01 center">
+				<label class="item item-input item-input-cust-search">
+					<label class="text_s2 gray">客戶編號</label>
+				<input type="text" ng-model="customerData.customerNo" readonly="true" />
+				</label>
+				<label class="item item-input item-input-cust-search">
+					<label class="text_s2 gray">客戶名稱</label>
+				<input type="text" ng-model="customerData.customerName" />
+				</label>
+				<label class="item item-input item-input-cust-search">
+					<label class="text_s2 gray">統一編號</label>
+				<input type="text" ng-model="customerData.customerUnino" />
+				</label>
+				<!-- label class="item item-input">
+			    <input type="text" placeholder="聯絡人" ng-model="customerData.contactName" />
+			  </label -->
+				<label class="item item-input item-input-cust-search">
+					<label class="text_s2 gray">聯絡電話</label>
+				<input type="text" ng-model="customerData.customerTel" />
+				</label>
+				<label class="item item-input item-input-cust-search">
+					<label class="text_s2 gray">行動電話</label>
+				<input type="text" ng-model="customerData.customerPhone">
+				</label>
+				<!-- label class="item item-input item-input-cust-search">
+			    <input type="text" placeholder="傳真" ng-model="customerData.customerFax">
+			  </label -->
+				<!-- label class="item item-input">
+			    <input type="text" placeholder="地址" ng-model="customerData.addr3" />
+			  </label -->
+				<!-- label class="item item-input">
+					<input type="text" placeholder="折扣 ( ex : 0.95 )" ng-model="customerData.customerPayrate" />
+				</label -->
 			</div>
 		</div>
 
+		<ion-footer-bar class="page-footer block">
+			<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">客戶資訊</button>
+			<button class="footer" ng-click="saveCustomer(customerData);">存檔</button>
+		</ion-footer-bar>
 	</div>
-	<!-- /ion-scroll -->
 </ion-content>

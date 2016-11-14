@@ -131,5 +131,45 @@ angular.module('services.quotations', [])
       return d.promise;
     }
 
+        self.updateQuotation = function(quot) {
+          $log.info("QuotationsService.updateQuotation", quot);
+
+          var itemPart = "/update";
+          var httpMethod = "POST";
+          if (AppConfig.DEBUG_MODE) {
+            itemPart += "/success.json";
+            httpMethod = "GET";
+          }
+
+          var d = $q.defer();
+          var api = serviceBaseUrl + itemPart;
+
+          var config = {
+            'method': httpMethod,
+            'url': api,
+            'data': {
+              'token': $rootScope.user.accessToken,
+              'inputData': quot
+            }
+          }
+
+          $http(config).success(function(data) {
+            if (data.returnCode > -1) {
+              d.resolve(data.returnData);
+            } else {
+              d.reject(data);
+            }
+          }).error(function(err) {
+            err = {
+              'errOrg': err,
+              'returnDesc': '修改報價單失敗 !!'
+            };
+            d.reject(err);
+          });
+
+          $log.info("QuotationsService.updateQuotation", "-- end --");
+          return d.promise;
+        }
+
     return self;
   })

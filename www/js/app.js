@@ -59,7 +59,7 @@ angular
       })
       .state('goods.query', {
         url: '/:itemId',
-        templateUrl: 'templates/goods.item.html',
+        templateUrl: 'templates/goods.search.html',
         controller: 'GoodsCtrl',
         params: {
           flag: ''
@@ -134,6 +134,24 @@ angular
           flag: ''
         }
       })
+      .state('quotation.search', {
+        url: '/search',
+        templateUrl: 'templates/quotation.search.html',
+        controller: 'QuotationCtrl',
+        params: {
+          obj: null,
+          flag: ''
+        }
+      })
+      .state('quotation.edit', {
+        url: '/:quotNo/edit',
+        templateUrl: 'templates/quotation.edit.html',
+        controller: 'QuotationCtrl',
+        params: {
+          obj: null,
+          flag: ''
+        }
+      })
       .state('quotation.success', {
         url: '/success',
         templateUrl: 'templates/quotation.success.html',
@@ -143,14 +161,9 @@ angular
           flag: ''
         }
       })
-      .state('quotation.modify', {
-        url: '/:quotNo',
-        templateUrl: 'templates/quotation.new.html',
-        controller: 'QuotationCtrl',
-        params: {
-          obj: null,
-          flag: ''
-        }
+      .state('quotation.fail', {
+        url: '/fail',
+        templateUrl: 'templates/quotation.search.fail.html'
       })
       .state('fail', {
         url: '/fail',

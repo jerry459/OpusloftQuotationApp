@@ -96,6 +96,51 @@ angular.module('services.customers', [])
       return d.promise;
     }
 
+    self.saveCustomer = function(customer) {
+      $log.info("CustomersService.saveCustomer", "-- start --");
+
+      var itemPart = "/update";
+      var httpMethod = "POST";
+      if (AppConfig.DEBUG_MODE) {
+        itemPart += "/success.json";
+        httpMethod = "GET";
+      }
+
+      var d = $q.defer();
+      var api = serviceBaseUrl + itemPart;
+
+      var data = customer;
+      //data.addr1 = data.addr3;
+      //data.addr2 = data.addr3;
+
+      var config = {
+        'method': httpMethod,
+        'url': api,
+        'data': {
+          'token': $rootScope.user.accessToken,
+          'inputData': data
+        }
+      }
+
+      $log.debug("CustomersService.saveCustomer", "-- config --", config);
+      $http(config).success(function(data) {
+        if (data.returnCode > -1) {
+          d.resolve(data.returnData);
+        } else {
+          d.reject(data);
+        }
+      }).error(function(err) {
+        err = {
+          'errOrg': err,
+          'returnDesc': '新增失敗 !!'
+        };
+        d.reject(err);
+      });
+
+      $log.info("CustomersService.saveCustomer", "-- end --");
+      return d.promise;
+    }
+
     self.getCustomer = function(customerNo) {
       $log.info("CustomersService.getCustomer", "-- start --");
 

@@ -1,0 +1,47 @@
+<ion-content scroll="false" ui-view>
+	<div class="page-have-footer">
+		<ion-header-bar class="page-header">
+			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
+		</ion-header-bar>
+
+		<div class="page-content">
+			<p class="page-title">商品查詢</p>
+			<div class="row row-stock-list">
+				<div class="col col-75 col-dotted text_s2">
+					{{goods.stockName}}
+				</div>
+				<div class="col col-25 col-dotted text_s2 text-right">
+					{{goods.stockPrice | currency:"NT$ ":0}}
+				</div>
+			</div>
+
+			<hr width="98%" class="line9" />
+
+			<ion-scroll direction="y" style="height: 420px;">
+				<div class="row  row-stock-list" ng-repeat="item in goods.warehouseList">
+					<div class="col col-75 col-dotted text_s2">
+						{{item.whName}}
+					</div>
+					<div class="col col-25 col-dotted text_s2 text-right">
+						x {{item.num | currency:"":0}}
+					</div>
+				</div>
+			</ion-scroll>
+
+			<div class="row  row-stock-list" style="margin-top: 24px;">
+				<div class="col col-75 col-dotted text_m" style="font-weight: bold;">
+					庫存總計
+				</div>
+				<div class="col col-25 col-dotted text_m text-right">
+					x {{goods.stockNum | currency:"":0}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<ion-footer-bar class="page-footer block">
+		<button class="footer" ui-sref="goods">重新查詢</button>
+		<button class="footer" ui-sref="quotation.new({ 'obj': goods, 'flag': typeFlag })">應用報價</button>
+	</ion-footer-bar>
+	</div>
+</ion-content>

@@ -19,13 +19,20 @@ angular.module('starter')
     ctrl.init = function() {
       $rootScope.checkAuthState();
 
-      if ($state.params != undefined && $state.params.customerNo != undefined && $state.$current.name == "customer.edit") {
+      if ($state.params != undefined && $state.params.customerNo != undefined && $state.params.customerNo != "") {
         CustomersService.getCustomer($state.params.customerNo).then(function(data) {
-          ctrl.customerData = data;
+          $scope.customer = ctrl.customerData = data;
         }, function(resp) {
           $log.error("CustomerCtrl", "get customer fail.");
           $state.go('home');
         })
+      }
+
+      if ($state.params != undefined && $state.params.customerNo != undefined && $state.$current.name == "customer.edit") {
+
+      } else if ($state.params != undefined && $state.params.customerNo != undefined && $state.$current.name == "customer.quotation") {
+        ctrl.customer = $state.params.obj;
+        ctrl.getCustomerQuotation($state.params.customerNo);
       } else if ($state.params != undefined && $state.params.obj != undefined) {
         if ($state.$current.name == "customer.search") {
           ctrl.customers = $state.params.obj;
@@ -35,9 +42,6 @@ angular.module('starter')
             var customers = sessionStorage.getItem("customer.search.result");
             if (customers && customers != "") ctrl.customers = JSON.parse(customers);
           }
-        } else if ($state.$current.name == "customer.quotation") {
-          ctrl.customer = $state.params.obj;
-          ctrl.getCustomerQuotation($state.params.customerNo);
         } else if ($state.$current.name == "customer.success") {
           ctrl.customerNo = $state.params.obj;
         }
@@ -155,6 +159,32 @@ angular.module('starter')
       }
 
       CustomersService.addCustomer(item).then(function(data) {
+        $log.debug("CustomerCtrl.addCustomer", "success", data);
+
+        $state.go("customer.success", {
+          "obj": data.customerNo
+        });
+
+      }, function(err) {
+        $log.debug("CustomerCtrl.addCustomer", "error", err);
+        debugger;
+
+        $state.go("fail");
+      }).catch(function(ex) {
+        $log.debug("CustomerCtrl.addCustomer", "exception", ex);
+        debugger;
+
+      });
+    }
+
+    ctrl.saveCustomer = function(item) {
+
+      if (item == undefined || item.customerName == undefined || item.customerName == "") {
+        alert("至少需要輸入名稱");
+        return;
+      }
+
+      CustomersService.saveCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.addCustomer", "success", data);
 
         $state.go("customer.success", {

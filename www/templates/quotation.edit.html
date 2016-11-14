@@ -1,0 +1,82 @@
+<ion-content scroll="false">
+	<div class="page-have-footer">
+		<ion-header-bar class="page-header">
+			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
+		</ion-header-bar>
+
+		<div class="page-content">
+			<p class="page-title">報價單</p>
+
+			<div class="card card-cust-list">
+				<div class="row row-card">
+					<div class="col col-50">
+						<label class="text_s2" style="padding-right: 8px;">單號</label>{{quotation.quotNo}}
+					</div>
+					<div class="col col-50">
+						<label class="text_s2" style="padding-right: 8px;">日期</label>{{quotation.createDate}}
+					</div>
+				</div>
+
+				<div class="row row-card">
+					<div class="col col-100">
+						<label class="text_s2" style="padding-right: 8px;">客戶</label>[ {{quotation.customer.customerNo}} ] {{quotation.customer.customerName}}
+					</div>
+				</div>
+
+				<div class="row row-card">
+					<div class="col col-100">
+						<label class="text_s2" style="padding-right: 8px;">地址</label>{{quotation.customer.addr3}}
+					</div>
+				</div>
+
+				<div class="row row-card">
+					<div class="col col-50">
+						<label class="text_s2" style="padding-right: 8px;">電話</label>{{quotation.customer.customerTel}}
+					</div>
+					<div class="col col-50">
+						<label class="text_s2" style="padding-right: 8px;">行動</label>{{quotation.customer.customerPhone}}
+					</div>
+				</div>
+			</div>
+
+			<hr width="98%" class="line-quot" />
+
+			<ion-scroll class="card card-quot-goods" style="height: 270px">
+				<div class="item item-quot-goods-list" ng-repeat="(key, item) in quotation.goodsList">
+					<div class="row row-quot-goods-list row-center">
+						<div class="col col-50">
+							<div class="row row-quot-goods-list">
+								<div class="col	">
+									{{item.itemId}}
+								</div>
+							</div>
+							<div class="row row-quot-goods-list">
+								<div class="col">
+									{{item.itemName}}
+								</div>
+							</div>
+						</div>
+						<div class="col  center text-center col-center">
+							<input class="input-quot-amount text-center" type="number" min="1" placeholder="請輸入數量" ng-model="item.amount" ng-change="addAmount(item.itemId);" />
+						</div>
+						<div class="col col-10  center text-right col-center">
+							{{item.unitPrice | currency:"$ ":0}}
+						</div>
+						<div class="col col-20  center text-right col-center">
+							{{item.amount*item.unitPrice | currency:"$ ":0}}
+						</div>
+						<div class="col center text-right col-right">
+							<a class="ion-close-circled text_m function-color" ng-click="removeGoods(key)"></a>
+						</div>
+					</div>
+				</div>
+			</ion-scroll>
+			<p class="text_list_05-quot">合計：{{quotation.total | currency:"NT$ ":0}} 元 </p>
+		</div>
+
+		<ion-footer-bar class="page-footer block">
+			<button class="footer" ui-sref="quotation.search">重新查詢</button>
+			<button class="footer" ng-click="saveQuotation('update');">存　　檔</button>
+		</ion-footer-bar>
+	</div>
+</ion-content>

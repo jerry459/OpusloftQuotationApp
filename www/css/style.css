@@ -537,7 +537,7 @@ body {
   line-height: 40px;
 }
 
-.text_list_03 {
+. {
   font-family: "微軟正黑體";
   font-size: 20px;
   border-bottom-width: 2px;
@@ -576,7 +576,7 @@ body {
   font-family: "微軟正黑體";
   text-align: right;
   margin-right: 10px;
-  margin-top: 70px;
+  margin-top: 0px;
 }
 
 .text_list_06 {
@@ -705,6 +705,15 @@ body {
   margin-right: 10px;
 }
 
+.button.button-kiwi-large {
+  border-color: transparent;
+  background-color: #CABDB9;
+  color: #fff;
+  margin-right: 10px;
+  font-size: 24px;
+  height: 60px;
+}
+
 #title_01 {
   width: 480px;
   float: left;
@@ -723,10 +732,12 @@ body {
 
 .item.item-input-query input {
   font-size: 24px;
+  border-radius: 8px;
 }
 
 .item.item-input-query button {
   font-size: 24px;
+  border-radius: 8px;
 }
 
 .input-field-text {
@@ -776,6 +787,14 @@ body {
   padding-right: 0px;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.font-weight-normal {
+  font-weight: normal;
+}
+
 .text-v-center {
   vertical-align: middle;
 }
@@ -816,7 +835,7 @@ a.function-color:before {
 .card.card-quot-goods {
   background-color: transparent;
   height: 380px;
-      margin: 40px 10px;
+  margin: 40px 10px;
 }
 
 .card.card-cust-quot {
@@ -925,7 +944,7 @@ a.function-color:before {
 }
 
 .cust-list-body {
-  height: 570px;
+  height: 520px;
 }
 
 .gray {
@@ -946,4 +965,136 @@ a.function-color:before {
 
 .icon.icon-margin i {
   margin-left: : 20px;
+}
+
+.page-have-footer {
+  height: 966px;
+  width: 604px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url(../images/bg_img-1.jpg);
+}
+
+.page-header {
+  height: 180px;
+  background: none;
+}
+
+.page-footer {
+  height: 140px;
+  background: none;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.page-footer button {
+  font-size: 24px;
+  font-family: "微軟正黑體";
+  font-weight: normal;
+}
+
+.page-content {
+  /* text-align: center; */
+  padding-top: 180px;
+}
+
+.page-title {
+  font-size: 50px;
+  color: #9A4D3D;
+  font-family: "微軟正黑體";
+  text-shadow: 1px 1px 3px #666;
+  line-height: 60px;
+  text-align: center;
+}
+
+.page-subtitle {
+  font-size: 41px;
+  color: #999;
+  font-family: "微軟正黑體";
+  padding-top: 20px;
+  margin-left: 5px;
+}
+
+.page-note {
+  font-size: 16px;
+  color: red;
+  font-family: "微軟正黑體";
+  padding-top: 20px;
+  margin-left: 5px;
+}
+
+.cursor-hand {
+  cursor: pointer;
+}
+
+i.header-icon {
+  background-color: #8A7B6B;
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  font-size: 32px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+button.footer {
+  height: 60px;
+  width: 200px;
+  border: 0;
+  background-color: #937051;
+  margin: 35px 16px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px 2px #666;
+  font-size: 26px;
+  font-family: "微軟正黑體";
+  color: #FFFFFF;
+}
+
+.row.row-stock-list {
+  padding: 10px 30px;
+  font-family: "微軟正黑體";
+  font-size: 20px;
+  border-bottom-width: 2px;
+  border-bottom-style: dotted;
+  border-bottom-color: #8B8B8B;
+  color: #815A41;
+}
+
+.row.row-card {
+  padding: 2px 10px;
+  font-family: "微軟正黑體";
+  font-size: 20px;
+  color: #815A41;
+}
+
+.col.col-dotted {
+  border-style: none;
+  border-bottom: 1px dotted #000000;
+}
+
+.card.quot-info {
+  background-color: transparent;
+  margin: 8px 20px;
+  border-radius: 4px;
+  color: #9A4D3D;
+  text-align: left;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.line-quot {
+  border: 0;
+  border-top: 2px dotted #8A705E;
+  text-align: center;
+}
+
+.line-quot:after {
+  background: #d4d2cb;
+  content: '商品明細';
+  display: inline-block;
+  padding: 0 0em;
+  position: relative;
+  top: -0.7em;
 }

@@ -1,35 +1,39 @@
-<ion-content scroll="false">
-	<div id="page_web01_02">
-		<div id="login_01">
-			<p align="center" class="text_03 quot">{{customer.customerName}}</p>
-		</div>
+<ion-content scroll="false" ui-view>
+	<div class="page-have-footer">
+		<ion-header-bar class="page-header">
+			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
+		</ion-header-bar>
 
-		<div class="item item-cust-quot-header">
-			報價歷史紀錄
-		</div>
+		<div class="page-content">
+			<p class="page-title">{{customerData.customerName}}</p>
 
-		<ion-scroll style="height: 570px">
-			<div class="card card-cust-list" ng-repeat="(key, item) in quotations" ui-sref="quotation.modify({'quotNo': item.quotNo})">
-				<div class="item item-divider search-result-list">
-					<div class="row">
-						<div class="col col-100 text_s2">
-							<label>單號</label> {{item.quotNo}}
+			<div class="item item-cust-quot-header">
+				報價歷史紀錄
+			</div>
+
+			<ion-scroll style="height: 550px">
+				<div class="card card-cust-list" ng-repeat="(key, item) in quotations" ui-sref="quotation.edit({'quotNo': item.quotNo})">
+					<div class="item item-divider search-result-list">
+						<div class="row">
+							<div class="col col-100 text-left text_s2 font-weight-normal">
+								<label>單號</label> {{item.quotNo}}
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col col-50 text_s2">
-							{{item.total | currency :"NT$ ":0}}
-						</div>
-						<div class="col col-50 text-right text_s2">
-							{{item.createDate}}
+						<div class="row">
+							<div class="col col-50 text-left text_s2 font-weight-normal">
+								{{item.total | currency :"NT$ ":0}}
+							</div>
+							<div class="col col-50 text-right text_s2 font-weight-normal">
+								{{item.createDate}}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</ion-scroll>
-		<div id="page_web03_01-quot2">
-			<button class="but_005 quot2" ui-sref="customer">重新查詢</button>
-			<button class="but_006 quot2" ui-sref="quotation.new({'obj': customer, 'flag': 'add2quot'})" />新增報價</button>
+			</ion-scroll>
 		</div>
+
+		<ion-footer-bar class="page-footer block">
+			<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">重新查詢</button>
+		</ion-footer-bar>
 	</div>
 </ion-content>
