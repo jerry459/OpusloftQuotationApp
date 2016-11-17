@@ -1,11 +1,15 @@
-<ion-content scroll="false">
+<ion-scroll direction="y">
 	<div class="page-have-footer">
 		<ion-header-bar class="page-header">
 			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
 		</ion-header-bar>
 
 		<div class="page-content">
-			<p class="page-title">報價單</p>
+			<p class="page-title">
+				報價單
+				<img src="./images/add-1.png" width="101" height="101" ui-sref="goods({'flag': 'add2quot.edit', 'quotNo': quotation.quotNo})"
+				style="left: 480px; top: 160px; position: fixed; z-index: 9999" />
+			</p>
 
 			<div class="card card-cust-list">
 				<div class="row row-card">
@@ -19,7 +23,9 @@
 
 				<div class="row row-card">
 					<div class="col col-100">
-						<label class="text_s2" style="padding-right: 8px;">客戶</label>[ {{quotation.customer.customerNo}} ] {{quotation.customer.customerName}}
+						<label class="text_s2" style="padding-right: 8px;">客戶</label>
+						<span>[ {{quotation.customer.customerNo}} ] {{quotation.customer.customerName}}</span> &nbsp;
+						<i class="icon ion-edit cursor-hand text_s" ui-sref="customer({ 'obj': quotation, 'flag': 'add2quot.edit'})" ng-if="quotation.customer.customerNo=='000000'"></i>
 					</div>
 				</div>
 
@@ -79,4 +85,4 @@
 			<button class="footer" ng-click="saveQuotation('update');">存　　檔</button>
 		</ion-footer-bar>
 	</div>
-</ion-content>
+</ion-scroll>

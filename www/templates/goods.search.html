@@ -41,7 +41,8 @@
 
 	<ion-footer-bar class="page-footer block">
 		<button class="footer" ui-sref="goods">重新查詢</button>
-		<button class="footer" ui-sref="quotation.new({ 'obj': goods, 'flag': typeFlag })">應用報價</button>
+		<button class="footer" ui-sref="quotation.new({ 'obj': goods, 'flag': typeFlag })" ng-if="typeFlag!='add2quot.edit'">應用報價</button>
+		<button class="footer" ui-sref="quotation.edit({ 'obj': goods, 'flag': typeFlag, 'quotNo': quotNo })" ng-if="typeFlag=='add2quot.edit'">加入報價</button>
 	</ion-footer-bar>
 	</div>
 </ion-content>

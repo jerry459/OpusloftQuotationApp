@@ -5,7 +5,8 @@ angular.module('starter')
     var ctrl = $scope;
     var params = $state.params;
     var goods = {};
-    ctrl.typeFlag = ( params && params.flag ) ?  params.flag : 'new';
+    ctrl.typeFlag = (params && params.flag) ? params.flag : 'new';
+    ctrl.quotNo = (params && params.quotNo) ? params.quotNo : '';
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
@@ -28,12 +29,26 @@ angular.module('starter')
     };
 
     ctrl.clickQuery = function(itemId) {
-      if (itemId) {
-        $state.go('goods.query', {
-          'itemId': itemId
-        }, {
-          reload: false
-        });
+      $log.debug("GoodsCtrl.clickQuery", "flag=", ctrl.typeFlag, ", quotNo=", params.quotNo);
+
+      if (ctrl.typeFlag == 'add2quot.edit' && params.quotNo != '') {
+        if (itemId) {
+          $state.go('goods.query', {
+            'itemId': itemId,
+            'flag': ctrl.typeFlag,
+            'quotNo': ctrl.quotNo
+          }, {
+            reload: false
+          });
+        }
+      } else {
+        if (itemId) {
+          $state.go('goods.query', {
+            'itemId': itemId
+          }, {
+            reload: false
+          });
+        }
       }
     };
 
@@ -50,7 +65,7 @@ angular.module('starter')
         ctrl.goods.stockNum = 0;
         ctrl.goods.warehouseList = res.warehouseList;
 
-        for(var k in ctrl.goods.warehouseList){
+        for (var k in ctrl.goods.warehouseList) {
           ctrl.goods.stockNum += ctrl.goods.warehouseList[k].num;
         }
 

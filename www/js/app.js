@@ -33,6 +33,7 @@ angular
         }
       })
       // 使用者變更密碼
+      /*
       .state('user.updatePwd', {
         url: '/updatePwd',
         templateUrl: 'templates/user.updatePwd.html',
@@ -41,6 +42,7 @@ angular
           obj: null
         }
       })
+      */
       // 首頁
       .state('home', {
         url: '/home',
@@ -54,7 +56,8 @@ angular
         templateUrl: 'templates/goods.html',
         controller: 'GoodsCtrl',
         params: {
-          flag: ''
+          flag: '',
+          quotNo: ''
         }
       })
       .state('goods.query', {
@@ -62,7 +65,8 @@ angular
         templateUrl: 'templates/goods.search.html',
         controller: 'GoodsCtrl',
         params: {
-          flag: ''
+          flag: '',
+          quotNo: ''
         }
       })
       .state('barcode', {
@@ -101,7 +105,8 @@ angular
         templateUrl: 'templates/customer.search.html',
         controller: 'CustomerCtrl',
         params: {
-          obj: null
+          obj: null,
+          quotNo: ''
         }
       })
       .state('customer.quotation', {
@@ -191,14 +196,19 @@ angular
   })
 
 .run(function($ionicPlatform) {
+  ionic.Platform.isFullscreen = true;
+
   $ionicPlatform.registerBackButtonAction(function() {
     //if (condition) {
     if (false) {
       navigator.app.exitApp();
-    } else {}
+    } else {
+
+    }
   }, 100);
 
   $ionicPlatform.ready(function() {
+
     if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -212,7 +222,21 @@ angular
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    var showFullScreen = true,
+      showStatusBar = false;
+    ionic.Platform.fullScreen(showFullScreen, showStatusBar);
   });
+
+  var deviceInformation = ionic.Platform.device();
+  var isWebView = ionic.Platform.isWebView();
+  var isIPad = ionic.Platform.isIPad();
+  var isIOS = ionic.Platform.isIOS();
+  var isAndroid = ionic.Platform.isAndroid();
+  var isWindowsPhone = ionic.Platform.isWindowsPhone();
+  var currentPlatform = ionic.Platform.platform();
+  var currentPlatformVersion = ionic.Platform.version();
+
 })
 
 .run(function($rootScope, $state, $location, $http, $ionicLoading, UsersService) {
@@ -231,6 +255,12 @@ angular
   $rootScope.goBack = function() {
     history.back();
     scope.$apply();
+  }
+
+  window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandler);
+
+  $rootScope.keyboardHideHandler = function(e) {
+    alert('Goodnight, sweet prince');
   }
 
   $rootScope.checkAuthState = function() {

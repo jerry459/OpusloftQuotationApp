@@ -65,7 +65,7 @@ angular.module('starter')
     }
 
     ctrl.selCustomer = function(cust) {
-      if (cust && ctrl.typeFlag != 'add2quot') {
+      if (cust && ctrl.typeFlag != 'add2quot' && ctrl.typeFlag != 'add2quot.edit') {
         $state.go('customer.quotation', {
           'obj': cust,
           'customerNo': cust.customerNo
@@ -76,6 +76,14 @@ angular.module('starter')
         $state.go('quotation.new', {
           'obj': cust,
           'flag': ctrl.typeFlag
+        }, {
+          reload: true
+        });
+      } else if (cust && ctrl.typeFlag == 'add2quot.edit') {
+        $state.go('quotation.edit', {
+          'obj': cust,
+          'flag': ctrl.typeFlag,
+          'quotNo': params.quotNo
         }, {
           reload: true
         });
@@ -109,10 +117,16 @@ angular.module('starter')
       CustomersService.findCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomer", "success", data);
 
-        $state.go('customer.search', {
-          'obj': data
-        }, {
-          reload: false
+        var args = {};
+        args.obj = data;
+        if ( ctrl.typeFlag && ctrl.typeFlag == 'add2quot.edit') {
+          if ( params && params.obj && params.obj.quotNo && params.obj.quotNo != "" ) {
+            $state.params.quotNo = args.quotNo = params.obj.quotNo;
+          }
+        }
+
+        $state.go('customer.search', args, {
+          reload: true
         });
 
       }, function(err) {

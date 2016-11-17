@@ -1,28 +1,26 @@
-<ion-content scroll="false" ui-view>
-
+<ion-scroll direction="y">
 	<div class="page-have-footer">
 		<ion-header-bar class="page-header">
 			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
 		</ion-header-bar>
 
-		<div class="page-content">
+		<div class="page-content text-center">
 			<p class="page-title">客戶資訊</p>
 			<p class="page-note">客戶資訊儲存成功</p>
 
-			<!-- div class="card col col-75 center">
+			<div class="card col col-75 center">
 				<div class="item item-divider bgc-kiwi">
-					<h2 class="light">客戶已存檔</h2>
+					<h2 class="light">客戶編號</h2>
 				</div>
-				<div class="item item-text-wrap">
-					<p>客戶編號：{{customerNo}}</p>
+				<div class="item item-text-wrap text_l">
+					{{customerNo}}
 				</div>
-			</div -->
+			</div>
 		</div>
-
-		<ion-footer-bar class="page-footer block">
-			<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">客戶資訊</button>
-			<button class="footer" ui-sref="home">回主畫面</button>
-		</ion-footer-bar>
 	</div>
 
-</ion-content>
+	<ion-footer-bar class="page-footer block">
+		<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">客戶資訊</button>
+		<button class="footer" ui-sref="home">回主畫面</button>
+	</ion-footer-bar>
+</ion-scroll>

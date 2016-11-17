@@ -6,6 +6,7 @@ angular.module('starter')
     var ctrl = $scope;
     var user = {};
     var params = $state.params;
+    ctrl.message = '';
 
     ctrl.init = function() {
       if (params != undefined && params.obj != undefined) {
@@ -52,20 +53,22 @@ angular.module('starter')
         $log.debug("UsersCtrl.login", "error", err);
         debugger;
 
-        if (err.returnCode == 1) {
-          alert(err.returnDesc);
-          $scope.loginData = {};
-          $scope.loginData.account = err.returnData.emUserid;
-          $scope.loginData.token = err.returnData.token;
-          $state.go('user.updatePwd', {
-            'obj': $scope.loginData
-          }, {
-            reload: false
-          });
-        } else {
+        ctrl.message = err.returnDesc;
+        /*
+                if (err.returnCode == 1) {
+                  alert(err.returnDesc);
+                  $scope.loginData = {};
+                  $scope.loginData.account = err.returnData.emUserid;
+                  $scope.loginData.token = err.returnData.token;
+                  $state.go('user.updatePwd', {
+                    'obj': $scope.loginData
+                  }, {
+                    reload: false
+                  });
+                } else {
 
-        }
-
+                }
+        */
       }).catch(function(ex) {
         $log.debug("UsersCtrl.login", "exception", ex);
         debugger;

@@ -1,22 +1,31 @@
-<ion-content scroll="false">
-  <ion-scroll direction="xy">
-    <div id="page_web01" ui-view>
-      <div id="login_01"><img src="images/sys_login-1.png" width="385" height="160" /></div>
+<ion-scroll direction="y">
+  <div class="page-have-footer">
+    <ion-header-bar class="page-header">
+      <!-- i ui-sref="home" class="icon ion-navicon-round header-icon white"></i -->
+    </ion-header-bar>
 
-      <div class="list list-inset list-inset-query">
-        <div class="item item-input-inset  item-input-query">
+    <div class="page-content text-center">
+      <p class="page-title"><img src="images/sys_login-1.png" width="385" height="160" /></p>
+
+      <div class="list list-inset list-inset-login">
+        <div class="item item-input-inset  item-input-login">
           <input type="text" placeholder="請輸入帳號" ng-model="loginData.account" />
         </div>
-        <div class="item item-input-inset  item-input-query">
+        <div class="item item-input-inset  item-input-login">
           <input type="password" placeholder="請輸入密碼" ng-model="loginData.pwd" />
         </div>
       </div>
 
-      <div id="login_04">
-        <div align="center">
-          <img src="images/but_login-1.png" width="480" height="119" ng-click="login(loginData);" />
-        </div>
-      </div>
+      <div class="red text_s2">{{message}}</div>
+
+      <br />
+      <br />
+      <img src="images/but_login-1.png" width="480" height="119" ng-click="login(loginData);" />
     </div>
-  </ion-scroll>
-</ion-content>
+
+    <ion-footer-bar class="page-footer block">
+
+    </ion-footer-bar>
+
+  </div>
+</ion-scroll>

@@ -1,31 +1,26 @@
-<ion-content scroll="false">
-	<ion-scroll direction="y">
-		<div id="page_web01" ui-view>
+<ion-scroll direction="y">
+	<div class="page-have-footer">
+		<ion-header-bar class="page-header">
+			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
+		</ion-header-bar>
 
-			<div id="page_web05">
-				<div id="page02_01">
+		<div class="page-content text-center">
+			<p class="page-title">報價單</p>
+			<p class="page-note assertive">報價單已存檔</p>
 
-					<p class="text_03_01">報價單</p>
-
-					<p class="assertive">報價單已存檔</p>
-
-					<div class="card col col-75 center">
-						<div class="item item-divider bgc-kiwi">
-							<h2 class="light">報價單號</h2>
-						</div>
-						<div class="item item-text-wrap">
-							<p>{{quotNo}}</p>
-						</div>
-					</div>
+			<div class="card col col-75 center">
+				<div class="item item-divider bgc-kiwi">
+					<h2 class="light">報價單號</h2>
 				</div>
-
-			</div>
-			<div id="login_04_01">
-
-				<button class="but_005" ui-sref="quotation.edit({'quotNo': quotNo})">修改報價單</button>
-				<button class="but_006" ui-sref="home">回主畫面</button>
-
+				<div class="item item-text-wrap text_l">
+					{{quotNo}}
+				</div>
 			</div>
 		</div>
-	</ion-scroll>
-</ion-content>
+	</div>
+
+	<ion-footer-bar class="page-footer block">
+		<button class="footer" ui-sref="quotation.edit({'quotNo': quotNo})">修改報價單</button>
+		<button class="footer" ui-sref="home">回主畫面</button>
+	</ion-footer-bar>
+</ion-scroll>

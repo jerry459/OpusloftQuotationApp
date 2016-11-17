@@ -12,12 +12,13 @@
 					<!--  | filter:{visible: true} | limitTo: 50 -->
 					<div class="item item-divider search-result-title">
 						<div class="row">
-							<div class="col col-75" style="line-height: 32px;">
+							<div class="col col-75" style="line-height: 42px;">
 								[{{item.customerNo}}] {{item.customerName}}
 							</div>
-							<div class="col col-25 text-right text_m">
-								<i ui-sref="customer.edit({ 'customerNo': item.customerNo })" class="icon ion-compose white"></i>
-								<i class="icon ion-ios-paper white" ng-click="selCustomer(item);"></i>
+							<div class="col col-25 text-right text_l">
+								<i class="icon ion-compose white" ui-sref="customer.edit({ 'customerNo': item.customerNo })" ng-if="typeFlag!='add2quot' && typeFlag!='add2quot.edit'"></i>
+								<i class="icon ion-ios-paper white" ng-click="selCustomer(item);" ng-if="typeFlag!='add2quot' && typeFlag!='add2quot.edit'"></i>
+								<i class="icon ion-ios-redo white" ng-click="selCustomer(item);" ng-if="typeFlag=='add2quot' || typeFlag=='add2quot.edit'"></i>
 							</div>
 						</div>
 					</div>

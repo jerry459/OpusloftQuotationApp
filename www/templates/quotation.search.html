@@ -1,4 +1,4 @@
-<ion-content scroll="false">
+<ion-scroll direction="y">
 	<div class="page-have-footer">
 		<ion-header-bar class="page-header">
 			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
@@ -8,17 +8,18 @@
 			<p class="page-title">報價單查詢</p>
 			<p class="page-subtitle">請輸入報價單號查詢</p>
 			<p class="page-note cursor-hand" ui-sref="customer"><u>如不知報價單號請前往客戶資訊查詢</u></p>
-		</div>
 
-		<ion-footer-bar class="page-footer block">
 			<div class="list list-inset list-inset-query">
 				<div class="item item-input-inset  item-input-query">
 					<label class="item item-input-wrapper item-input-query">
-		       	<input type="text" placeholder="請輸入報價單號" ng-model="queryCode">
-		       </label>
+			       	<input type="text" placeholder="請輸入報價單號" ng-model="queryCode">
+			       </label>
 					<button class="button icon ion-search button-kiwi-large" ui-sref="quotation.edit({'quotNo' : queryCode})">搜尋</button>
 				</div>
 			</div>
+		</div>
+
+		<ion-footer-bar class="page-footer block">
 		</ion-footer-bar>
 	</div>
-</ion-content>
+</ion-scroll>

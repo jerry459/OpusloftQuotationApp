@@ -1,4 +1,4 @@
-<ion-content scroll="false">
+<ion-scroll direction="y">
 	<div class="page-have-footer" ui-view>
 		<ion-header-bar class="page-header">
 			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
@@ -7,18 +7,19 @@
 		<div class="page-content text-center">
 			<p class="page-title">商品查詢</p>
 			<p class="page-subtitle">請掃描商品條碼查詢</p>
-		</div>
 
-		<ion-footer-bar class="page-footer block">
 			<div class="list list-inset list-inset-query">
 				<div class="item item-input-inset  item-input-query">
 					<label class="item item-input-wrapper item-input-query">
-							<input type="text" placeholder="請輸入商品條碼" ng-model="queryCode" />
-						</label>
+								<input type="text" placeholder="請輸入商品條碼" ng-model="queryCode" />
+							</label>
 					<button class="button button-kiwi-large icon ion-search" ng-click="clickQuery(queryCode)"> 搜尋</button>
 					<button class="button button-kiwi-large icon ion-qr-scanner" ng-click="scanBarcode()"> 掃瞄</button>
 				</div>
 			</div>
+		</div>
+
+		<ion-footer-bar class="page-footer block">
 		</ion-footer-bar>
 	</div>
-</ion-content>
+</ion-scroll>

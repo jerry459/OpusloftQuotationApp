@@ -21,6 +21,11 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="Fullscreen" value="true"/>
+  <preference name="SetFullscreen" value="true"/>
+  <preference name="Orientation" value="portrait"/>
+  <preference name="ErrorUrl" value="error.html"/>
+  <preference name="KeyboardShrinksView" value="true" />
+  <preference name="HideKeyboardFormAccessoryBar" value="true" />
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>

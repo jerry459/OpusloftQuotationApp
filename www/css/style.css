@@ -730,8 +730,18 @@ body {
   border-radius: 8px;
 }
 
+.list.list-inset-login {
+  margin: 20px 80px;
+  border-radius: 8px;
+}
+
 .item.item-input-query input {
   font-size: 24px;
+  border-radius: 8px;
+}
+
+.item.item-input-login input {
+  font-size: x-large;
   border-radius: 8px;
 }
 
@@ -963,6 +973,10 @@ a.function-color:before {
   color: white;
 }
 
+.red {
+  color: red;
+}
+
 .icon.icon-margin i {
   margin-left: : 20px;
 }
@@ -978,9 +992,11 @@ a.function-color:before {
 .page-header {
   height: 180px;
   background: none;
+  padding-top: 24px;
 }
 
 .page-footer {
+  bottom: 0px;
   height: 140px;
   background: none;
   text-align: center;

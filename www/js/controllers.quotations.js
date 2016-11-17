@@ -71,29 +71,55 @@ angular.module('starter')
               quot.total = 0;
               quot.createDate = $filter('date')(new Date(res.quoDate1), AppConfig.DATE_FORMAT);
               quot.customer = {};
-              quot.customer.addr1 = "";
-              quot.customer.addr2 = "";
-              quot.customer.addr3 = "";
-              quot.customer.customerFax = "";
-              quot.customer.customerName = res.custName;
-              quot.customer.customerNo = res.custNo;
-              quot.customer.customerPayrate = 100;
-              quot.customer.customerTel = "";
+
+              if ($state.params && $state.params.obj && $state.params.obj.customerNo) {
+                quot.customer = $state.params.obj;
+              } else {
+                quot.customer.customerName = res.custName;
+                quot.customer.customerNo = res.custNo;
+                quot.customer.customerPayrate = 100;
+                quot.customer.addr1 = "";
+                quot.customer.addr2 = "";
+                quot.customer.addr3 = "";
+                quot.customer.customerFax = "";
+                quot.customer.customerTel = "";
+              }
+
+              var item = {};
+              var isGoodsExist = false;
               quot.goodsList = {};
               for (var i = 0; i < res.detailList.length; i++) {
-                var item = {};
+                item = {};
                 item.itemId = res.detailList[i].stockNo;
                 item.itemName = res.detailList[i].stockName;
                 item.unitPrice = res.detailList[i].stockPrice ? res.detailList[i].stockPrice : 0;
                 item.amount = res.detailList[i].stockQty ? res.detailList[i].stockQty : 1;
+
                 item.subTotal = item.amount * item.unitPrice;
                 quot.goodsList[item.itemId] = item;
               }
+
+              if ($state.params && $state.params.obj && $state.params.obj.stockNo) {
+                if (quot.goodsList.hasOwnProperty($state.params.obj.stockNo)) {
+                  quot.goodsList[$state.params.obj.stockNo].amount++;
+                } else {
+                  item = {};
+                  item.itemId = $state.params.obj.stockNo;
+                  item.itemName = $state.params.obj.stockName;
+                  item.unitPrice = $state.params.obj.stockPrice ? $state.params.obj.stockPrice : 0;
+                  item.amount = 1;
+
+                  item.subTotal = item.amount * item.unitPrice;
+                  quot.goodsList[item.itemId] = item;
+                }
+
+                //if ($state.params.obj.stockNo == item.itemId) item.amount++;
+              }
+
               ctrl.quotation = quot;
               ctrl.calcQuotation();
               if (ctrl.quotation.customer.customerNo != undefined) {
                 CustomersService.getCustomer(ctrl.quotation.customer.customerNo).then(function(data) {
-                  debugger;
 
                   ctrl.quotation.customer = data;
 
@@ -187,6 +213,7 @@ angular.module('starter')
 
           });
         } else {
+          quot.quoNo = ctrl.quotation.quotNo;
           QuotationsService.updateQuotation(quot).then(function(res) {
             $log.debug("QuotationsService.updateQuotation", "res", res);
 
