@@ -973,8 +973,13 @@ a.function-color:before {
   color: white;
 }
 
+
 .red {
   color: red;
+}
+
+.bg-color-white {
+  background-color: white;
 }
 
 .icon.icon-margin i {
@@ -1113,4 +1118,10 @@ button.footer {
   padding: 0 0em;
   position: relative;
   top: -0.7em;
+}
+
+.version {
+  background: white;
+  padding: 2px 7px;
+  color: gray;
 }

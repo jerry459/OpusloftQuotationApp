@@ -208,7 +208,6 @@ angular
   }, 100);
 
   $ionicPlatform.ready(function() {
-
     if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -223,8 +222,8 @@ angular
       StatusBar.styleDefault();
     }
 
-    var showFullScreen = true,
-      showStatusBar = false;
+    var showFullScreen = true;
+    var showStatusBar = false;
     ionic.Platform.fullScreen(showFullScreen, showStatusBar);
   });
 
@@ -241,6 +240,8 @@ angular
 
 .run(function($rootScope, $state, $location, $http, $ionicLoading, UsersService) {
   console.info("CheckAuthState", "-- start --");
+
+$rootScope.version = AppConfig.VERSION;
 
   $rootScope.$on('loading:show', function() {
     $ionicLoading.show({

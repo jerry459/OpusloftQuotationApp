@@ -15,6 +15,9 @@ angular.module('starter')
     var ctrl = $scope;
     var params = $state.params;
     ctrl.typeFlag = (params && params.flag) ? params.flag : 'search';
+    ctrl.message = '';
+    ctrl.quotNo = '';
+    ctrl.quotation = {};
 
     ctrl.init = function() {
       $rootScope.checkAuthState();
@@ -35,6 +38,9 @@ angular.module('starter')
         ctrl.getCustomerQuotation($state.params.customerNo);
       } else if ($state.params != undefined && $state.params.obj != undefined) {
         if ($state.$current.name == "customer.search") {
+          if ($state.params.quotNo) {
+            ctrl.quotNo = $state.params.quotNo;
+          }
           ctrl.customers = $state.params.obj;
           if (ctrl.customers && Object.prototype.toString.call(ctrl.customers) === "[object Array]") {
             sessionStorage.setItem("customer.search.result", JSON.stringify(ctrl.customers));
@@ -44,6 +50,12 @@ angular.module('starter')
           }
         } else if ($state.$current.name == "customer.success") {
           ctrl.customerNo = $state.params.obj;
+        } else if ($state.$current.name == "customer" && ctrl.typeFlag == "add2quot.edit") {
+          if ($state.params.obj.quotNo) {
+            ctrl.quotNo = $state.params.obj.quotNo;
+          } else if ($state.params.quotNo) {
+            ctrl.quotNo = $state.params.quotNo;
+          }
         }
       } else if ($state.params == undefined) {
         if ($state.$current.name == "customer.search") {
@@ -117,17 +129,22 @@ angular.module('starter')
       CustomersService.findCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.queryCustomer", "success", data);
 
-        var args = {};
-        args.obj = data;
-        if ( ctrl.typeFlag && ctrl.typeFlag == 'add2quot.edit') {
-          if ( params && params.obj && params.obj.quotNo && params.obj.quotNo != "" ) {
-            $state.params.quotNo = args.quotNo = params.obj.quotNo;
+        if (data.length > 0) {
+          var args = {};
+          args.obj = data;
+          if (ctrl.typeFlag && ctrl.typeFlag == 'add2quot.edit') {
+            if (params && params.obj && params.obj.quotNo && params.obj.quotNo != "") {
+              args.quotation = params.obj;
+              $state.params.quotNo = args.quotNo = args.quotation.quotNo;
+            }
           }
-        }
 
-        $state.go('customer.search', args, {
-          reload: true
-        });
+          $state.go('customer.search', args, {
+            reload: true
+          });
+        } else {
+          ctrl.message = '找不到客戶 !!'
+        }
 
       }, function(err) {
         $log.debug("CustomerCtrl.queryCustomer", "error", err);

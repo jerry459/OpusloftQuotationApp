@@ -42,7 +42,8 @@
 		</div>
 
 		<ion-footer-bar class="page-footer block">
-			<button class="footer" ui-sref="customer">重新查詢</button>
+			<button class="footer" ui-sref="customer({ 'quotNo': quotNo, 'flag': 'add2quot.edit'})" ng-if="typeFlag=='add2quot.edit'">重新查詢</button>
+			<button class="footer" ui-sref="customer" ng-if="typeFlag!='add2quot.edit'">重新查詢</button>
 		</ion-footer-bar>
 	</div>
 </ion-content>

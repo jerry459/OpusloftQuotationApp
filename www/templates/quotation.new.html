@@ -14,17 +14,17 @@
 			<div class="card card-cust-list">
 				<div class="row row-card">
 					<div class="col col-50">
-						<label class="text_s2" style="padding-right: 8px;">單號</label>{{quotation.quotNo}}
+						<label class="text_s2" style="padding-right: 8px;">日期</label>{{quotation.createDate}}
 					</div>
 					<div class="col col-50">
-						<label class="text_s2" style="padding-right: 8px;">日期</label>{{quotation.createDate}}
+						<label class="text_s2" style="padding-right: 8px;">單號</label>{{quotation.quotNo}}
 					</div>
 				</div>
 
 				<div class="row row-card">
 					<div class="col col-100">
 						<label class="text_s2" style="padding-right: 8px;">客戶</label>
-						<span ng-if="quotation.customer.customerNo">[ {{quotation.customer.customerNo}} ] {{quotation.customer.customerName}}</span> &nbsp;
+						<span ng-if="quotation.customer.customerNo">{{quotation.customer.customerNo}} {{quotation.customer.customerName}}</span> &nbsp;
 						<i class="icon ion-edit cursor-hand text_s" ui-sref="customer({ 'obj': quotation, 'flag': 'add2quot.edit'})" ng-if="quotation.customer.customerNo=='000000' || quotation.customer.customerNo==''"></i>
 					</div>
 				</div>
@@ -81,8 +81,8 @@
 		</div>
 
 		<ion-footer-bar class="page-footer block">
-			<button class="footer" ui-sref="quotation.search">重新查詢</button>
-			<button class="footer" ng-click="saveQuotation('update');">存　　檔</button>
+			<button class="footer" ui-sref="customer({ 'obj': quotation, 'flag': 'add2quot' })">客戶資訊</button>
+			<button class="footer" ng-click="saveQuotation('new');">存　　檔</button>
 		</ion-footer-bar>
 	</div>
 </ion-scroll>

@@ -43,7 +43,7 @@ angular.module('starter')
 
           $state.go("home");
         } else {
-          $scope.loginData.account = "";
+          //$scope.loginData.account = "";
           $scope.loginData.pwd = "";
           user = {};
           UsersService.clearLocalStorage();
@@ -53,6 +53,7 @@ angular.module('starter')
         $log.debug("UsersCtrl.login", "error", err);
         debugger;
 
+        $scope.loginData.pwd = "";
         ctrl.message = err.returnDesc;
         /*
                 if (err.returnCode == 1) {
@@ -73,6 +74,7 @@ angular.module('starter')
         $log.debug("UsersCtrl.login", "exception", ex);
         debugger;
 
+        $scope.loginData.pwd = "";
       });
     }
 

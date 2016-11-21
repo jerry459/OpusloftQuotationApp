@@ -1,8 +1,6 @@
-<ion-content scroll="false">
+<ion-scroll>
 	<div class="page-have-footer" ui-view>
-		<ion-header-bar class="page-header">
-			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
-		</ion-header-bar>
+		<common-header version="{{version}}"></common-header>
 
 		<div class="page-content">
 			<p class="page-title">客戶資訊</p>
@@ -35,12 +33,16 @@
 				<!-- label class="item item-input">
 					<input type="text" placeholder="折扣 ( ex : 0.95 )" ng-model="customerData.customerPayrate" />
 				</label -->
+
+				<p class="page-note red text-center" ng-if="message.length!=0">{{message}}</p>
 			</div>
 		</div>
 
 		<ion-footer-bar class="page-footer block">
-			<button class="footer" ng-click="addCustomer(customerData);">新增</button>
-			<button class="footer" ng-click=" queryCustomer(customerData);">查詢</button>
+			<button class="footer" ui-sref="quotation.edit({'quotNo': quotNo})" ng-if="typeFlag=='add2quot.edit'">返回</button>
+			<button class="footer" ui-sref="quotation.new({})" ng-if="typeFlag=='add2quot'">返回</button>
+			<button class="footer" ng-click="addCustomer(customerData);" ng-if="typeFlag!='add2quot' && typeFlag!='add2quot.edit'">新增</button>
+			<button class="footer" ng-click="queryCustomer(customerData);">查詢</button>
 		</ion-footer-bar>
 	</div>
-</ion-content>
+</ion-scroll>
