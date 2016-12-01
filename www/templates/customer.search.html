@@ -1,8 +1,6 @@
 <ion-content scroll="false" ui-view>
 	<div class="page-have-footer">
-		<ion-header-bar class="page-header">
-			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
-		</ion-header-bar>
+		<common-header version="version"></common-header>
 
 		<div class="page-content">
 			<p class="page-title">客戶資訊</p>
@@ -31,7 +29,7 @@
 								<label>行動電話</label> {{item.customerPhone}}
 							</div>
 						</div>
-						<div class="row">
+						<div class="row" ng-show="false">
 							<div class="col col-100 text-left">
 								<label>地　　址</label> {{item.addr3}}
 							</div>

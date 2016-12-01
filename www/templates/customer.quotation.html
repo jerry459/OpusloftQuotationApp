@@ -1,8 +1,6 @@
 <ion-content scroll="false" ui-view>
 	<div class="page-have-footer">
-		<ion-header-bar class="page-header">
-			<i ui-sref="home" class="icon ion-navicon-round header-icon white"></i>
-		</ion-header-bar>
+		<common-header version="version"></common-header>
 
 		<div class="page-content">
 			<p class="page-title">{{customerData.customerName}}</p>
@@ -12,7 +10,7 @@
 			</div>
 
 			<ion-scroll style="height: 550px">
-				<div class="card card-cust-list" ng-repeat="(key, item) in quotations" ui-sref="quotation.edit({'quotNo': item.quotNo})">
+				<div class="card card-cust-list" ng-repeat="(key, item) in quotations" ng-click="editQuotation(item.quotNo);" ui-sref="quotation.edit({'quotNo': item.quotNo})">
 					<div class="item item-divider search-result-list">
 						<div class="row">
 							<div class="col col-100 text-left text_s2 font-weight-normal">
@@ -34,7 +32,8 @@
 
 		<ion-footer-bar class="page-footer block">
 			<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">重新查詢</button>
-			<button class="footer" ui-sref="quotation.new({'obj': customerData, 'flag': 'add2auot'})">新增報價</button>
+			<!-- button class="footer" ui-sref="quotation.new({'obj': customerData, 'flag': 'add2auot'})" ng-click="addNewQuotation(customerData);">新增報價</button -->
+			<button class="footer" ng-click="addNewQuotation(customerData);">新增報價</button>
 		</ion-footer-bar>
 	</div>
 </ion-content>

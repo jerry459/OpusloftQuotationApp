@@ -168,7 +168,7 @@ angular.module('starter')
           quot.sum = data[index].quoSum;
           quot.total = data[index].quoTotal;
           quot.createDate = $filter('date')(new Date(data[index].quoDate1), AppConfig.DATE_FORMAT);
-          $scope.quotations[data[index].quotNo] = quot;
+          $scope.quotations[quot.quotNo] = quot;
         }
 
       }, function(err) {
@@ -231,6 +231,31 @@ angular.module('starter')
         $log.debug("CustomerCtrl.addCustomer", "exception", ex);
         debugger;
 
+      });
+    }
+
+    ctrl.addNewQuotation = function(customer) {
+      if (sessionStorage.hasOwnProperty('quotation')) {
+        delete sessionStorage['quotation'];
+      }
+
+      $state.go('quotation.new', {
+        'obj': customer,
+        'flag': 'add2auot'
+      }, {
+        reload: true
+      });
+    }
+
+    ctrl.editQuotation = function(quotNo) {
+      if (sessionStorage.hasOwnProperty('quotation')) {
+        delete sessionStorage['quotation'];
+      }
+
+      $state.go('quotation.edit', {
+        'quotNo': item.quotNo
+      }, {
+        reload: true
       });
     }
 

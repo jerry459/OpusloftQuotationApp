@@ -1,41 +1,40 @@
 <ion-scroll>
 	<div class="page-have-footer" ui-view>
-		<common-header version="{{version}}"></common-header>
+		<common-header version="version"></common-header>
 
 		<div class="page-content">
 			<p class="page-title">客戶資訊</p>
 
-			<div class="list_01 center">
-				<label class="item item-input item-input-cust-search">
-			    <input type="text" placeholder="客戶編號" ng-model="customerData.customerNo" />
-			  </label>
-				<label class="item item-input item-input-cust-search">
-			    <input type="text" placeholder="客戶名稱" ng-model="customerData.customerName" />
-			  </label>
-				<label class="item item-input item-input-cust-search">
-			    <input type="text" placeholder="統一編號" ng-model="customerData.customerUnino" />
-			  </label>
-				<!-- label class="item item-input">
-			    <input type="text" placeholder="聯絡人" ng-model="customerData.contactName" />
-			  </label -->
-				<label class="item item-input item-input-cust-search">
-			    <input type="text" placeholder="聯絡電話" ng-model="customerData.customerTel" />
-			  </label>
-				<label class="item item-input item-input-cust-search">
-			    <input type="text" placeholder="行動電話" ng-model="customerData.customerPhone">
-			  </label>
-				<!-- label class="item item-input item-input-cust-search">
-			    <input type="text" placeholder="傳真" ng-model="customerData.customerFax">
-			  </label -->
-				<!-- label class="item item-input">
-			    <input type="text" placeholder="地址" ng-model="customerData.addr3" />
-			  </label -->
-				<!-- label class="item item-input">
+			<div class="list list-inset list-inset-login">
+				<div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="客戶編號" ng-model="customerData.customerNo" />
+				</div>
+				<div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="客戶名稱" ng-model="customerData.customerName" />
+				</div>
+				<div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="統一編號" ng-model="customerData.customerUnino" />
+				</div>
+				<!-- div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="聯絡人" ng-model="customerData.contactName" />
+				</div -->
+				<div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="聯絡電話" ng-model="customerData.customerTel" />
+				</div>
+				<div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="行動電話" ng-model="customerData.customerPhone">
+				</div>
+				<!-- div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="傳真" ng-model="customerData.customerFax">
+				</div>
+				<div class="item item-input item-input-cust-search">
+					<input type="text" placeholder="地址" ng-model="customerData.addr3" />
+				</div>
+				<div class="item item-input item-input-cust-search">
 					<input type="text" placeholder="折扣 ( ex : 0.95 )" ng-model="customerData.customerPayrate" />
-				</label -->
-
-				<p class="page-note red text-center" ng-if="message.length!=0">{{message}}</p>
+				</div -->
 			</div>
+			<p class="page-note red text-center" ng-if="message.length!=0">{{message}}</p>
 		</div>
 
 		<ion-footer-bar class="page-footer block">

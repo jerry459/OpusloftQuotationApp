@@ -54,7 +54,12 @@ angular.module('starter')
         debugger;
 
         $scope.loginData.pwd = "";
-        ctrl.message = err.returnDesc;
+
+        if (err && err.returnDesc) {
+          ctrl.message = err.returnDesc;
+        }else{
+          ctrl.message = '登入失敗!!';
+        }
         /*
                 if (err.returnCode == 1) {
                   alert(err.returnDesc);

@@ -609,17 +609,21 @@ body {
 
 .line9 {
   border: 0;
-  border-top: 2px dotted #8A705E;
+  border-top: 2px dotted #555555;
   text-align: center;
+  padding: 0.5em 0;
+  margin: 1em 0 0 0;
+  width: auto;
 }
 
 .line9:after {
   background: #d4d2cb;
   content: '庫存狀況';
   display: inline-block;
-  padding: 0 0.5em;
+  padding: 0.5em 0.5em;
   position: relative;
-  top: -0.7em;
+  top: -1.3em;
+  font-size: x-large;
 }
 
 #page_05_01 {
@@ -731,7 +735,7 @@ body {
 }
 
 .list.list-inset-login {
-  margin: 20px 80px;
+  margin: 20px 60px;
   border-radius: 8px;
 }
 
@@ -741,8 +745,11 @@ body {
 }
 
 .item.item-input-login input {
-  font-size: x-large;
-  border-radius: 8px;
+  font-size: 24px;
+  padding: 5px;
+  margin: 5px;
+  height: 48px;
+  line-height: 48px;
 }
 
 .item.item-input-query button {
@@ -816,8 +823,10 @@ body {
 
 .item.item-input-cust-search input {
   font-size: 24px;
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 5px;
+  height: 48px;
+  line-height: 52px;
 }
 
 .item.item-quot-goods-list {
@@ -973,9 +982,12 @@ a.function-color:before {
   color: white;
 }
 
+.black {
+  color: black;
+}
 
-.red {
-  color: red;
+.black a {
+  color: black;
 }
 
 .bg-color-white {
@@ -1075,9 +1087,9 @@ button.footer {
   padding: 10px 30px;
   font-family: "微軟正黑體";
   font-size: 20px;
-  border-bottom-width: 2px;
+  /* border-bottom-width: 2px;
   border-bottom-style: dotted;
-  border-bottom-color: #8B8B8B;
+  border-bottom-color: #8B8B8B; */
   color: #815A41;
 }
 
@@ -1124,4 +1136,9 @@ button.footer {
   background: white;
   padding: 2px 7px;
   color: gray;
+}
+
+.stock-list:after {
+  content: leader('- ') target-counter(attr(href), page);
+  color: #555555;
 }

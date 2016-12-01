@@ -17,7 +17,16 @@ angular.module('starter')
 
     ctrl.scanBarcode = function() {
       $cordovaBarcodeScanner.scan().then(function(result) {
-        $scope.queryCode = result.text;
+		$scope.queryCode = '';
+		
+	    if ( result.text ) {
+			if ( result.text.indexOf('=') > -1 ) {
+				$scope.queryCode = result.text.split('=')[1];
+			}else{
+				$scope.queryCode = result.text;
+			}
+		}
+		
         $scope.barcodeFormat = result.format;
 
         if ($scope.queryCode != undefined && $scope.queryCode != "") {
@@ -58,15 +67,44 @@ angular.module('starter')
       GoodsService.getGoods(itemId).then(function(res) {
         $log.debug("GoodsCtrl.queryGoods", "success", res);
 
-        ctrl.goods.total = res.total;
-        ctrl.goods.stockNo = res.stockNo;
-        ctrl.goods.stockName = res.stockName;
-        ctrl.goods.stockPrice = res.stockPrice;
-        ctrl.goods.stockNum = 0;
-        ctrl.goods.warehouseList = res.warehouseList;
+        if (res.stockNo) {
+          ctrl.goods.total = res.total;
+          ctrl.goods.stockNo = res.stockNo;
+          ctrl.goods.stockName = res.stockName;
+          ctrl.goods.stockPrice = res.stockPrice;
+          ctrl.goods.stockNum = 0;
+          ctrl.goods.warehouseList = res.warehouseList;
 
-        for (var k in ctrl.goods.warehouseList) {
-          ctrl.goods.stockNum += ctrl.goods.warehouseList[k].num;
+          if (res.hasOwnProperty('stockSpec')) {
+            ctrl.goods.stockSpec = res.stockSpec;
+          } else {
+            ctrl.goods.stockSpec = '';
+          }
+
+          if (res.hasOwnProperty('stockCode')) {
+            ctrl.goods.stockCode = res.stockCode;
+          } else {
+            ctrl.goods.stockCode = '';
+          }
+
+          for (var k in ctrl.goods.warehouseList) {
+            ctrl.goods.stockNum += ctrl.goods.warehouseList[k].num;
+          }
+        } else {
+          alert('查無商品 !!');
+          if (ctrl.typeFlag == 'add2quot.edit') {
+            $state.go('quotation.edit', { 'obj': undefined, 'flag': ctrl.typeFlag, 'quotNo': ctrl.quotNo }, {
+              reload: false
+            });
+          } else if (ctrl.typeFlag == 'add2quot') {
+            $state.go('quotation.new', { 'obj': undefined, 'flag': ctrl.typeFlag }, {
+              reload: false
+            });
+          } else {
+            $state.go('goods', {}, {
+              reload: false
+            });
+          }
         }
 
       }, function(err) {
