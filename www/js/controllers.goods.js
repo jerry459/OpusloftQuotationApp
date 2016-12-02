@@ -20,8 +20,8 @@ angular.module('starter')
 		$scope.queryCode = '';
 		
 	    if ( result.text ) {
-			if ( result.text.indexOf('=') > -1 ) {
-				$scope.queryCode = result.text.split('=')[1];
+			if ( result.text.indexOf('qcode=') > -1 ) {
+				$scope.queryCode = result.text.split('qcode=')[1];
 			}else{
 				$scope.queryCode = result.text;
 			}

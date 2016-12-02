@@ -741,7 +741,8 @@ body {
 
 .item.item-input-query input {
   font-size: 24px;
-  border-radius: 8px;
+  height: 48px;
+  line-height: 48px;
 }
 
 .item.item-input-login input {
@@ -988,6 +989,14 @@ a.function-color:before {
 
 .black a {
   color: black;
+}
+
+.red {
+  color: red;
+}
+
+.red a {
+  color: red;
 }
 
 .bg-color-white {
