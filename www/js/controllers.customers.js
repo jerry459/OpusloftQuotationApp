@@ -143,6 +143,11 @@ angular.module('starter')
             reload: true
           });
         } else {
+		  ctrl.customerData.customerNo = "";
+		  ctrl.customerData.customerName = "";
+		  ctrl.customerData.customerUnino = "";
+		  ctrl.customerData.customerPhone = "";
+		  ctrl.customerData.customerTel = "";
           ctrl.message = '找不到客戶 !!'
         }
 
