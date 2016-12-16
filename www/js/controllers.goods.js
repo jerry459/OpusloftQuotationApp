@@ -7,7 +7,22 @@ angular.module('starter')
     var goods = {};
     ctrl.typeFlag = (params && params.flag) ? params.flag : 'new';
     ctrl.quotNo = (params && params.quotNo) ? params.quotNo : '';
+    ctrl.isKeyboardShow = false;
+    ctrl.waitKeyboardClose = false;
 
+	window.addEventListener('native.keyboardhide', function(e){
+	})
+
+	window.addEventListener('native.keyboardhide', function(e){
+	  console.log("keyboard hide : height=" + e.keyboardHeight);
+	  
+	  if ( ctrl.waitKeyboardClose ) {
+	    window.removeEventListener('native.keyboardhide',function(){}, false);
+	    ctrl.waitKeyboardClose = false;
+		ctrl.scanBarcode2();
+	  }
+	})
+	
     ctrl.init = function() {
       $rootScope.checkAuthState();
       $scope.queryCode = '';
@@ -16,6 +31,10 @@ angular.module('starter')
     }
 
     ctrl.scanBarcode = function() {
+	  ctrl.waitKeyboardClose = true;
+    };
+	
+    ctrl.scanBarcode2 = function() {	  
       $cordovaBarcodeScanner.scan().then(function(result) {
 		$scope.queryCode = '';
 		
