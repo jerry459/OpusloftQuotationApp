@@ -10,19 +10,22 @@ angular.module('starter')
     ctrl.isKeyboardShow = false;
     ctrl.waitKeyboardClose = false;
 
-	window.addEventListener('native.keyboardhide', function(e){
-	})
+    window.addEventListener('native.keyboardshow', function(e) {
+      console.log("keyboard show : height=" + e.keyboardHeight);
+      ctrl.isKeyboardShow = true;
+    })
 
-	window.addEventListener('native.keyboardhide', function(e){
-	  console.log("keyboard hide : height=" + e.keyboardHeight);
-	  
-	  if ( ctrl.waitKeyboardClose ) {
-	    window.removeEventListener('native.keyboardhide',function(){}, false);
-	    ctrl.waitKeyboardClose = false;
-		ctrl.scanBarcode2();
-	  }
-	})
-	
+    window.addEventListener('native.keyboardhide', function(e) {
+      console.log("keyboard hide : height=" + e.keyboardHeight);
+
+      if (ctrl.waitKeyboardClose) {
+        window.removeEventListener('native.keyboardhide', function() {}, false);
+        ctrl.isKeyboardShow = false;
+        ctrl.waitKeyboardClose = false;
+        ctrl.scanBarcode2();
+      }
+    })
+
     ctrl.init = function() {
       $rootScope.checkAuthState();
       $scope.queryCode = '';
@@ -31,21 +34,25 @@ angular.module('starter')
     }
 
     ctrl.scanBarcode = function() {
-	  ctrl.waitKeyboardClose = true;
+      if (ctrl.isKeyboardShow) {
+        ctrl.waitKeyboardClose = true;
+      } else {
+        ctrl.scanBarcode2();
+      }
     };
-	
-    ctrl.scanBarcode2 = function() {	  
+
+    ctrl.scanBarcode2 = function() {
       $cordovaBarcodeScanner.scan().then(function(result) {
-		$scope.queryCode = '';
-		
-	    if ( result.text ) {
-			if ( result.text.indexOf('qcode=') > -1 ) {
-				$scope.queryCode = result.text.split('qcode=')[1];
-			}else{
-				$scope.queryCode = result.text;
-			}
-		}
-		
+        $scope.queryCode = '';
+
+        if (result.text) {
+          if (result.text.indexOf('qcode=') > -1) {
+            $scope.queryCode = result.text.split('qcode=')[1];
+          } else {
+            $scope.queryCode = result.text;
+          }
+        }
+
         $scope.barcodeFormat = result.format;
 
         if ($scope.queryCode != undefined && $scope.queryCode != "") {
@@ -112,11 +119,18 @@ angular.module('starter')
         } else {
           alert('查無商品 !!');
           if (ctrl.typeFlag == 'add2quot.edit') {
-            $state.go('quotation.edit', { 'obj': undefined, 'flag': ctrl.typeFlag, 'quotNo': ctrl.quotNo }, {
+            $state.go('quotation.edit', {
+              'obj': undefined,
+              'flag': ctrl.typeFlag,
+              'quotNo': ctrl.quotNo
+            }, {
               reload: false
             });
           } else if (ctrl.typeFlag == 'add2quot') {
-            $state.go('quotation.new', { 'obj': undefined, 'flag': ctrl.typeFlag }, {
+            $state.go('quotation.new', {
+              'obj': undefined,
+              'flag': ctrl.typeFlag
+            }, {
               reload: false
             });
           } else {
