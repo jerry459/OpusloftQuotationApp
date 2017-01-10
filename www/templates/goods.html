@@ -9,7 +9,7 @@
 			<div class="list list-inset list-inset-query">
 				<div class="item item-input-inset  item-input-query">
 					<label class="item item-input-wrapper item-input-query">
-								<input type="text" placeholder="請輸入商品條碼" ng-model="queryCode" />
+								<input type="text" placeholder="請輸入商品條碼" ng-model="queryCode" ng-click="queryCode=''" />
 							</label>
 					<button class="button button-kiwi-large icon ion-search" ng-click="clickQuery(queryCode)"> 搜尋</button>
 					<button class="button button-kiwi-large icon ion-qr-scanner" ng-click="scanBarcode()"> 掃瞄</button>

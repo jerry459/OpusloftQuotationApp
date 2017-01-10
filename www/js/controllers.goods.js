@@ -9,6 +9,7 @@ angular.module('starter')
     ctrl.quotNo = (params && params.quotNo) ? params.quotNo : '';
     ctrl.isKeyboardShow = false;
     ctrl.waitKeyboardClose = false;
+    ctrl.waitQueryItemId = '';
 
     window.addEventListener('native.keyboardshow', function(e) {
       console.log("keyboard show : height=" + e.keyboardHeight);
@@ -22,7 +23,12 @@ angular.module('starter')
         window.removeEventListener('native.keyboardhide', function() {}, false);
         ctrl.isKeyboardShow = false;
         ctrl.waitKeyboardClose = false;
-        ctrl.scanBarcode2();
+
+        if (ctrl.waitQueryItemId != '') {
+          ctrl.clickQuery2(ctrl.waitQueryItemId);
+        } else {
+          ctrl.scanBarcode2();
+        }
       }
     })
 
@@ -34,6 +40,8 @@ angular.module('starter')
     }
 
     ctrl.scanBarcode = function() {
+      ctrl.waitQueryItemId = '';
+
       if (ctrl.isKeyboardShow) {
         ctrl.waitKeyboardClose = true;
       } else {
@@ -56,7 +64,7 @@ angular.module('starter')
         $scope.barcodeFormat = result.format;
 
         if ($scope.queryCode != undefined && $scope.queryCode != "") {
-          ctrl.clickQuery($scope.queryCode);
+          ctrl.clickQuery2($scope.queryCode);
         }
       }, function(error) {
         console.warn("An error happened -> " + error);
@@ -64,8 +72,19 @@ angular.module('starter')
     };
 
     ctrl.clickQuery = function(itemId) {
+      if (ctrl.isKeyboardShow) {
+        ctrl.waitQueryItemId = itemId;
+        ctrl.waitKeyboardClose = true;
+      } else {
+        ctrl.clickQuery2(itemId);
+      }
+    };
+
+    ctrl.clickQuery2 = function(itemId) {
       $log.debug("GoodsCtrl.clickQuery", "flag=", ctrl.typeFlag, ", quotNo=", params.quotNo);
 
+      $scope.queryCode = '';
+      ctrl.waitQueryItemId = '';
       if (ctrl.typeFlag == 'add2quot.edit' && params.quotNo != '') {
         if (itemId) {
           $state.go('goods.query', {
@@ -163,28 +182,28 @@ angular.module('starter')
     $log.info("GoodsCtrl", "-- end --");
   })
 
-.controller("BarcodeCtrl", function($rootScope, $scope, $log, $q, $http, $cordovaBarcodeScanner) {
-  $log.info("BarcodeCtrl", "-- start --");
-  /*
-  $scope.scanBarcode = function () {
-  	$cordovaBarcodeScanner.scan().then(function (result) {
-  		$scope.barcode = result.text;
-  		$scope.format = result.format;
+  .controller("BarcodeCtrl", function($rootScope, $scope, $log, $q, $http, $cordovaBarcodeScanner) {
+    $log.info("BarcodeCtrl", "-- start --");
+    /*
+    $scope.scanBarcode = function () {
+    	$cordovaBarcodeScanner.scan().then(function (result) {
+    		$scope.barcode = result.text;
+    		$scope.format = result.format;
 
-  		if ( result.text ) {
-  			$http
-  				.get("http://tw.yahoo.com", { params: { "key1": "value1", "key2": "value2" } })
-  				.success(function(data) {
-  					$scope.result = data.result;
-  				})
-  				.error(function(data) {
-  					alert("ERROR");
-  				});
-  		}
-  	}, function (error) {
-  		console.warn("An error happened -> " + error);
-  	});
-  };
-  */
-  $log.info("BarcodeCtrl", "-- end --");
-})
+    		if ( result.text ) {
+    			$http
+    				.get("http://tw.yahoo.com", { params: { "key1": "value1", "key2": "value2" } })
+    				.success(function(data) {
+    					$scope.result = data.result;
+    				})
+    				.error(function(data) {
+    					alert("ERROR");
+    				});
+    		}
+    	}, function (error) {
+    		console.warn("An error happened -> " + error);
+    	});
+    };
+    */
+    $log.info("BarcodeCtrl", "-- end --");
+  })

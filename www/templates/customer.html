@@ -38,10 +38,10 @@
 		</div>
 
 		<ion-footer-bar class="page-footer block">
-			<button class="footer" ui-sref="quotation.edit({'quotNo': quotNo})" ng-if="typeFlag=='add2quot.edit'">返回</button>
-			<button class="footer" ui-sref="quotation.new({})" ng-if="typeFlag=='add2quot'">返回</button>
-			<button class="footer" ng-click="addCustomer(customerData);" ng-if="typeFlag!='add2quot' && typeFlag!='add2quot.edit'">新增</button>
-			<button class="footer" ng-click="queryCustomer(customerData);">查詢</button>
+			<button class="footer" ui-sref="quotation.edit({'quotNo': quotNo})" ng-if="typeFlag=='add2quot.edit'" style="width: 120px;">返回</button>
+			<button class="footer" ui-sref="quotation.new({})" ng-if="typeFlag=='add2quot'" style="width: 120px;">返回</button>
+			<button class="footer" ng-click="addCustomer(customerData);" ng-if="typeFlag!='add2quot.edit'" style="width: 120px;">新增</button>
+			<button class="footer" ng-click="queryCustomer(customerData);" style="width: 120px;">查詢</button>
 		</ion-footer-bar>
 	</div>
 </ion-scroll>

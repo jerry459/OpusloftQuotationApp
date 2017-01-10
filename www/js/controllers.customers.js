@@ -143,11 +143,11 @@ angular.module('starter')
             reload: true
           });
         } else {
-		  ctrl.customerData.customerNo = "";
-		  ctrl.customerData.customerName = "";
-		  ctrl.customerData.customerUnino = "";
-		  ctrl.customerData.customerPhone = "";
-		  ctrl.customerData.customerTel = "";
+          ctrl.customerData.customerNo = "";
+          ctrl.customerData.customerName = "";
+          ctrl.customerData.customerUnino = "";
+          ctrl.customerData.customerPhone = "";
+          ctrl.customerData.customerTel = "";
           ctrl.message = '找不到客戶 !!'
         }
 
@@ -194,12 +194,27 @@ angular.module('starter')
         return;
       }
 
+      $scope.customer = item;
       CustomersService.addCustomer(item).then(function(data) {
         $log.debug("CustomerCtrl.addCustomer", "success", data);
 
-        $state.go("customer.success", {
-          "obj": data.customerNo
-        });
+        if (ctrl.typeFlag == 'add2quot') {
+          var quotString = sessionStorage.getItem("quotation");
+          if (quotString) {
+            var quot = JSON.parse(quotString);
+            quot.customer = {
+              "customerNo": data.customerNo,
+              "customerName": $scope.customer.customerName
+            }
+
+            sessionStorage.setItem("quotation", JSON.stringify(quot));
+            $state.go("quotation.new", {});
+          }
+        } else {
+          $state.go("customer.success", {
+            "obj": data.customerNo
+          });
+        }
 
       }, function(err) {
         $log.debug("CustomerCtrl.addCustomer", "error", err);
@@ -210,6 +225,7 @@ angular.module('starter')
         $log.debug("CustomerCtrl.addCustomer", "exception", ex);
         debugger;
 
+        $state.go("fail");
       });
     }
 

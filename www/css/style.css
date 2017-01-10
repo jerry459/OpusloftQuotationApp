@@ -1151,3 +1151,14 @@ button.footer {
   content: leader('- ') target-counter(attr(href), page);
   color: #555555;
 }
+
+.input-fare {
+
+}
+
+.input-fare-price {
+  float: right;
+  margin-right: 45px;
+  width: 80px;
+  border-radius: 5px;
+}
