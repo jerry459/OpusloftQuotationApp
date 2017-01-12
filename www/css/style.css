@@ -822,11 +822,19 @@ body {
   color: #fff;
 }
 
-.item.item-input-cust-search input {
+.item.item-input-cust-search input{
   font-size: 24px;
   padding: 5px;
   margin: 5px;
   height: 48px;
+  line-height: 52px;
+}
+
+.item.item-input-cust-search textarea{
+  font-size: 24px;
+  padding: 5px;
+  margin: 5px;
+  height: 104px;
   line-height: 52px;
 }
 

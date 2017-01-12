@@ -110,8 +110,8 @@ angular.module('services.customers', [])
       var api = serviceBaseUrl + itemPart;
 
       var data = customer;
-      //data.addr1 = data.addr3;
-      //data.addr2 = data.addr3;
+      data.addr1 = data.addr3;
+      data.addr2 = data.addr3;
 
       var config = {
         'method': httpMethod,
