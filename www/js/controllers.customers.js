@@ -274,7 +274,7 @@ angular.module('starter')
       }
 
       $state.go('quotation.edit', {
-        'quotNo': item.quotNo
+        'quotNo': quotNo
       }, {
         reload: true
       });
