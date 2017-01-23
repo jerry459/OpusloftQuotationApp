@@ -46,8 +46,9 @@
 		</div>
 
 		<ion-footer-bar class="page-footer block">
-			<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">客戶資訊</button>
-			<button class="footer" ng-click="saveCustomer(customerData);">存檔</button>
+			<button class="footer1" ui-sref="customer({})" ui-sref-opts="{reload: true}">回客戶資訊</button>
+			<button class="footer1" ng-click="goPageBack()" ui-sref-opts="{reload: true}">回上頁</button>
+			<button class="footer1" ng-click="saveCustomer(customerData);">存檔</button>
 		</ion-footer-bar>
 	</div>
 </ion-content>

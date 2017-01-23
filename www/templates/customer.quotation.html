@@ -31,9 +31,10 @@
 		</div>
 
 		<ion-footer-bar class="page-footer block">
-			<button class="footer" ui-sref="customer({})" ui-sref-opts="{reload: true}">重新查詢</button>
+			<button class="footer1" ui-sref="customer({})" ui-sref-opts="{reload: true}">重新查詢</button>
+			<button class="footer1" ng-click="goPageBack()" ui-sref-opts="{reload: true}">回上頁</button>
 			<!-- button class="footer" ui-sref="quotation.new({'obj': customerData, 'flag': 'add2auot'})" ng-click="addNewQuotation(customerData);">新增報價</button -->
-			<button class="footer" ng-click="addNewQuotation(customerData);">新增報價</button>
+			<button class="footer1" ng-click="addNewQuotation(customerData);">新增報價</button>
 		</ion-footer-bar>
 	</div>
 </ion-content>

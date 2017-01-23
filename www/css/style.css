@@ -1100,6 +1100,19 @@ button.footer {
   color: #FFFFFF;
 }
 
+button.footer1 {
+  height: 60px;
+  width: 150px;
+  border: 0;
+  background-color: #937051;
+  margin: 35px 16px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px 2px #666;
+  font-size: 26px;
+  font-family: "微軟正黑體";
+  color: #FFFFFF;
+}
+
 .row.row-stock-list {
   padding: 10px 30px;
   font-family: "微軟正黑體";

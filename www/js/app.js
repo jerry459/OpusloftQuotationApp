@@ -238,7 +238,7 @@ angular
 
 })
 
-.run(function($rootScope, $state, $location, $http, $ionicLoading, UsersService) {
+.run(function($rootScope, $state, $location, $http, $ionicLoading, $window, UsersService) {
   console.info("CheckAuthState", "-- start --");
 
 $rootScope.version = AppConfig.VERSION;
@@ -262,6 +262,10 @@ $rootScope.version = AppConfig.VERSION;
 
   $rootScope.keyboardHideHandler = function(e) {
     alert('Goodnight, sweet prince');
+  }
+
+  $rootScope.goPageBack = function() {
+    $window.history.go(-1);
   }
 
   $rootScope.checkAuthState = function() {

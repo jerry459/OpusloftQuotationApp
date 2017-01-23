@@ -1,5 +1,5 @@
 angular.module('starter')
-  .controller('CustomerCtrl', function($rootScope, $scope, $state, $log, $q, $http, $filter, $ionicLoading, CustomersService, QuotationsService) {
+  .controller('CustomerCtrl', function($rootScope, $scope, $state, $log, $q, $http, $filter, $ionicLoading, $window, $ionicHistory, $ionicNavBarDelegate, CustomersService, QuotationsService) {
     $log.info("CustomerCtrl", "-- start --");
 
     $scope.customerData = {};
