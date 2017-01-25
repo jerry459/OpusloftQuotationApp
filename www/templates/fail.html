@@ -1,29 +1,22 @@
 <ion-content scroll="false">
-	<ion-scroll direction="y">
-		<div id="page_web01" ui-view>
+	<div class="page-have-footer">
+		<common-header version="version"></common-header>
 
-			<div id="page_web05">
-				<div id="page02_01">
+		<div class="page-content text-center">
+			<p class="page-title">系統訊息</p>
 
-					<p class="text_03_01">系統訊息</p>
-
-
-					<div class="card col col-75 center">
-						<div class="item item-text-wrap">
-							<p class="assertive">操作失敗</p>
-						</div>
-					</div>
+			<div class="card col col-75 center">
+				<div class="item item-divider bgc-kiwi">
+					<h2 class="light"></h2>
 				</div>
-			</div>
-			<div id="page_web04">
-
-				<p class="text_list_05">&nbsp;</p>
-			</div>
-			<div id="page_web03">
-				<div id="page_web_bott02">
-					<button class="button" ng-href="/home">回主畫面</button>
+				<div class="item item-text-wrap text_l">
+					操作失敗 !!
 				</div>
 			</div>
 		</div>
-	</ion-scroll>
+	</div>
+
+	<ion-footer-bar class="page-footer block">
+		<button class="footer" ui-sref="home">回主畫面</button>
+	</ion-footer-bar>
 </ion-content>

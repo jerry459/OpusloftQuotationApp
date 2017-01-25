@@ -1,5 +1,5 @@
-<ion-scroll direction="y">
-	<div class="page-have-footer" ui-view>
+<ion-content scroll="false" ui-view>
+	<div class="page-have-footer">
 		<common-header version="version"></common-header>
 
 		<div class="page-content text-center">
@@ -21,4 +21,4 @@
 			<button class="footer" ui-sref="quotation.edit({'quotNo': quotNo})" ng-if="typeFlag=='add2quot.edit'" style="width: 120px;">返回</button>
 		</ion-footer-bar>
 	</div>
-</ion-scroll>
+</ion-content>

@@ -1,5 +1,5 @@
 var AppConfig = {
-  VERSION: 'v1.24 Build 2017.01.23.1',
+  VERSION: 'v1.26 Build 2017.01.25.1',
   DEBUG_MODE: false,
   API_URL: 'http://210.242.161.120:33880/tablet/api',
   //API_URL: 'http://web.mygesoft.com:33880/tablet/api',

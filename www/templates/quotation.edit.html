@@ -1,4 +1,4 @@
-<ion-scroll direction="y">
+<ion-content scroll="false">
 	<div class="page-have-footer">
 		<common-header version="version"></common-header>
 
@@ -44,7 +44,7 @@
 
 			<hr width="98%" class="line-quot" />
 
-			<ion-scroll class="card card-quot-goods" style="height: 270px">
+			<ion-scroll class="card card-quot-goods" style="height: 270px" overflow-scroll="false">
 				<div class="item item-quot-goods-list" ng-repeat="(key, item) in quotation.goodsList">
 					<div class="row row-quot-goods-list row-center">
 						<div class="col col-50">
@@ -86,7 +86,7 @@
 					</div>
 				</div>
 			</ion-scroll>
-			
+
 			<p class="text_list_05-quot">合計：{{quotation.total | currency:"NT$ ":0}} 元 </p>
 		</div>
 
@@ -95,4 +95,4 @@
 			<button class="footer" ng-click="saveQuotation('update');">存　　檔</button>
 		</ion-footer-bar>
 	</div>
-</ion-scroll>
+</ion-content>

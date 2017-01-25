@@ -1,9 +1,10 @@
-<ion-content scroll="false" ui-view>
+<ion-content scroll="false">
 	<div class="page-have-footer">
 		<common-header version="version"></common-header>
 
 		<div class="page-content">
 			<p class="page-title">商品查詢</p>
+
 			<div class="row row-stock-list">
 				<div class="col col-75 text_s2">
 					{{goods.stockName}}
@@ -25,7 +26,7 @@
 
 			<hr class="line9" />
 
-			<ion-scroll direction="y" style="height: 320px;">
+			<ion-scroll direction="y" style="height: 320px;" overflow-scroll="false">
 				<div class="row  row-stock-list" ng-repeat="item in goods.warehouseList">
 					<div class="col col-75 col-dotted text_s2">
 						{{item.whName}}
